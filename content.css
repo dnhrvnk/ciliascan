@@ -1,0 +1,225 @@
+.main {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.left-aside, .right-aside {
+    align-items: center;
+    background-color: #101021;
+    height: 86vh;
+}
+
+.main .left-aside {
+    border-right: 0.8px solid rgb(45, 45, 66);
+    width: 19%;
+}
+
+.main .right-aside {
+    border-left: 0.8px solid rgb(45, 45, 66);
+    width: 22%;
+    display: ruby;
+}
+
+.main .main-content {
+    width: 59%;
+    text-align: center;
+    height: 86vh;
+}
+
+.main .main-content img {
+    width: auto;
+    height: 84vh;
+    padding-top: 10px;
+}
+
+.search-div, .uploaded-images, .button-for-images {
+    display: flex;
+    padding: 16px 12px 12px 12px;
+    width: 90%;
+}
+
+.button-for-images {
+    padding-top: 0;
+    justify-content: end;
+    column-gap: 5px;
+}
+
+.uploaded-images {
+    padding: 0px 12px 12px 12px;
+    display: block;
+    max-height: 70vh; /* Adjust height to leave space for search and button */
+    overflow-y: auto;
+}
+
+.uploaded-images::-webkit-scrollbar {
+    width: 3px; /* Set width of the scrollbar */
+}
+
+.uploaded-images::-webkit-scrollbar-thumb {
+    background-color: #888; /* Set color of the thumb */
+    border-radius: 6px; /* Round the corners of the thumb */
+}
+
+.search-div {
+    position: relative;
+    display: inline-block;
+}
+
+.search-div .search {
+    background-color: #212134;
+    border: 1px solid #212134;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 12px;
+    width: 85%;
+    padding-left: 30px;
+}
+
+.search-div::before {
+    content: '\f002';
+    font-family: 'FontAwesome';
+    position: absolute;
+    top: 50%;
+    right: 0px; 
+    left: 20px;
+    transform: translateY(-50%);
+    color: #555; 
+    pointer-events: none; 
+}
+
+.uploaded-image {
+    display: block;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 0.8px solid rgb(45, 45, 66);
+    border-bottom: 0.8px solid rgb(45, 45, 66);
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+.uploaded-image-collapsible {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.uploaded-image img {
+    width: 30%;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.uploaded-image-img-p, .uploaded-image-icons{
+    display: flex;
+    align-items: center;
+}
+
+.uploaded-image-img-p {
+    transition: border-color 0.5s ease;
+    cursor: pointer;
+}
+
+.uploaded-image.seen {
+    border-right: 3px solid #29C740;
+}
+
+.uploaded-image-icons .icon {
+    margin-right: 10px;
+}
+
+#noAnnotationMessage {
+    display: none;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+}
+
+.table-annotations {
+    width: 100%;
+    margin-top: 10px;
+    padding-inline: 12px;
+}
+
+.table-annotations td:first-child {
+    text-align: center;
+}
+
+.table-annotations td:nth-child(2){
+    padding-left: 10px ;
+}
+
+.table-annotations td:nth-child(3){
+    text-align: end;
+}
+
+.icon-annotation {
+    font-size: 20px;
+}
+
+.icon-clear-search {
+    position: absolute;
+    top: 24px;
+    right: 20px;
+    color: #555; 
+    font-size: 18px;
+}
+
+.collapsible {
+    color: white;
+    width: 100%;
+    border-bottom: 0.8px solid rgb(45, 45, 66);
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+}
+
+.collapsible-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 16px;
+    font-size: 12px;    
+}
+
+.collapsible-content {
+    display: block;
+    max-height: 1000px;
+    overflow: hidden;
+    padding-inline: 16px;
+    font-size: 12px; 
+    transition: max-height 0.3s ease-in-out; 
+}
+
+.collapsible-content p {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.collapsible-head.collapsed + .collapsible-content {
+    max-height: 0;
+}
+
+.rotate {
+    transform: rotate(-90deg);
+}
+
+.chevron-rotatable {
+    transition: transform 0.3s ease;
+}
+
+.stats td {
+    padding: 6px;
+}
+
+.stats td:first-child {
+    font-weight: 500; /* Set font-weight to bold for the first td in each row */
+}
+
+.info-icon {
+    font-size: smaller;
+    padding-bottom: 5px;
+    color: white;
+    margin-left: 5px;
+}

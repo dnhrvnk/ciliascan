@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website</title>
+    <link rel="stylesheet" href="general.css">
+    <link rel="stylesheet" href="macos-menu-bar.css">
+    <link rel="stylesheet" href="nav-tools-bar.css">
+    <link rel="stylesheet" href="content.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css">
+</head>
+<body>
+    <div class="macos-menu-bar">
+        <div class="left-side">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="right-side">
+            <button class="button update-button"><i class="fas fa-arrows-rotate icon info-icon"></i> Update available</button> 
+            <i class="fa-regular fa-circle-question icon"></i>
+        </div>
+    </div>
+
+    <nav class="nav-tools-bar">
+        <div class="nav-left-side">
+            <img src="logo-icon.svg" alt="Logo Icon" class="logo">
+            <h5>CiliaScan modul</h5>
+        </div>
+        <div class="nav-right-side">
+            <button class="button button-share"><i class="fa-solid fa-upload icon-blue"></i>Upload images</button>
+            <button class="button button-share"><i class="fa-solid fa-upload icon-blue"></i>Share</button>
+            <button class="button button-blue"><i class="fa-solid fa-download icon"></i> Export</button>
+            <i class="fa-regular fa-bell icon icon-nav"></i>
+            <span class="mdi mdi-cog-outline icon icon-nav"></span>
+        </div>
+    </nav>
+
+    <main class="main">
+        <aside class="left-aside">
+            <div class="search-div">
+                <input type="text" class="search" placeholder="Search image" oninput="searchImages()">
+                <i class="fa-solid fa-xmark icon icon-clear-search" onclick="clearSearch()"></i>
+            </div>            
+            <div class="button-for-images">
+                <button class="button button-red">
+                    <i class="fa-regular fa-trash-can icon icon-red"></i>
+                    Delete all images
+                </button>
+            </div>
+            <div class="uploaded-images">
+                <div id="noAnnotationMessage">No annotation found</div>
+                
+                <div class="uploaded-image">
+                    <div class="uploaded-image-collapsible">
+                        <div class="uploaded-image-img-p" onclick="seenImage(this)">
+                            <img src="images/Tv14.png" alt="Image 1">
+                            <p>Annotation 1</p>
+                        </div>
+                        <div class="uploaded-image-icons">
+                            <i class="fa-regular fa-trash-can icon"></i>
+                            <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
+                        </div>
+                    </div>
+                    <div class="uploaded-image-annotations">
+                        <table class="table-annotations">
+                            <tr>
+                                <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
+                                <td>Typ riasinky</td>
+                                <td>00.00%</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
+                                <td>Typ riasinky</td>
+                                <td>00.00%</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
+                                <td>Typ riasinky</td>
+                                <td>00.00%</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <div class="main-content">
+            <img src="" alt="" id="mainImage">
+        </div>
+        <aside class="right-aside"> 
+            <div class="collapsible">
+                <div class="collapsible-head" onclick="toggleCollapsible(this)">
+                    <h3>Statistics</h3>
+                    <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
+                </div>
+                <div class="collapsible-content">
+                    <table class="stats">
+                        <tr>
+                            <td>Total<sup><i class="fa-solid fa-circle-info icon info-icon"></i></sup>:</td>
+                            <td>100</td>
+                            <td><button class="button button-green">More detailed statistics</button></td>
+                        </tr>
+                        <tr>
+                            <td>Total DA<sup><i class="fa-solid fa-circle-info icon info-icon"></i></sup>:</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>Total MTDs<sup><i class="fa-solid fa-circle-info icon info-icon"></i></sup>:</td>
+                            <td>100.00%</td>
+                        </tr>
+                        <tr>
+                            <td>Total ODA<sup><i class="fa-solid fa-circle-info icon info-icon"></i></sup>:</td>
+                            <td>100.00%</td>
+                        </tr>
+                        <tr>
+                            <td>Total IDA<sup><i class="fa-solid fa-circle-info icon info-icon"></i></sup>:</td>
+                            <td>100.00%</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="collapsible">
+                <div class="collapsible-head" onclick="toggleCollapsible(this)">
+                    <h3>Annotations</h3>
+                    <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
+                </div>
+                <div class="collapsible-content">
+                    <p>Content for collapsible 1</p>
+                </div>
+            </div>
+
+            <div class="collapsible">
+                <div class="collapsible-head" onclick="toggleCollapsible(this)">
+                    <h3>Notes</h3>
+                    <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
+                </div>
+                <div class="collapsible-content">
+                    <p>Content for collapsible 1</p>
+                </div>
+            </div>
+        </aside>
+    </main>
+    
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+body {
+    background-color: #212134;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.icon {
+    color: white;
+    margin-right: 4px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.icon-blue { 
+    color: #006CEB;
+    margin-right: 4px;
+}
+
+.icon-red { 
+    color: #FF5F58;
+    margin-right: 4px;
+}
+
+.button {
+    background-color: transparent;
+    color: #006CEB;
+    font-weight: 400;
+    border: 1.5px solid #006CEB;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-size: 10px;
+}
+
+.button-blue {
+    color: white;
+    background-color: #006CEB;
+    border: none;
+    font-size: 13px;
+    padding: 8px 15px;
+}
+
+.button-red {
+    color: #FF5F58;
+    border-color: #FF5F58;
+}
+
+
+.button-share {
+    font-size: 13px;
+    padding: 8px 15px;
+}
+
+.button-green {
+    color: #29C740;
+    border-color: #29C740;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 4px;
+}
