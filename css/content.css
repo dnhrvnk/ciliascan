@@ -121,7 +121,7 @@
     cursor: pointer;
 }
 
-.uploaded-image.seen {
+.uploaded-image-collapsible.seen {
     border-right: 3px solid #29C740;
 }
 
@@ -136,26 +136,52 @@
     text-align: center;
 }
 
+.uploaded-image-annotations {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+.uploaded-image-annotations.active {
+    max-height: 200px;
+}
+
 .table-annotations {
     width: 100%;
     margin-top: 10px;
-    padding-inline: 12px;
 }
 
 .table-annotations td:first-child {
     text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 0;
 }
 
 .table-annotations td:nth-child(2){
-    padding-left: 10px ;
+    text-align: start;
 }
 
 .table-annotations td:nth-child(3){
     text-align: end;
 }
 
+.table-annotations tr {
+    line-height: 3;
+    justify-content: center;
+    display: inline-flex;
+}
+
 .icon-annotation {
     font-size: 20px;
+}
+
+.chip {
+    display: inline-block;
+    background-color: #febc2e80;
+    border-radius: 16px;
+    padding-inline: 4px;
+    color: white;
+    line-height: 2;
 }
 
 .icon-clear-search {
@@ -189,7 +215,7 @@
     overflow: hidden;
     padding-inline: 16px;
     font-size: 12px; 
-    transition: max-height 0.3s ease-in-out; 
+    transition: max-height 0.3s ease-out; 
 }
 
 .collapsible-content p {
@@ -214,7 +240,11 @@
 }
 
 .stats td:first-child {
-    font-weight: 500; /* Set font-weight to bold for the first td in each row */
+    font-weight: 500;
+}
+
+.stats td:nth-child(2) {
+    text-align: end; 
 }
 
 .info-icon {
@@ -222,4 +252,22 @@
     padding-bottom: 5px;
     color: white;
     margin-left: 5px;
+}
+
+#mtds {
+    color: white;
+    background-color: #101021;
+    border: none;
+    width: fit-content;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#mtds option:hover {
+    background-color: #006CEB;
+   color: white; 
+}
+
+#mtds::after {
+    display: none;
 }

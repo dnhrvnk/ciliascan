@@ -3,11 +3,12 @@ function seenImage(element) {
     document.getElementById('mainImage').src = imgSrc
 
     var parentElement = element.parentNode;
+    console.log(parentElement)
     parentElement.classList.add('seen');    
-    toggleEye(parentElement.querySelector('.fa-eye-slash'));
+    //toggleEye(parentElement.querySelector('.fa-eye-slash'));
 }
 
-function toggleEye(element) {
+/*function toggleEye(element) {
     var mainImageSrc = document.getElementById('mainImage').src;
     var clickedImageSrc = element.closest('.uploaded-image').querySelector('img').src;
 
@@ -30,7 +31,7 @@ function toggleEye(element) {
 
         document.getElementById('mainImage').src = clickedImageSrc;
     }   
-}
+}*/
 
 function searchImages() {
     var searchTerm = document.querySelector('.search').value.toLowerCase();
@@ -67,6 +68,24 @@ function toggleCollapsible(element) {
     content.classList.toggle('collapsed');
     icon.classList.toggle('rotate');
 }
+
+function toggleAnnotations(element) {
+    var annotationsDiv = element.parentElement.parentElement.nextElementSibling;
+    var chevronIcon = element.parentElement.querySelector('.chevron-icon');
+    annotationsDiv.classList.toggle("active");
+    chevronIcon.classList.toggle('rotate');
+}
+
+function rotateArrow() {
+    var selectElement = document.getElementById("mtds");
+    selectElement.classList.add("select-focused");
+}
+
+document.getElementById("mtds").addEventListener("blur", function() {
+    var selectElement = document.getElementById("mtds");
+    selectElement.classList.remove("select-focused");
+});
+
 
 /*document.addEventListener('DOMContentLoaded', function() {
     var uploadedImagesContainer = document.querySelector('.uploaded-images');

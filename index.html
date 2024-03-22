@@ -2,10 +2,10 @@
 <html>
 <head>
     <title>My Website</title>
-    <link rel="stylesheet" href="general.css">
-    <link rel="stylesheet" href="macos-menu-bar.css">
-    <link rel="stylesheet" href="nav-tools-bar.css">
-    <link rel="stylesheet" href="content.css">
+    <link rel="stylesheet" href="./css/general.css">
+    <link rel="stylesheet" href="./css/macos-menu-bar.css">
+    <link rel="stylesheet" href="./css/nav-tools-bar.css">
+    <link rel="stylesheet" href="./css/content.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css">
 </head>
@@ -24,7 +24,7 @@
 
     <nav class="nav-tools-bar">
         <div class="nav-left-side">
-            <img src="logo-icon.svg" alt="Logo Icon" class="logo">
+            <img src="./assets/logo-icon.svg" alt="Logo Icon" class="logo">
             <h5>CiliaScan modul</h5>
         </div>
         <div class="nav-right-side">
@@ -59,25 +59,25 @@
                         </div>
                         <div class="uploaded-image-icons">
                             <i class="fa-regular fa-trash-can icon"></i>
-                            <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
+                            <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable icon" onclick="toggleAnnotations(this)"></i>
                         </div>
                     </div>
                     <div class="uploaded-image-annotations">
                         <table class="table-annotations">
                             <tr>
                                 <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
-                                <td>Typ riasinky</td>
-                                <td>00.00%</td>
+                                <td>Disarranged</td>
+                                <td><div class="chip">0.00%</div></td>
                             </tr>
                             <tr>
                                 <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
-                                <td>Typ riasinky</td>
-                                <td>00.00%</td>
+                                <td>One of central pair missing</td>
+                                <td><div class="chip">80.00%</div></td>
                             </tr>
                             <tr>
                                 <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
-                                <td>Typ riasinky</td>
-                                <td>00.00%</td>
+                                <td>Other defects</td>
+                                <td><div class="chip">100.00%</div></td>
                             </tr>
                         </table>
                     </div>
@@ -91,7 +91,7 @@
             <div class="collapsible">
                 <div class="collapsible-head" onclick="toggleCollapsible(this)">
                     <h3>Statistics</h3>
-                    <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
+                    <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable icon"></i>
                 </div>
                 <div class="collapsible-content">
                     <table class="stats">
@@ -126,7 +126,16 @@
                     <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
                 </div>
                 <div class="collapsible-content">
-                    <p>Content for collapsible 1</p>
+                    <select name="mtds" id="mtds">
+                        <option value="Disarranged">Disarranged</option>
+                        <option value="Extra tubule">Extra tubule</option>
+                        <option value="Single tubule">Single tubule</option>
+                        <option value="Transposition">Transposition</option>
+                        <option value="One of central pair missing">One of central pair missing</option>
+                        <option value="Both missing">Both missing</option>
+                        <option value="Compound">Compound</option>
+                        <option value="Other defects">Other defects</option>
+                      </select></td></td>
                 </div>
             </div>
 
@@ -142,6 +151,6 @@
         </aside>
     </main>
     
-    <script src="scripts.js"></script>
+    <script src="./scripts/scripts.js"></script>
 </body>
 </html>
