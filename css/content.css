@@ -6,7 +6,7 @@
 .left-aside, .right-aside {
     align-items: center;
     background-color: #101021;
-    height: 86vh;
+    height: 89vh;
 }
 
 .main .left-aside {
@@ -21,15 +21,16 @@
 }
 
 .main .main-content {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
     width: 59%;
-    text-align: center;
-    height: 86vh;
+    height: 89vh;
 }
 
 .main .main-content img {
-    width: auto;
-    height: 84vh;
-    padding-top: 10px;
+    max-width: auto;
+    max-height: 95%;
 }
 
 .search-div, .uploaded-images, .button-for-images {
@@ -145,9 +146,13 @@
     max-height: 200px;
 }
 
-.table-annotations {
+.table-annotations, .table-annotation-info {
     width: 100%;
     margin-top: 10px;
+}
+
+.table-annotations {
+    margin-bottom: 10px;
 }
 
 .table-annotations td:first-child {
@@ -155,6 +160,7 @@
     display: flex;
     align-items: center;
     padding: 0;
+    display: inline-flex;
 }
 
 .table-annotations td:nth-child(2){
@@ -165,10 +171,14 @@
     text-align: end;
 }
 
-.table-annotations tr {
+.table-annotations tr,  .table-annotation-info tr {
     line-height: 3;
     justify-content: center;
-    display: inline-flex;
+}
+
+.selected-row td:nth-child(2){
+    background-color: #212134 !important;
+    color: #006CEB;
 }
 
 .icon-annotation {
@@ -177,8 +187,7 @@
 
 .chip {
     display: inline-block;
-    background-color: #febc2e80;
-    border-radius: 16px;
+    border-radius: 10px;
     padding-inline: 4px;
     color: white;
     line-height: 2;
@@ -254,20 +263,109 @@
     margin-left: 5px;
 }
 
-#mtds {
+#mtds, #dynein {
     color: white;
-    background-color: #101021;
+    background-color: #212134;
     border: none;
-    width: fit-content;
-    border-radius: 6px;
+    border-radius: 10px;
     cursor: pointer;
+    padding: 6px;
 }
 
-#mtds option:hover {
+#mtds option:hover, #dynein option:hover{
     background-color: #006CEB;
-   color: white; 
+    color: white; 
 }
 
-#mtds::after {
+#mtds::after, #dynein::after {
     display: none;
 }
+
+#mtds:focus, #dynein:focus {
+    outline: 0.8px solid #006CEB;
+}
+
+#mtds:hover, #dynein:hover {
+    border: 0.8px solid #006CEB;
+}
+
+.annotation-info {
+    display: flex;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.table-annotation-info {
+    width: 100%;
+    margin-left: 10px;
+    margin-top: 0;
+}
+
+.table-annotation-info td:first-child {
+    font-weight: 500;
+}
+
+.icon-annotation {
+    margin-top: 10px;
+}
+
+#notes {
+    color: white;
+    background-color: #212134;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px;
+    width: 95%;
+    resize: none;
+    margin-top: 10px;
+    height: 260px;
+    /*max-height: 260px;*/
+    overflow-y: auto;
+}
+
+#notes:focus {
+    outline: 0.8px solid #006CEB;
+}
+
+#notes::-webkit-scrollbar {
+    width: 3px; /* Set width of the scrollbar */
+}
+
+#notes::-webkit-scrollbar-thumb {
+    background-color: #888; /* Set color of the thumb */
+    border-radius: 6px; /* Round the corners of the thumb */
+}
+
+.conf-level-info {
+    margin: 0px;
+}
+
+/* Base style for tooltip */
+.tooltip-container {
+    position: relative;
+    display: inline-block; /* Ensure tooltip is positioned relative to the container */
+}
+
+.tooltip {
+    visibility: hidden;
+    width: max-content;
+    background-color: #7272a2;
+    color: white;
+    padding-inline: 10px;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 100; /* Ensure tooltip appears above other elements */
+    bottom: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.tooltip-container:hover .tooltip {
+    visibility: visible;
+}
+
+
+
+  

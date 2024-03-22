@@ -8,7 +8,6 @@
     right: 0;
     justify-content: space-between;
     position: relative;
-    z-index: -1;
     border-top: 0.8px solid rgb(45, 45, 66);
     font-weight: 400;
     border-bottom: 0.8px solid rgb(45, 45, 66);
@@ -45,15 +44,6 @@
     border-radius: 10px;
     background-color: #212134;
     padding: 10px;
-}
-
-.button-export, .button-share {
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.button-export:hover, .button-share:hover {
-    scale: 1.03;
 }
 
 .icon-nav {

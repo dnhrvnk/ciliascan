@@ -5,7 +5,27 @@ function seenImage(element) {
     var parentElement = element.parentNode;
     console.log(parentElement)
     parentElement.classList.add('seen');    
-    //toggleEye(parentElement.querySelector('.fa-eye-slash'));
+    
+    var annotationsDiv = element.parentElement.nextElementSibling;
+    var chevronIcon = element.parentElement.querySelector('.chevron-icon');
+
+    var isOpen = annotationsDiv.classList.contains('active');
+    var openAnnotations = document.querySelectorAll('.uploaded-image-annotations.active');
+    openAnnotations.forEach(function(annotation) {
+        annotation.classList.remove('active');
+    });
+
+    var rotatedChevronIcons = document.querySelectorAll('.chevron-icon.rotate');
+    rotatedChevronIcons.forEach(function(rotatedIcon) {
+        rotatedIcon.classList.remove('rotate');
+    });
+
+    if (!isOpen) {
+        annotationsDiv.classList.add("active");
+        chevronIcon.classList.add('rotate');
+    }
+
+
 }
 
 /*function toggleEye(element) {
@@ -61,6 +81,8 @@ function clearSearch() {
     searchImages();
 }
 
+console.log(document.getElementById('notes').getBoundingClientRect().bottom);
+
 function toggleCollapsible(element) {
     var content = element.nextElementSibling;
     var icon = element.querySelector('.chevron-icon');
@@ -69,11 +91,27 @@ function toggleCollapsible(element) {
     icon.classList.toggle('rotate');
 }
 
+
 function toggleAnnotations(element) {
     var annotationsDiv = element.parentElement.parentElement.nextElementSibling;
-    var chevronIcon = element.parentElement.querySelector('.chevron-icon');
-    annotationsDiv.classList.toggle("active");
-    chevronIcon.classList.toggle('rotate');
+    var chevronIcon = element;
+
+    var isOpen = annotationsDiv.classList.contains('active');
+
+    var openAnnotations = document.querySelectorAll('.uploaded-image-annotations.active');
+    openAnnotations.forEach(function(annotation) {
+        annotation.classList.remove('active');
+    });
+
+    var rotatedChevronIcons = document.querySelectorAll('.chevron-icon.rotate');
+    rotatedChevronIcons.forEach(function(rotatedIcon) {
+        rotatedIcon.classList.remove('rotate');
+    });
+
+    if (!isOpen) {
+        annotationsDiv.classList.add("active");
+        chevronIcon.classList.add('rotate');
+    }
 }
 
 function rotateArrow() {
@@ -125,7 +163,79 @@ document.getElementById("mtds").addEventListener("blur", function() {
     }
 });*/
 
+// color of confidence chips based on value
+var chips = document.querySelectorAll('.chip');
+
+chips.forEach(function(chip) {
+    var text = chip.textContent.trim();
+    var value = parseFloat(text.replace('%', ''));
+
+    if (value < 0.75) {
+        chip.style.backgroundColor = '#FF5F5896';
+    } else if (value < 0.90) {
+        chip.style.backgroundColor = '#febc2e80';
+    } else {
+        chip.style.backgroundColor = 'transparent';
+    }
+});
+
+// Get the rows of the first table
+var tableRows = document.querySelectorAll('.table-annotations tr');
+
+// Add click event listeners to each row
+tableRows.forEach(function(row) {
+    row.addEventListener('click', function() {
+
+        var selectedRows = document.querySelectorAll('.table-annotations tr.selected-row');
+        selectedRows.forEach(function(selectedRow) {
+            selectedRow.classList.remove('selected-row');
+        });
+        row.classList.add('selected-row');
+
+        // Extract information from the clicked row
+        var defectType = row.cells[1].textContent.trim();
+        var confLevel = row.cells[2].querySelector('.chip').textContent.trim();
+
+        // Update the second table with extracted information
+        var mtdsSelect = document.getElementById('mtds');
+        var dyneinSelect = document.getElementById('dynein');
+        var confLevelCell = document.querySelector('.conf-level');
+
+        mtdsSelect.value = defectType;
+        confLevelCell.textContent = confLevel;
+        
+        // Trigger change event to update the select elements' appearance
+        var event = new Event('change', { bubbles: true });
+        mtdsSelect.dispatchEvent(event);
+        dyneinSelect.dispatchEvent(event);
+
+        var text = confLevelCell.textContent.trim();
+        var value = parseFloat(text.replace('%', ''));
+
+        if (value < 0.75) {
+            confLevelCell.style.backgroundColor = '#FF5F5896';
+        } else if (value < 0.90) {
+            confLevelCell.style.backgroundColor = '#febc2e80';
+        } else {
+            confLevelCell.style.backgroundColor = '#00000000';
+        }
+        });
+});
 
 
+function autoExpandTextarea(element) {
+    // Reset the textarea's height to its default value
+    element.style.height = 'auto';
+    
+    // Set the textarea's height to its scroll height if the scroll height is greater than the default height
+    if (element.scrollHeight > element.clientHeight) {
+        element.style.height = element.scrollHeight + 'px';
+    }
+}
 
+var textarea = document.getElementById('notes');
+
+textarea.addEventListener('input', function() {
+    autoExpandTextarea(this);
+});
 

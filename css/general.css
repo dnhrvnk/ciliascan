@@ -21,6 +21,11 @@ body {
     margin-right: 4px;
 }
 
+.icon-common { 
+    color: #7272a2;
+    margin-right: 4px;
+}
+
 .button {
     background-color: transparent;
     color: #006CEB;
@@ -30,6 +35,11 @@ body {
     border-radius: 12px;
     font-size: 12px;
     font-size: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    scale: 1.03;
 }
 
 .button-blue {
@@ -40,15 +50,27 @@ body {
     padding: 8px 15px;
 }
 
-.button-red {
-    color: #FF5F58;
-    border-color: #FF5F58;
+.button-common {
+    color: #7272a2;
+    border-color: #7272a2;
 }
 
+.button-common:hover {
+    color: #006CEB;
+    border: 0.8px solid #006CEB;
+}
+
+.button-common:hover .icon-common {
+    color: #006CEB;
+}
 
 .button-share {
     font-size: 13px;
     padding: 8px 15px;
+}
+
+.button-export, .button-share {
+    font-weight: 600;
 }
 
 .button-green {
