@@ -168,7 +168,7 @@
 .table-annotations tr {
     line-height: 3;
     justify-content: center;
-    display: inline-flex;
+    /* display: inline-flex; */
 }
 
 .icon-annotation {
@@ -271,3 +271,4 @@
 #mtds::after {
     display: none;
 }
+

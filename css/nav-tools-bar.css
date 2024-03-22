@@ -6,14 +6,16 @@
     align-items: center;
     left: 0;
     right: 0;
-    justify-content: space-between;
     position: relative;
-    z-index: -1;
     border-top: 0.8px solid rgb(45, 45, 66);
     font-weight: 400;
     border-bottom: 0.8px solid rgb(45, 45, 66);
     line-height: 18px;
     font-size: 12px;
+
+    display: grid;
+    grid-template-columns: 40% auto auto;
+    grid-template-rows: 55px;
 }
 
 .nav-tools-bar h5 {
@@ -25,8 +27,16 @@
 .nav-tools-bar .nav-left-side, .nav-right-side {
     display: flex;
     align-items: center;
-    width: 26%;
+    /* width: 26%; */
     
+}
+
+.nav-middle-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
 }
 
 .nav-left-side {
@@ -37,6 +47,8 @@
 
 .nav-right-side {
     justify-content: space-between;
+    gap: 10px;
+    justify-self: end;
 }
 
 .logo {
@@ -58,4 +70,27 @@
 
 .icon-nav {
     font-size: 18px;
+}
+
+
+#mtds-tool {
+    color: white;
+    background-color: #101021;
+    border: none;
+    width: fit-content;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#mtds-tool option:hover {
+    background-color: #006CEB;
+   color: white; 
+}
+
+#mtds-tool::after {
+    display: none;
+}
+
+#mtds-tool .select-items div::before {
+	content: "haha"
 }

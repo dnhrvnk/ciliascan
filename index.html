@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="./css/macos-menu-bar.css">
     <link rel="stylesheet" href="./css/nav-tools-bar.css">
     <link rel="stylesheet" href="./css/content.css">
+    <link rel="stylesheet" href="./css/annotations.css">
+    <link rel="stylesheet" href="./css/custom-select.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css">
 </head>
@@ -27,6 +29,35 @@
             <img src="./assets/logo-icon.svg" alt="Logo Icon" class="logo">
             <h5>CiliaScan modul</h5>
         </div>
+
+        <div class="nav-middle-side">
+
+            <button class="button button-blue"><i class="fa-solid fa-hand icon"></i></button>
+            <button class="button button-blue"><i class="fa-solid fa-magnifying-glass icon"></i></button>
+            <div class="dropdown">
+                <button 
+                    id="mtds-tool-btn"
+                    class="dropbtn button button-blue"
+                    onclick="myFunction()"
+                >
+                    <div class="annotation table dissaranged"></div>
+                    <span>Disarranged</span>
+
+                    <ul class="dropdown-content" id="mtds-tool-dropdown-content">
+                        <li onclick="set_tool('dissaranged',this)" class="active"><div class="annotation table dissaranged"></div><span>Disarranged</span></li>
+                        <li onclick="set_tool('extra-tuble',this)"><div class="annotation table extra-tuble"></div><span>Extra tubule</span></li>
+                        <li onclick="set_tool('single-tuble',this)"><div class="annotation table single-tuble"></div><span>Single tubule</span></li>
+                        <li onclick="set_tool('transposition',this)"><div class="annotation table transposition"></div><span>Transposition</span></li>
+                        <li onclick="set_tool('one-central-pair-missing',this)"><div class="annotation table one-central-pair-missing"></div><span>One of central pair missing</span></li>
+                        <li onclick="set_tool('both-missing',this)"><div class="annotation table both-missing"></div><span>Both missing</span></li>
+                        <li onclick="set_tool('compound',this)"><div class="annotation table compound"></div><span>Compound</span></li>
+                        <li onclick="set_tool('other',this)"><div class="annotation table other"></div><span>Other defects</span></li>
+                    </ul>
+                    
+                </button>
+            </div>
+        </div>
+
         <div class="nav-right-side">
             <button class="button button-share"><i class="fa-solid fa-upload icon-blue"></i>Upload images</button>
             <button class="button button-share"><i class="fa-solid fa-upload icon-blue"></i>Share</button>
@@ -64,28 +95,17 @@
                     </div>
                     <div class="uploaded-image-annotations">
                         <table class="table-annotations">
-                            <tr>
-                                <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
-                                <td>Disarranged</td>
-                                <td><div class="chip">0.00%</div></td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
-                                <td>One of central pair missing</td>
-                                <td><div class="chip">80.00%</div></td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
-                                <td>Other defects</td>
-                                <td><div class="chip">100.00%</div></td>
-                            </tr>
+                            <tbody id="image1-annotations-table">
+                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </aside>
         <div class="main-content">
-            <img src="" alt="" id="mainImage">
+            <div id="image-annotations">
+                <img src="" alt="" id="mainImage">
+            </div>
         </div>
         <aside class="right-aside"> 
             <div class="collapsible">
@@ -127,14 +147,14 @@
                 </div>
                 <div class="collapsible-content">
                     <select name="mtds" id="mtds">
-                        <option value="Disarranged">Disarranged</option>
-                        <option value="Extra tubule">Extra tubule</option>
-                        <option value="Single tubule">Single tubule</option>
-                        <option value="Transposition">Transposition</option>
-                        <option value="One of central pair missing">One of central pair missing</option>
-                        <option value="Both missing">Both missing</option>
-                        <option value="Compound">Compound</option>
-                        <option value="Other defects">Other defects</option>
+                        <option value="dissaranged">Disarranged</option>
+                        <option value="extra-tuble">Extra tubule</option>
+                        <option value="single-tuble">Single tubule</option>
+                        <option value="transposition">Transposition</option>
+                        <option value="one-central-pair-missing">One of central pair missing</option>
+                        <option value="both-missing">Both missing</option>
+                        <option value="compound">Compound</option>
+                        <option value="other">Other defects</option>
                       </select></td></td>
                 </div>
             </div>
@@ -152,5 +172,7 @@
     </main>
     
     <script src="./scripts/scripts.js"></script>
+    <script src="./scripts/annotate.js"></script>
+    <script src="./scripts/select.js"></script>
 </body>
 </html>
