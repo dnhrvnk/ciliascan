@@ -179,6 +179,7 @@
 .selected-row td:nth-child(2){
     background-color: #212134 !important;
     color: #006CEB;
+    /* display: inline-flex; */
 }
 
 .icon-annotation {
