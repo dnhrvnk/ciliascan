@@ -1,18 +1,11 @@
 /* Dropdown Button */
 .dropbtn {
   color: white;
-  padding: 5px 5px;
   font-size: 13px;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
-}
-
-
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -48,21 +41,20 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-  background-color: #2980B9;
+  background-color: #006CEB;
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content li:hover {background-color: #2980B9;
-  ;}
+.dropdown-content li:hover {background-color: #006CEB;}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
 
 #mtds-tool-btn {
-  max-width: 31px;
+  max-width: 40px;
   overflow-x: hidden;
   transition: max-width 0.5s;
+  color: #0000;
 }
 
 #mtds-tool-btn > span {
@@ -70,13 +62,17 @@
   white-space: nowrap;
 }
 
-#mtds-tool-btn:hover {
+#mtds-tool-btn:hover, #mtds-tool-btn:has(.show) {
   max-width: 200px;
+  background-color: #101021;
+  border: 1px solid #006CEB;
+  color: white;
 }
 
-#mtds-tool-btn:has(.show) {
-  max-width: 200px;
+#mtds-tool-btn:active {
+  background-color: #006CEB;
 }
+
 
 #mtds-tool-btn div {
   margin-right: 7px;

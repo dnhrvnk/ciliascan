@@ -135,64 +135,25 @@ document.getElementById("mtds").addEventListener("blur", function() {
     }
 });*/
 
-// color of confidence chips based on value
-var chips = document.querySelectorAll('.chip');
-
-chips.forEach(function(chip) {
-    var text = chip.textContent.trim();
-    var value = parseFloat(text.replace('%', ''));
-
-    if (value < 0.75) {
-        chip.style.backgroundColor = '#FF5F5896';
-    } else if (value < 0.90) {
-        chip.style.backgroundColor = '#febc2e80';
-    } else {
-        chip.style.backgroundColor = 'transparent';
-    }
-});
-
-// Get the rows of the first table
-var tableRows = document.querySelectorAll('.table-annotations tr');
-
-// Add click event listeners to each row
-tableRows.forEach(function(row) {
-    row.addEventListener('click', function() {
-
-        var selectedRows = document.querySelectorAll('.table-annotations tr.selected-row');
-        selectedRows.forEach(function(selectedRow) {
-            selectedRow.classList.remove('selected-row');
-        });
-        row.classList.add('selected-row');
-
-        // Extract information from the clicked row
-        var defectType = row.cells[1].textContent.trim();
-        var confLevel = row.cells[2].querySelector('.chip').textContent.trim();
-
-        // Update the second table with extracted information
-        var mtdsSelect = document.getElementById('mtds');
-        var dyneinSelect = document.getElementById('dynein');
-        var confLevelCell = document.querySelector('.conf-level');
-
-        mtdsSelect.value = defectType;
-        confLevelCell.textContent = confLevel;
-        
-        // Trigger change event to update the select elements' appearance
-        var event = new Event('change', { bubbles: true });
-        mtdsSelect.dispatchEvent(event);
-        dyneinSelect.dispatchEvent(event);
-
-        var text = confLevelCell.textContent.trim();
-        var value = parseFloat(text.replace('%', ''));
-
-        if (value < 0.75) {
-            confLevelCell.style.backgroundColor = '#FF5F5896';
-        } else if (value < 0.90) {
-            confLevelCell.style.backgroundColor = '#febc2e80';
-        } else {
-            confLevelCell.style.backgroundColor = '#00000000';
+calc_chips = () => {
+    var chips = document.querySelectorAll('.chip');
+    chips.forEach(function(chip) {
+        var text = chip.textContent.trim();
+        if (text == '--%') {
+            chip.style.backgroundColor = 'transparent';
+            return
         }
-        });
-});
+        var value = parseFloat(text.replace('%', ''));
+        if (value < 75) {
+            chip.style.backgroundColor = '#FF5F5896';
+        } else if (value < 90) {
+            chip.style.backgroundColor = '#febc2e80';
+        } else {
+            chip.style.backgroundColor = 'transparent';
+        }
+    });
+}
+calc_chips();
 
 
 document.addEventListener('click', function(e) {
