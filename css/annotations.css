@@ -113,33 +113,33 @@ box-shadow: 0 0 10px #006CEB
 }
 
 .annotation.dissaranged {
-  background-color: red;
+  background-color: #FF7F00;
 }
 
 .annotation.extra-tuble {
-  background-color: brown;
+  background-color: #AB47BC;
 }
 
 .annotation.single-tuble {
-  background-color: green;
+  background-color: #FFD700;
 }
 
 .annotation.transposition {
-  background-color: fuchsia;
+  background-color: #00CED1;
 }
 
 .annotation.one-central-pair-missing {
-  background-color: khaki;
+  background-color: #FF69B4;
 }
 
 .annotation.both-missing {
-  background-color: cadetblue;
+  background-color: #32CD32 ;
 }
 
 .annotation.compound {
-  background-color: deepskyblue;
+  background-color: #6b0909 ;
 }
 
 .annotation.other {
-  background-color: darksalmon;
+  background-color: #ff3f3f;
 }

@@ -33,7 +33,7 @@
 
         <div class="nav-middle-side">
             <div class="dropdown" id="run-annotation">
-                <button class="button button-icons dropdown-toggle" id="dropdownMenuButton">
+                <button class="button button-icons dropdown-toggle" id="dropdownMenuButton" onclick="openDropdown()">
                   <i class="fa-regular fa-pen-to-square"></i>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -160,11 +160,13 @@
                     <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable icon"></i>
                 </div>
                 <div class="collapsible-content">
+                    <div style="justify-content: end; display: flex;">
+                        <button class="button button-common" onclick="openModal()">More detailed statistics</button>
+                    </div>
                     <table class="stats">
                         <tr>
                            <td>Total:</td>
                             <td>100</td>
-                            <td><button class="button button-common" onclick="openModal()">More detailed statistics</button></td>
                         </tr>
                         <tr>
                             <td>Total DA:</td>

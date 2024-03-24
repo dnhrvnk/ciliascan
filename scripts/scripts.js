@@ -166,8 +166,21 @@ document.addEventListener('click', function(e) {
     });
 });
 
+// Close dropdowns when clicking outside of them
+document.addEventListener('click', function(e) {
+    var dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(function(dropdown) {
+        if (!dropdown.contains(e.target)) {
+            var dropdownMenu = dropdown.querySelector('.dropdown-menu');
+            dropdownMenu.style.display = 'none';
+        }
+    });
+});
 
-
-
-
-  
+// Toggle dropdown visibility when clicking on the button
+document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
+    toggle.addEventListener('click', function() {
+        var dropdownMenu = this.nextElementSibling;
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+});

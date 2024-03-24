@@ -33,6 +33,7 @@
   text-decoration: none;
   display: flex;
   align-items: center;
+  padding: 10px;
 }
 
 .dropdown-content li.active {
@@ -42,6 +43,7 @@
   display: flex;
   align-items: center;
   background-color: #006CEB;
+  padding: 10px;
 }
 
 .dropdown-content li:hover {background-color: #006CEB;}

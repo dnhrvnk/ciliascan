@@ -5,7 +5,7 @@
     border-radius: 10px;
     border: 0.8px solid #101021;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    display: block;
+    display: none;
     width: 25%;
     top: 150px;
 }

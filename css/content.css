@@ -162,14 +162,16 @@
 
 .table-annotations td:first-child {
     text-align: center;
-    display: flex;
     align-items: center;
     padding: 0;
     display: inline-flex;
+    width: 100%;
+    justify-content: center;
 }
 
 .table-annotations td:nth-child(2){
     text-align: start;
+    padding-left: 10px;
 }
 
 .table-annotations td:nth-child(3){
