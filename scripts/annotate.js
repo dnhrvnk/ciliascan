@@ -71,7 +71,7 @@ let create_annot_row = (annot_class, id) => {
   annot.id = id;
   cell_icon.appendChild(annot);
   row.appendChild(cell_icon);
-  cell_text.innerHTML = "AHOJ";
+  cell_text.innerHTML = annot_class.split(' ')[1].toUpperCase()[0] + annot_class.split(' ')[1].slice(1);
   row.appendChild(cell_text);
   conf.innerHTML = "0.9";
   conf.className = 'chip';

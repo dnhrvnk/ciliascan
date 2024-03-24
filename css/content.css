@@ -28,9 +28,8 @@
     height: 89vh;
 }
 
-.main .main-content img {
-    max-width: auto;
-    max-height: 95%;
+#mainImage {
+    max-height: 80vh;
 }
 
 .search-div, .uploaded-images, .button-for-images {
@@ -74,6 +73,10 @@
     border-radius: 12px;
     width: 85%;
     padding-left: 30px;
+}
+
+.search-div .search:focus {
+    outline: 0.8px solid #006CEB;
 }
 
 .search-div::before {
@@ -143,7 +146,7 @@
     transition: max-height 0.3s ease-out;
 }
 .uploaded-image-annotations.active {
-    max-height: 200px;
+    max-height: fit-content;
 }
 
 .table-annotations, .table-annotation-info {

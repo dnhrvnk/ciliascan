@@ -222,20 +222,60 @@ tableRows.forEach(function(row) {
         });
 });
 
+// Get the range slider element
+var slider = document.getElementById("myRange");
+var output = document.getElementById("rangeValue");
+var annotations = document.getElementsByClassName("annotation");
 
-function autoExpandTextarea(element) {
-    // Reset the textarea's height to its default value
-    element.style.height = 'auto';
-    
-    // Set the textarea's height to its scroll height if the scroll height is greater than the default height
-    if (element.scrollHeight > element.clientHeight) {
-        element.style.height = element.scrollHeight + 'px';
-    }
+
+function updateOutputPosition() {
+    var percent = (slider.value - slider.min) / (slider.max - slider.min);
+    var position = percent * (slider.offsetWidth - 5); // Subtracting the width of the output element
+    var middlePosition = slider.getBoundingClientRect().left + position;
+    output.style.left = middlePosition + 'px';
 }
 
-var textarea = document.getElementById('notes');
+function toggleOutputVisibility() {
+    output.style.display = slider.classList.contains('active') ? 'block' : 'none';
+}
 
-textarea.addEventListener('input', function() {
-    autoExpandTextarea(this);
+output.textContent = slider.value;
+
+slider.addEventListener("input", function() {
+    output.textContent = this.value;
+    updateOutputPosition();
+    toggleOutputVisibility();
+
+    var opacityValue = this.value / 100; // Convert slider value to opacity value (between 0 and 1)
+    annotations.forEach(function(annotation) {
+        annotation.style.opacity = opacityValue;
+    });
 });
+
+slider.addEventListener("mousedown", function() {
+    slider.classList.add('active');
+    toggleOutputVisibility();
+});
+
+slider.addEventListener("mouseup", function() {
+    slider.classList.remove('active');
+    toggleOutputVisibility();
+});
+updateOutputPosition();
+
+// Get references to the button and slider container
+var toggleSliderButton = document.getElementById("toggleSliderButton");
+var sliderContainer = document.getElementById("sliderContainer");
+
+function toggleSlider() {
+    if (sliderContainer.style.display === "none") {
+        sliderContainer.style.display = "block";
+    } else {
+        sliderContainer.style.display = "none";
+    }
+}
+toggleSliderButton.addEventListener("click", toggleSlider);
+
+
+
 

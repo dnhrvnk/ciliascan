@@ -85,3 +85,70 @@
 #mtds-tool .select-items div::before {
 	content: "haha"
 }
+
+.button-icons {
+    color: white;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+}
+
+.button-icons i {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
+
+.button-icons .mdi-circle-opacity {
+    font-size: 20px;
+}
+
+.button-icons:hover, .button-icons:focus {
+    background-color: #006CEB;
+    padding: 10px;
+}
+
+.main-button-icons {
+    border-left: 0.8px solid rgb(45, 45, 66);
+    border-right: 0.8px solid rgb(45, 45, 66);
+    display: flex;
+    padding-inline: 10px;
+}
+
+
+.slidecontainer {
+    color: white;
+    display: none;
+    transition: max-width 0.5s ease-out;
+}
+
+.slidecontainer:hover {
+    max-width: 300px;
+}
+
+.slider:hover output {
+    display: block;
+}
+
+.slider {
+    height: 5px;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+}
+
+#rangeValue {
+    position: absolute;
+    top: -20px;
+    left: 64.5%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: white;
+    background-color: #006eeb82;
+    padding: 4px 8px;
+    border-radius: 10px;
+    display: none;
+}

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/annotations.css">
     <link rel="stylesheet" href="./css/custom-select.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
 </head>
 <body>
     <div class="macos-menu-bar">
@@ -31,18 +31,18 @@
         </div>
 
         <div class="nav-middle-side">
-
-            <button class="button button-blue"><i class="fa-solid fa-hand icon"></i></button>
-            <button class="button button-blue"><i class="fa-solid fa-magnifying-glass icon"></i></button>
+            <div class="main-button-icons">
+                <button class="button button-icons"><i class="fa-solid fa-hand icon"></i></button>
+                <button class="button button-icons"><i class="fa-solid fa-magnifying-glass-plus icon"></i></i></button>
+            </div>
             <div class="dropdown">
                 <button 
                     id="mtds-tool-btn"
-                    class="dropbtn button button-blue"
+                    class="dropbtn button button-icons"
                     onclick="myFunction()"
                 >
                     <div class="annotation table dissaranged"></div>
                     <span>Disarranged</span>
-
                     <ul class="dropdown-content" id="mtds-tool-dropdown-content">
                         <li onclick="set_tool('dissaranged',this)" class="active"><div class="annotation table dissaranged"></div><span>Disarranged</span></li>
                         <li onclick="set_tool('extra-tuble',this)"><div class="annotation table extra-tuble"></div><span>Extra tubule</span></li>
@@ -53,8 +53,12 @@
                         <li onclick="set_tool('compound',this)"><div class="annotation table compound"></div><span>Compound</span></li>
                         <li onclick="set_tool('other',this)"><div class="annotation table other"></div><span>Other defects</span></li>
                     </ul>
-                    
                 </button>
+            </div>
+            <button class="button button-icons" id="toggleSliderButton"><i class="mdi mdi-circle-opacity icon"></i></button>
+            <div class="slidecontainer" id="sliderContainer">
+                <input type="range" min="1" max="100" value="100" class="slider" id="myRange">
+                <output id="rangeValue" for="myRange">100</output>
             </div>
         </div>
 
@@ -95,57 +99,8 @@
                     </div>
                     <div class="uploaded-image-annotations">
                         <table class="table-annotations">
-<<<<<<< HEAD
-                            <tr>
-                                <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
-                                <td>Disarranged</td>
-                                <td><div class="chip">0.0</div></td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
-                                <td>One of central pair missing</td>
-                                <td><div class="chip">0.8</div></td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
-                                <td>Other defects</td>
-                                <td><div class="chip">1.0</div></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <div class="uploaded-image">
-                    <div class="uploaded-image-collapsible">
-                        <div class="uploaded-image-img-p" onclick="seenImage(this)">
-                            <img src="images/Tv16.png" alt="Image 1">
-                            <p>Annotation 2</p>
-                        </div>
-                        <div class="uploaded-image-icons">
-                            <i class="fa-regular fa-trash-can icon"></i>
-                            <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable icon" onclick="toggleAnnotations(this)"></i>
-                        </div>
-                    </div>
-                    <div class="uploaded-image-annotations">
-                        <table class="table-annotations">
-                            <tr>
-                                <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
-                                <td>Disarranged</td>
-                                <td><div class="chip">0.0</div></td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
-                                <td>One of central pair missing</td>
-                                <td><div class="chip">0.8</div></td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
-                                <td>Other defects</td>
-                                <td><div class="chip">1.0</div></td>
-                            </tr>
-=======
                             <tbody id="image1-annotations-table">
                             </tbody>
->>>>>>> 1ca53f2b4969c72ec20dcf7ff9065b87a76bdd86
                         </table>
                     </div>
                 </div>
@@ -210,7 +165,6 @@
                     <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
                 </div>
                 <div class="collapsible-content">
-<<<<<<< HEAD
                     <div class="annotation-info">
                         <div class="cilia">
                             <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
@@ -256,18 +210,6 @@
                             </table>
                         </div>
                     </div>
-=======
-                    <select name="mtds" id="mtds">
-                        <option value="dissaranged">Disarranged</option>
-                        <option value="extra-tuble">Extra tubule</option>
-                        <option value="single-tuble">Single tubule</option>
-                        <option value="transposition">Transposition</option>
-                        <option value="one-central-pair-missing">One of central pair missing</option>
-                        <option value="both-missing">Both missing</option>
-                        <option value="compound">Compound</option>
-                        <option value="other">Other defects</option>
-                      </select></td></td>
->>>>>>> 1ca53f2b4969c72ec20dcf7ff9065b87a76bdd86
                 </div>
             </div>
 
