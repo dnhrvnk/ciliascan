@@ -99,7 +99,7 @@
                     </div>
                     <div class="uploaded-image-annotations">
                         <table class="table-annotations">
-                            <tbody id="image1-annotations-table">
+                            <tbody id="image1-annotations-table" cellspacing="0">
                             </tbody>
                         </table>
                     </div>
@@ -174,6 +174,7 @@
                                 <tr>
                                     <td>MT defect:</td>
                                     <td><select name="mtds" id="mtds">
+                                        <option disabled selected value=""></option>
                                         <option value="Disarranged">Disarranged</option>
                                         <option value="Extra tubule">Extra tubule</option>
                                         <option value="Single tubule">Single tubule</option>
@@ -187,11 +188,12 @@
                                 <tr>
                                     <td>Dynein arms:</td>
                                     <td><select name="dynein" id="dynein">
-                                        <option value="No arms missing">No arms missing</option>
-                                        <option value="Inner arms missing">Inner arms missing</option>
-                                        <option value="Outer arms missing">Outer arms missing</option>
-                                        <option value="Both rms missing">Both arms missing</option>
-                                        <option value="Unknown">Unknown</option>
+                                        <option disabled selected value=""></option>
+                                        <option value="0">No arms missing</option>
+                                        <option value="1">Inner arms missing</option>
+                                        <option value="2">Outer arms missing</option>
+                                        <option value="3">Both arms missing</option>
+                                        <option value="4">Unknown</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -205,7 +207,7 @@
                                         </sup>
                                         :
                                         </td>
-                                    <td class="conf-level chip">0.7</td>
+                                    <td class="conf-level chip">--%</td>
                                 </tr>
                             </table>
                         </div>

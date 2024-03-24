@@ -104,8 +104,12 @@
   transform: rotate(-45deg);
 }
 
-.annotation:hover {
+#image-annotations .annotation:hover {
   box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+}
+
+.annotation.selected {
+box-shadow: 0 0 10px #006CEB
 }
 
 .annotation.dissaranged {

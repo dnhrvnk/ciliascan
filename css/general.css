@@ -38,10 +38,6 @@ body {
     cursor: pointer;
 }
 
-button:hover {
-    scale: 1.03;
-}
-
 .button-blue {
     color: white;
     background-color: #006CEB;

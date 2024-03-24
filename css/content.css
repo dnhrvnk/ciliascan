@@ -156,6 +156,8 @@
 
 .table-annotations {
     margin-bottom: 10px;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 .table-annotations td:first-child {
@@ -179,7 +181,15 @@
     justify-content: center;
 }
 
-.selected-row td:nth-child(2){
+.table-annotations tr:hover {
+    background-color: #006CEB;
+}
+
+.table-annotations tr.active {
+    background-color: #006CEB;
+}
+
+.selected-row {
     background-color: #212134 !important;
     color: #006CEB;
     /* display: inline-flex; */
