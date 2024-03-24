@@ -77,11 +77,13 @@ let create_annot_row = (annot_class, id) => {
   conf.className = 'chip';
   cell_conf.appendChild(conf);
   row.appendChild(cell_conf);
+
   return row;
 
 }
 
 annot_space.onclick = (event) => {
+
   let x = event.pageX-7;
   let y = event.pageY-7;
   let annot = document.createElement('div');
@@ -93,10 +95,12 @@ annot_space.onclick = (event) => {
   annot.style.left = x + 'px';
   annot.style.top = y + 'px';
   image_annotations_list.appendChild(create_annot_row(annot.className,id));
+
   annot.onclick = () => {
+    console.log('clicked');
+
     annotations = document.querySelectorAll('[id="'+id+'"]')
     let new_annot = annot_cycle[(annot_cycle.indexOf(annot.className.split(' ').reverse()[0])+1)%5];
-    console.log(new_annot);
     for (let a of annotations){
       let old_annot = a.className.split(' ');
       let keep = old_annot.slice(0, old_annot.length-1);

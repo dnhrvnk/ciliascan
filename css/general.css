@@ -51,6 +51,7 @@ button:hover {
 }
 
 .button-common {
+    font-size: 13px;
     color: #7272a2;
     border-color: #7272a2;
 }

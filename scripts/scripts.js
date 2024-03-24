@@ -1,32 +1,4 @@
-function seenImage(element) {
-    var imgSrc = element.querySelector('img').src;
-    document.getElementById('mainImage').src = imgSrc
 
-    var parentElement = element.parentNode;
-    console.log(parentElement)
-    parentElement.classList.add('seen');    
-    
-    var annotationsDiv = element.parentElement.nextElementSibling;
-    var chevronIcon = element.parentElement.querySelector('.chevron-icon');
-
-    var isOpen = annotationsDiv.classList.contains('active');
-    var openAnnotations = document.querySelectorAll('.uploaded-image-annotations.active');
-    openAnnotations.forEach(function(annotation) {
-        annotation.classList.remove('active');
-    });
-
-    var rotatedChevronIcons = document.querySelectorAll('.chevron-icon.rotate');
-    rotatedChevronIcons.forEach(function(rotatedIcon) {
-        rotatedIcon.classList.remove('rotate');
-    });
-
-    if (!isOpen) {
-        annotationsDiv.classList.add("active");
-        chevronIcon.classList.add('rotate');
-    }
-
-
-}
 
 /*function toggleEye(element) {
     var mainImageSrc = document.getElementById('mainImage').src;
@@ -61,7 +33,7 @@ function searchImages() {
     images.forEach(function(image) {
         var annotation = image.querySelector('.uploaded-image-img-p p').innerText.toLowerCase();
         if (annotation.includes(searchTerm)) {
-            image.style.display = 'flex';
+            image.style.display = 'block';
             found = true;
         } else {
             image.style.display = 'none';
@@ -222,60 +194,19 @@ tableRows.forEach(function(row) {
         });
 });
 
-// Get the range slider element
-var slider = document.getElementById("myRange");
-var output = document.getElementById("rangeValue");
-var annotations = document.getElementsByClassName("annotation");
 
-
-function updateOutputPosition() {
-    var percent = (slider.value - slider.min) / (slider.max - slider.min);
-    var position = percent * (slider.offsetWidth - 5); // Subtracting the width of the output element
-    var middlePosition = slider.getBoundingClientRect().left + position;
-    output.style.left = middlePosition + 'px';
-}
-
-function toggleOutputVisibility() {
-    output.style.display = slider.classList.contains('active') ? 'block' : 'none';
-}
-
-output.textContent = slider.value;
-
-slider.addEventListener("input", function() {
-    output.textContent = this.value;
-    updateOutputPosition();
-    toggleOutputVisibility();
-
-    var opacityValue = this.value / 100; // Convert slider value to opacity value (between 0 and 1)
-    annotations.forEach(function(annotation) {
-        annotation.style.opacity = opacityValue;
+document.addEventListener('click', function(e) {
+    var dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(function(dropdown) {
+        var dropdownMenu = dropdown.querySelector('.dropdown-menu');
+        if (dropdownMenu && !dropdown.contains(e.target)) {
+            dropdownMenu.style.display = 'none';
+        }
     });
 });
 
-slider.addEventListener("mousedown", function() {
-    slider.classList.add('active');
-    toggleOutputVisibility();
-});
-
-slider.addEventListener("mouseup", function() {
-    slider.classList.remove('active');
-    toggleOutputVisibility();
-});
-updateOutputPosition();
-
-// Get references to the button and slider container
-var toggleSliderButton = document.getElementById("toggleSliderButton");
-var sliderContainer = document.getElementById("sliderContainer");
-
-function toggleSlider() {
-    if (sliderContainer.style.display === "none") {
-        sliderContainer.style.display = "block";
-    } else {
-        sliderContainer.style.display = "none";
-    }
-}
-toggleSliderButton.addEventListener("click", toggleSlider);
 
 
 
 
+  

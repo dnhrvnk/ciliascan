@@ -348,7 +348,8 @@
 /* Base style for tooltip */
 .tooltip-container {
     position: relative;
-    display: inline-block; /* Ensure tooltip is positioned relative to the container */
+    display: inline-block;
+    z-index: 1;
 }
 
 .tooltip {
@@ -356,14 +357,15 @@
     width: max-content;
     background-color: #7272a2;
     color: white;
-    padding-inline: 10px;
+    padding-inline: 4px 10px;
     border-radius: 10px;
     position: absolute;
-    z-index: 100; /* Ensure tooltip appears above other elements */
+    z-index: 1;
     bottom: 90%;
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
+    overflow: hidden;
 }
 
 .tooltip-container:hover .tooltip {

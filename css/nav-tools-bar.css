@@ -94,6 +94,7 @@
     cursor: pointer;
     align-items: center;
     display: flex;
+    margin-right: 5px;
 }
 
 .button-icons i {
@@ -119,36 +120,68 @@
 }
 
 
-.slidecontainer {
-    color: white;
-    display: none;
-    transition: max-width 0.5s ease-out;
-}
-
-.slidecontainer:hover {
-    max-width: 300px;
-}
-
-.slider:hover output {
-    display: block;
+.dm {
+    height: 50px;
 }
 
 .slider {
-    height: 5px;
-    border-radius: 5px;
-    outline: none;
-    width: 100%;
+    margin-top: 30px;
 }
+
+.ranges {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-size: 10px;
+    padding-inline: 5px;
+}
+
+.ranges p {
+    margin: 0 0 10px 0;
+}   
 
 #rangeValue {
     position: absolute;
-    top: -20px;
-    left: 64.5%;
+    top: 0px;
+    left: 90%;
     transform: translateX(-50%);
-    font-size: 14px;
+    font-size: 10px;
     color: white;
     background-color: #006eeb82;
     padding: 4px 8px;
     border-radius: 10px;
+    display: flex;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+.dropdown-menu {
     display: none;
+    position: absolute;
+    background-color: #101021;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 10px;
+    border: 0.8px solid #101021;
+    width: max-content;
+}
+  
+.dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    color: white;
+}
+
+.dropdown-menu a:nth-child(2) {
+    border-bottom: 1px solid #212134;
+    border-top: 1px solid #212134;
+}
+  
+.dropdown-menu a:hover {
+    background-color: #006CEB;
 }

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/content.css">
     <link rel="stylesheet" href="./css/annotations.css">
     <link rel="stylesheet" href="./css/custom-select.css">
+    <link rel="stylesheet" href="./css/modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
 </head>
@@ -31,6 +32,17 @@
         </div>
 
         <div class="nav-middle-side">
+            <div class="dropdown" id="run-annotation">
+                <button class="button button-icons dropdown-toggle" id="dropdownMenuButton">
+                  <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Run annotation</a>
+                  <a class="dropdown-item" href="#">Hide annotations</a>
+                  <a class="dropdown-item" href="#">Reset annotation</a>
+                </div>
+            </div>
+              
             <div class="main-button-icons">
                 <button class="button button-icons"><i class="fa-solid fa-hand icon"></i></button>
                 <button class="button button-icons"><i class="fa-solid fa-magnifying-glass-plus icon"></i></i></button>
@@ -55,10 +67,18 @@
                     </ul>
                 </button>
             </div>
-            <button class="button button-icons" id="toggleSliderButton"><i class="mdi mdi-circle-opacity icon"></i></button>
-            <div class="slidecontainer" id="sliderContainer">
-                <input type="range" min="1" max="100" value="100" class="slider" id="myRange">
-                <output id="rangeValue" for="myRange">100</output>
+            <div class="dropdown">
+                <button class="button button-icons dropdown-toggle" id="dropdownMenuButton">
+                    <i class="mdi mdi-circle-opacity icon"></i>
+                </button>
+                <div class="dropdown-menu dm2" aria-labelledby="dropdownMenuButton">
+                    <input type="range" min="1" max="100" value="100" class="slider" id="myRange">
+                    <div class="ranges">
+                        <p>0</p>
+                        <p>100</p>
+                    </div>
+                    <output id="rangeValue" for="myRange">100</output>
+                </div>
             </div>
         </div>
 
@@ -88,7 +108,7 @@
                 
                 <div class="uploaded-image">
                     <div class="uploaded-image-collapsible">
-                        <div class="uploaded-image-img-p" onclick="seenImage(this)">
+                        <div class="uploaded-image-img-p" onclick="inboarding(this)">
                             <img src="images/Tv14.png" alt="Image 1">
                             <p>Annotation 1</p>
                         </div>
@@ -110,7 +130,29 @@
             <div id="image-annotations">
                 <img src="" alt="" id="mainImage">
             </div>
-        </div>
+
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="icon close" onclick="closeModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            To activate automatic annotation, simply select "<b>Run Annotation</b>" in dropdown menu. 
+                            <br><br>
+                            Our AI technology will then swiftly analyze the current image, highlighting celia for further review.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <p>1 of 8</p>
+                        <div style="column-gap: 5px; display: flex;">
+                            <button class="button button-common" onclick="backStep()">Back</button>
+                            <button id="nextStep" class="button button-blue" onclick="nextStep()">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
         <aside class="right-aside"> 
             <div class="collapsible">
                 <div class="collapsible-head" onclick="toggleCollapsible(this)">
@@ -120,55 +162,37 @@
                 <div class="collapsible-content">
                     <table class="stats">
                         <tr>
-                            <td>Total<sup><div class="tooltip-container">
-                                <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
-                                <div class="tooltip">Tooltip text goes here</div>
-                            </div></sup>:</td>
+                           <td>Total:</td>
                             <td>100</td>
-                            <td><button class="button button-common">More detailed statistics</button></td>
+                            <td><button class="button button-common" onclick="openModal()">More detailed statistics</button></td>
                         </tr>
                         <tr>
-                            <td>Total DA<sup><div class="tooltip-container">
-                                <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
-                                <div class="tooltip">Tooltip text goes here</div>
-                            </div></sup>:</td>
+                            <td>Total DA:</td>
                             <td>50</td>
                         </tr>
                         <tr>
-                            <td>Total MTDs<sup><div class="tooltip-container">
-                                <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
-                                <div class="tooltip">Tooltip text goes here</div>
-                            </div></sup>:</td>
+                            <td>Total MTDs:</td>
                             <td>100.00%</td>
                         </tr>
                         <tr>
-                            <td>Total ODA<sup><div class="tooltip-container">
-                                <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
-                                <div class="tooltip">Tooltip text goes here</div>
-                            </div></i></sup>:</td>
+                            <td>Total ODA:</td>
                             <td>100.00%</td>
                         </tr>
                         <tr>
-                            <td>Total IDA<sup><div class="tooltip-container">
-                                <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
-                                <div class="tooltip">Tooltip text goes here</div>
-                            </div></i></sup>:</td>
+                            <td>Total IDA:</td>
                             <td>100.00%</td>
                         </tr>
                     </table>
                 </div>
             </div>
 
-            <div class="collapsible">
+            <div class="collapsible" id="annotation-info">
                 <div class="collapsible-head" onclick="toggleCollapsible(this)">
                     <h3>Annotation info</h3>
                     <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
                 </div>
                 <div class="collapsible-content">
                     <div class="annotation-info">
-                        <div class="cilia">
-                            <td><i class="fa-solid fa-circle-dot icon icon-annotation"></i></td>
-                        </div>
                         <div class="cilia-info">
                             <table class="table-annotation-info">
                                 <tr>
@@ -228,5 +252,8 @@
     <script src="./scripts/scripts.js"></script>
     <script src="./scripts/annotate.js"></script>
     <script src="./scripts/select.js"></script>
+    <script src="./scripts/statistics.js"></script>
+    <script src="./scripts/slider.js"></script>
+    <script src="./scripts/inboarding.js"></script>
 </body>
 </html>
