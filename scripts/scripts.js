@@ -96,45 +96,6 @@ document.getElementById("mtds").addEventListener("blur", function() {
     selectElement.classList.remove("select-focused");
 });
 
-
-/*document.addEventListener('DOMContentLoaded', function() {
-    var uploadedImagesContainer = document.querySelector('.uploaded-images');
-    var contextMenuButton = null;
-
-    uploadedImagesContainer.addEventListener('contextmenu', function(event) {
-        event.preventDefault(); // Prevent default context menu
-        var target = event.target.closest('.uploaded-image');
-        if (target) {
-            contextMenuButton = document.createElement('button');
-            contextMenuButton.textContent = 'Unsee image';
-            contextMenuButton.style.position = 'absolute';
-            contextMenuButton.style.left = event.clientX + 'px';
-            contextMenuButton.style.top = event.clientY + 'px'; 
-            document.body.appendChild(contextMenuButton);
-
-            // Optionally, you can add an event listener to the button for further interactions
-            contextMenuButton.addEventListener('click', function() {
-                document.body.removeChild(contextMenuButton);
-            });
-
-            // Close the button if clicked elsewhere on the document
-            document.body.addEventListener('click', closeContextMenuButton);
-        }
-    });
-
-    function closeContextMenuButton(event) {
-        if (!uploadedImagesContainer.contains(event.target)) {
-            // Click occurred outside of the .uploaded-images container
-            // Remove the context menu button
-            if (contextMenuButton) {
-                document.body.removeChild(contextMenuButton);
-                contextMenuButton = null;
-            }
-            document.body.removeEventListener('click', closeContextMenuButton);
-        }
-    }
-});*/
-
 calc_chips = () => {
     var chips = document.querySelectorAll('.chip');
     chips.forEach(function(chip) {
@@ -161,7 +122,7 @@ document.addEventListener('click', function(e) {
     dropdowns.forEach(function(dropdown) {
         var dropdownMenu = dropdown.querySelector('.dropdown-menu');
         if (dropdownMenu && !dropdown.contains(e.target)) {
-            dropdownMenu.style.display = 'none';
+            dropdownMenu.classList.remove('show');
         }
     });
 });
@@ -171,8 +132,10 @@ document.addEventListener('click', function(e) {
     var dropdowns = document.querySelectorAll('.dropdown');
     dropdowns.forEach(function(dropdown) {
         if (!dropdown.contains(e.target)) {
-            var dropdownMenu = dropdown.querySelector('.dropdown-menu');
-            dropdownMenu.style.display = 'none';
+            var dropdownMenu = dropdown.querySelectorAll('.dropdown-menu');
+            for (var i = 0; i < dropdownMenu.length; i++) { 
+                dropdownMenu[i].classList.remove('show');
+            }
         }
     });
 });
@@ -181,6 +144,6 @@ document.addEventListener('click', function(e) {
 document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
     toggle.addEventListener('click', function() {
         var dropdownMenu = this.nextElementSibling;
-        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        dropdownMenu.classList.toggle('show');
     });
 });

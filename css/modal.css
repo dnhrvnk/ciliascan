@@ -1,13 +1,17 @@
 .modal {
-    position: fixed;
+    position: absolute;
     overflow: hidden;
     background-color:  #101021;
     border-radius: 10px;
     border: 0.8px solid #101021;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     display: none;
-    width: 25%;
-    top: 150px;
+    width: 20%;
+    top: 250px;
+    left: 550px;
+    font-size: 12px;
+    overlay: auto;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
+    z-index: 100;
 }
 
 .modal-content {
@@ -30,7 +34,7 @@
 
 .modal-body p {
     margin: 10px;
-    text-align: justify;
+    text-align: center;
 }
 
 .modal-footer p {
@@ -47,4 +51,20 @@
     font-size: 20px;
     cursor: pointer;
     font-weight: 700;
+}
+
+#modal::before,
+#modal::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 19px;
+  border: 11px solid transparent;
+  border-bottom-color: #dddddd;
+}
+
+#modal::after {
+  left: 20px;
+  border: 10px solid transparent;
+  border-bottom-color: #ffffff;
 }

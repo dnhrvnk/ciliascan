@@ -185,3 +185,14 @@
 .dropdown-menu a:hover {
     background-color: #006CEB;
 }
+
+
+.dropdown-content {
+    margin-left: -10px;
+    border-radius: 10px;
+}
+
+#run-annotation {
+    top: 40px;
+    left: -35px;
+}

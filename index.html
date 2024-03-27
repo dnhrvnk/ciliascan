@@ -32,12 +32,12 @@
         </div>
 
         <div class="nav-middle-side">
-            <div class="dropdown" id="run-annotation">
-                <button class="button button-icons dropdown-toggle" id="dropdownMenuButton" onclick="openDropdown()">
+            <div class="dropdown">
+                <button class="button button-icons dropdown-toggle" id="dropdownMenuButton">
                   <i class="fa-regular fa-pen-to-square"></i>
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Run annotation</a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="run-annotation">
+                  <a class="dropdown-item" href="#" id="btn-run-annotation">Run annotation</a>
                   <a class="dropdown-item" href="#">Hide annotations</a>
                   <a class="dropdown-item" href="#">Reset annotation</a>
                 </div>
@@ -55,7 +55,7 @@
                 >
                     <div class="annotation table dissaranged"></div>
                     <span>Disarranged</span>
-                    <ul class="dropdown-content" id="mtds-tool-dropdown-content">
+                    <ul class="dropdown-content dropdown-menu" id="mtds-tool-dropdown-content">
                         <li onclick="set_tool('dissaranged',this)" class="active"><div class="annotation table dissaranged"></div><span>Disarranged</span></li>
                         <li onclick="set_tool('extra-tuble',this)"><div class="annotation table extra-tuble"></div><span>Extra tubule</span></li>
                         <li onclick="set_tool('single-tuble',this)"><div class="annotation table single-tuble"></div><span>Single tubule</span></li>
@@ -109,7 +109,7 @@
                 <div class="uploaded-image">
                     <div class="uploaded-image-collapsible">
                         <div class="uploaded-image-img-p" onclick="inboarding(this)">
-                            <img src="images/Tv14.png" alt="Image 1">
+                            <img src="images/Tv2.png" alt="Image 1">
                             <p>Annotation 1</p>
                         </div>
                         <div class="uploaded-image-icons">
@@ -131,14 +131,15 @@
                 <img src="" alt="" id="mainImage">
             </div>
 
-            <div id="modal" class="modal">
+            <div id="modal" class="modal up">
+                <div id="triangle-up"></div>
                 <div class="modal-content">
                     <div class="modal-header">
                         <span class="icon close" onclick="closeModal()">&times;</span>
                     </div>
                     <div class="modal-body">
                         <p>
-                            To activate automatic annotation, simply select "<b>Run Annotation</b>" in dropdown menu. 
+                            To activate automatic annotation, simply select <br>"<b>Run Annotation</b>" in dropdown menu. 
                             <br><br>
                             Our AI technology will then swiftly analyze the current image, highlighting celia for further review.
                         </p>
@@ -146,7 +147,7 @@
                     <div class="modal-footer">
                         <p>1 of 8</p>
                         <div style="column-gap: 5px; display: flex;">
-                            <button class="button button-common" onclick="backStep()">Back</button>
+                            <button id="backStep" class="button button-common" onclick="backStep()" style="display: none">Back</button>
                             <button id="nextStep" class="button button-blue" onclick="nextStep()">Next</button>
                         </div>
                     </div>
@@ -253,9 +254,9 @@
         </aside>
     </main>
     
+    <script src="./scripts/select.js"></script>
     <script src="./scripts/scripts.js"></script>
     <script src="./scripts/annotate.js"></script>
-    <script src="./scripts/select.js"></script>
     <script src="./scripts/statistics.js"></script>
     <script src="./scripts/slider.js"></script>
     <script src="./scripts/inboarding.js"></script>
