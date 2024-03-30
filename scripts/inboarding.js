@@ -8,40 +8,6 @@ function startInboarding() {
     explainedAI = true;
 }
 
-function stopInboarding() {
-    let welcome = document.querySelector('#welcome-to-run-annotation');
-    welcome.style.display = "none";
-
-    let dropdown = document.querySelector('#dropdownMenuButton');
-    dropdown.classList.remove('pulse');
-    let dot = document.querySelector('.notification-dot');
-    dot.style.display = "none";
-}
-
-function inboarding() {
-    let welcome = document.querySelector('#welcome-to-run-annotation');
-    welcome.style.display = "none";
-
-    let pulsing_btn = document.querySelector('#dropdownMenuButton');
-    pulsing_btn.classList.remove('pulse');
-    let dot = document.querySelector('.notification-dot');
-    dot.style.display = "none";
-    
-    openModal();
-    
-    let dropdown = document.querySelector('#run-annotation');
-    dropdown.style.display = "block";
-    
-    let btn_run_annotation = document.querySelector('#btn-run-annotation');
-    btn_run_annotation.style.backgroundColor = "#006CEB";
-    
-    let statisitcs = document.querySelector('#statistics');
-    statisitcs.style.display = "none";
-    
-    let image = document.querySelector('#image-annotations');
-    image.style.display = "block";
-    document.getElementById('mainImage').src = "../images/Tv17.png";
-}
 
 var modal = document.getElementById("modal");
 var btn = document.querySelector(".button-common");
@@ -103,7 +69,6 @@ function seenImage(element) {
     }
 }
 
-
 var currentStep = 1;
 function nextStep() {
     
@@ -113,6 +78,12 @@ function nextStep() {
     if(currentStep == 0) {
         modalBody.innerHTML = 'To activate automatic annotation, simply select "<b>Run Annotation</b>" in dropdown menu. <br><br>Our AI technology will then swiftly analyze the current image, highlighting celia for further review.';
         modalFooter.textContent = "1 of 8";
+
+        let dropdown = document.querySelector('#run-annotation');
+        dropdown.style.display = "block";
+
+        let btn_run_annotation = document.querySelector('#btn-run-annotation');
+        btn_run_annotation.style.backgroundColor = "#006CEB";
 
         currentStep = 1;
     }
