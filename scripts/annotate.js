@@ -14,6 +14,8 @@ let selector_class = "dissaranged"
 let selector_class_full_name = "Disarranged"
 let selected_annotation = null;
 
+let selected_image = null;
+
 
 const annot_cycle = [
   'unknown',
@@ -51,40 +53,44 @@ let annotation_list = []
 const update_rightside = (row) => {
   let icon = row.cells[0].children[0]
   var defectType = row.cells[1].textContent.trim();
-  var confLevel = row.cells[2].querySelector('.chip').textContent.trim();
+  var confLevel = row.cells[2].querySelector('.chip')?.textContent.trim();
 
   mtds.onchange = undefined
   confLevelCell.onchange = undefined
 
   mtds.value = defectType;
-  confLevelCell.textContent = confLevel;
+  confLevelCell.textContent = confLevel || '--%';
   dynein.value = `${annot_cycle.indexOf(icon.className.split(' ').reverse()[0])}`
   calc_chips();
 
   mtds.onchange = (event) => {
-    console.log('changed')
+    ('changed')
     row.cells[1].textContent = mtds.value;
     let icons = document.querySelectorAll(`[id="${icon.id}"]`)
+    disable_automatic(icon.id)
     for (let i of icons){
-      console.log(i)
       let keep = i.className.split(' ');
       keep.splice(2,1,annot_map[mtds.value]);
-      console.log(keep)
       i.className = keep.join(' ');
 
     }
-    row.cells[2].querySelector('.chip').textContent = confLevelCell.textContent = '--%'
+    if (confLevelCell.firstChild != null)
+      confLevelCell.textContent = '--%'
     calc_chips();
   }
 
   dynein.onchange = (event) => {
     let icons = document.querySelectorAll(`[id="${icon.id}"]`)
+    disable_automatic(icon.id)
     for (let i of icons){
       let keep = i.className.split(' ');
       keep.splice(3,1,annot_cycle[dynein.value]);
+      console.log(keep)
       i.className = keep.join(' ');
     }
-    row.cells[2].querySelector('.chip').textContent = confLevelCell.textContent = '--%'
+    if (confLevelCell.firstChild != null)
+      confLevelCell.textContent = '--%'
+
     calc_chips();
   }
 }
@@ -139,7 +145,10 @@ const select_annotation = (annot) => {
   for (let r of rows){
     r.classList.remove('selected-row');
   }
-  let annot_row = image_annotations_list.querySelector('[id="'+annot.id+'"]');
+  let i = annot.id.split('-')[2];
+  console.log(i)  
+  image_list = document.getElementById(`${i}-annotations-table`)
+  let annot_row = image_list.querySelector('[id="'+annot.id+'"]');
   annot_row.parentElement.parentElement.classList.add('selected-row');
 
   update_rightside(annot_row.parentElement.parentElement)
@@ -153,14 +162,15 @@ const create_annotation = (x,y) => {
     y: y,
     class: selector_class,
     cycle: 0,
-    confidence: Math.round(Math.random()*100)
+    confidence: Math.round(Math.random()*30 + 70)
   }
 }
 
-let create_annot_row = (annot_class, id, confidence) => {
+let create_annot_row = (annot_class, id, confidence, auto=false) => {
   let row = document.createElement('tr');
   let cell_icon = document.createElement('td');
   let cell_text = document.createElement('td');
+  let cell_delete = document.createElement('td');
   let cell_conf = document.createElement('td');
   let annot = document.createElement('div');
   let conf = document.createElement('div');
@@ -169,39 +179,86 @@ let create_annot_row = (annot_class, id, confidence) => {
 
   annot.className = 'table ' + annot_class;
   annot.id = id;
+
   cell_icon.appendChild(annot);
   row.appendChild(cell_icon);
+
   cell_text.innerHTML = selector_class_full_name;
   row.appendChild(cell_text);
-  conf.innerHTML = `${confidence}%`;
-  conf.className = 'chip';
+  conf.innerHTML = ``;
+  if(auto){
+    conf.innerHTML = `${confidence}%`;
+    conf.className = 'chip';
+  }
   cell_conf.appendChild(conf);
   row.appendChild(cell_conf);
+
+  
+  cell_delete.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
+  cell_delete.onclick = (event) => {
+    delete_annot(id);
+  }
+  row.appendChild(cell_delete);
+
 
   return row;
 
 }
 
-annot_space.onclick = (event) => {
+let update_row = (id) => {
+  let annot = document.querySelectorAll('[id="'+id+'"]');
+  for (let a of annot){
+    let row = a.parentElement.parentElement;
+    if (row.tagName == 'TR'){
+      row.cells[2].children[0].innerHTML = '';
+    }
+  }
 
-  let x = event.pageX-7;
-  let y = event.pageY-7;
+}
+
+const open_loading = () => {
+  let loading = document.getElementById('modal-loading');
+  loading.style.display = 'block';
+}
+
+const close_loading = () => {
+  let loading = document.getElementById('modal-loading');
+  loading.style.display = 'none';
+}
+
+const create_annot = (x_page,y_page, auto=false) => {
+  let x = x_page-7;
+  let y = y_page-7;
   let annot = document.createElement('div');
   let annot_obj = create_annotation(x,y);
   annotation_list.push(annot_obj);
-  let id = 'annot-'+ Math.floor(Math.random() * 1000);
-  annot.className = 'annotation ' + selector_class +' ' + annot_cycle[0];
+  let s_c = selector_class;
+  let a_c = annot_cycle[0]; 
+  if (auto){
+    s_c = annot_tools[Math.floor(Math.random()*annot_tools.length)]
+    a_c = annot_cycle[Math.floor(Math.random()*annot_cycle.length)]
+  }
+  let image = document.getElementById('mainImage').alt;
+  selected_image = image
+
+  let id = 'annot-'+ Math.floor(Math.random() * 1000)+'-'+image;
+  annot.className = 'annotation '
+  if (auto)
+    annot.className += 'automatic '
+  annot.className +=  s_c +' ' + a_c;
   annot.id = id;
   annot.style.left = x + 'px';
   annot.style.top = y + 'px';
-  annot_row = create_annot_row(annot.className,id,annot_obj.confidence);
-  let insert_index = Array.prototype.findIndex.call(image_annotations_list.children,(row) => {
+  annot_row = create_annot_row(annot.className,id,annot_obj.confidence, auto);
+  image_list = document.getElementById(`${selected_image}-annotations-table`)
+  let insert_index = Array.prototype.findIndex.call(image_list.children,(row) => {
     return parseFloat(row.cells[2].textContent.trim().replace('%','')) > annot_obj.confidence;
   })
-  insert_index = insert_index == -1 ? image_annotations_list.children.length : insert_index;
-  console.log(insert_index)
-  image_annotations_list.insertBefore(annot_row, image_annotations_list.children[insert_index]);
-  select_annotation(annot)
+  insert_index = insert_index == -1 ? image_list.children.length : insert_index;
+  image_list.insertBefore(annot_row, image_list.children[insert_index]);
+  if (!auto){
+    select_annotation(annot)
+  }
   annot.oncontextmenu = (event) =>{
     event.preventDefault()
     delete_annot(id)
@@ -212,11 +269,12 @@ annot_space.onclick = (event) => {
       return
     }
     annotations = document.querySelectorAll('[id="'+id+'"]')
-    let new_annot = annot_cycle[(annot_cycle.indexOf(annot.className.split(' ').reverse()[0])+1)%5];
+    disable_automatic(id)
+    let old_annot = annotations[0].className.split(' ').reverse()[0];
+    let new_annot = annot_cycle[(annot_cycle.indexOf(old_annot)+1)%5];
     for (let a of annotations){
       let old_annot = a.className.split(' ');
       let keep = old_annot.slice(0, old_annot.length-1);
-      console.log(keep, new_annot);
       a.className = keep.join(' ') + ' ' + new_annot;
     }
 
@@ -227,8 +285,75 @@ annot_space.onclick = (event) => {
   calc_chips();
 }
 
+annot_space.onclick = (event) => {
+  let rect = annot_space.getBoundingClientRect();
+  create_annot(event.pageX,event.pageY)
+}
+
 
 const delete_annot = (annot_id) => {
   annotate_list.removeChild(annotate_list.querySelector(`#${annot_id}`))
-  image_annotations_list.removeChild(image_annotations_list.querySelector((`#${annot_id}`)).parentElement.parentElement)
+  image_list = document.getElementById(`${selected_image}-annotations-table`)
+  image_list.removeChild(image_list.querySelector((`#${annot_id}`)).parentElement.parentElement)
+}
+
+
+const simulate_click = () => {
+  if (document.querySelectorAll('.seen').length == 0) {
+    console.error('No annotations to simulate')
+    return
+  }
+
+  open_loading();
+
+  setTimeout(() => {
+    let rect = annot_space.getBoundingClientRect();
+    let start_x = rect.left
+    let start_y = rect.top
+
+    for (let i = 0; i < 1; i++){
+      x_rand = Math.floor(Math.random()*600 + 100)
+      y_rand = Math.floor(Math.random()*600 + 100)
+      x = start_x + x_rand
+      y = start_y + y_rand
+      create_annot(x,y,true)
+    }
+    close_loading();
+  },1)
+
+}
+
+
+const delete_automatic = () => {
+  let annots = document.querySelectorAll('.annotation.automatic');
+  (annots)
+  for (let a of annots){
+    delete_annot(a.id)
+  }
+}
+
+const disable_automatic = (id) => {
+  annotations = document.querySelectorAll('[id="'+id+'"]')
+  for (let a of annotations){
+    let classes = a.className.split(' ');
+    let automatic = classes.indexOf('automatic');
+    if (automatic != -1){
+      classes.splice(automatic,1);
+    }
+    a.className = classes.join(' ');  
+  }
+
+  update_row(id)
+}
+
+
+opacity_range = document.getElementById('myRange');
+
+opacity_range.oninput = () => {
+  console.log('chaninig')
+
+  let annots = annotate_list.querySelectorAll('.annotation');
+  for (let a of annots){
+    a.style.opacity = opacity_range.value/100;
+  }
 }

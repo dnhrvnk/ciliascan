@@ -1,4 +1,4 @@
-var explainedAI = false;	
+var explainedAI = true;	
 
 function startInboarding() {
     if(explainedAI == false) {
@@ -45,6 +45,7 @@ function closeModal() {
 function seenImage(element) {
     var imgSrc = element.querySelector('img').src;
     document.getElementById('mainImage').src = imgSrc
+    document.getElementById('mainImage').alt = element.querySelector('img').alt;
 
     var parentElement = element.parentNode;
     parentElement.classList.add('seen');    
@@ -66,6 +67,16 @@ function seenImage(element) {
     if (!isOpen) {
         annotationsDiv.classList.add("active");
         chevronIcon.classList.add('rotate');
+    }
+
+    annot_space = document.getElementById('image-annotations');
+    var annotations = annot_space.querySelectorAll(`div`)
+    for (var i = 0; i < annotations.length; i++) {
+        annotations[i].style.display = "none";
+    }
+    var annotations = annot_space.querySelectorAll(`[id$="${element.querySelector('img').alt}"]`)
+    for (var i = 0; i < annotations.length; i++) {
+        annotations[i].style.display = "block";
     }
 }
 

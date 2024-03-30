@@ -1,3 +1,17 @@
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+
 .modal {
     position: absolute;
     overflow: hidden;
@@ -12,6 +26,23 @@
     overlay: auto;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
     z-index: 100;
+}
+
+#modal-loading {
+    width: 20%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+#modal-loading .modal-body p::before {
+    content: '\f110';
+    font-family: 'FontAwesome';
+    font-size: 50px;
+    display: block;
+    margin: 10px 0px 30px 0px;
+    animation: spin 3s linear infinite;
 }
 
 .modal-content {
