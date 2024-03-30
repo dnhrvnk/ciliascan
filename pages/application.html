@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CiliaScan</title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/macos-menu-bar.css">
+    <link rel="stylesheet" href="../css/nav-tools-bar.css">
+    <link rel="stylesheet" href="../css/content.css">
+    <link rel="stylesheet" href="../css/annotations.css">
+    <link rel="stylesheet" href="../css/custom-select.css">
+    <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="../css/explicit-feedback.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
+</head>
+<body>
+    <div class="macos-menu-bar">
+        <div class="left-side">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="right-side">
+            <button class="button update-button"><i class="fas fa-arrows-rotate icon-blue"></i> Update available</button> 
+            <i class="fa-regular fa-circle-question icon"></i>
+        </div>
+    </div>
+
+    <nav class="nav-tools-bar">
+        <div class="nav-left-side">
+            <img src="../assets/logo-icon.svg" alt="Logo Icon" class="logo">
+            <h5>CiliaScan modul</h5>
+        </div>
+
+        <div class="nav-middle-side">
+            <div class="dropdown">
+                <button class="button button-icons dropdown-toggle pulse" id="dropdownMenuButton" onclick="startInboarding()">
+                  <i class="fa-regular fa-pen-to-square"></i>
+                  <span class="notification-dot"></span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="run-annotation">
+                  <a class="dropdown-item" href="#" id="btn-run-annotation">Run annotation</a>
+                  <a class="dropdown-item" href="#">Hide annotations</a>
+                  <a class="dropdown-item" href="#">Reset annotation</a>
+                </div>
+            </div>
+              
+            <div class="main-button-icons">
+                <button class="button button-icons"><i class="fa-solid fa-hand icon"></i></button>
+                <button class="button button-icons"><i class="fa-solid fa-magnifying-glass-plus icon"></i></i></button>
+            </div>
+            <div class="dropdown">
+                <button 
+                    id="mtds-tool-btn"
+                    class="dropbtn button button-icons"
+                    onclick="myFunction()"
+                >
+                    <div class="annotation table dissaranged"></div>
+                    <span>Disarranged</span>
+                    <ul class="dropdown-content dropdown-menu" id="mtds-tool-dropdown-content">
+                        <li onclick="set_tool('dissaranged',this)" class="active"><div class="annotation table dissaranged"></div><span>Disarranged</span></li>
+                        <li onclick="set_tool('extra-tuble',this)"><div class="annotation table extra-tuble"></div><span>Extra tubule</span></li>
+                        <li onclick="set_tool('single-tuble',this)"><div class="annotation table single-tuble"></div><span>Single tubule</span></li>
+                        <li onclick="set_tool('transposition',this)"><div class="annotation table transposition"></div><span>Transposition</span></li>
+                        <li onclick="set_tool('one-central-pair-missing',this)"><div class="annotation table one-central-pair-missing"></div><span>One of central pair missing</span></li>
+                        <li onclick="set_tool('both-missing',this)"><div class="annotation table both-missing"></div><span>Both missing</span></li>
+                        <li onclick="set_tool('compound',this)"><div class="annotation table compound"></div><span>Compound</span></li>
+                        <li onclick="set_tool('other',this)"><div class="annotation table other"></div><span>Other defects</span></li>
+                    </ul>
+                </button>
+            </div>
+            <div class="dropdown">
+                <button class="button button-icons dropdown-toggle" id="dropdownMenuButton">
+                    <i class="mdi mdi-circle-opacity icon"></i>
+                </button>
+                <div class="dropdown-menu dm2" aria-labelledby="dropdownMenuButton">
+                    <input type="range" min="1" max="100" value="100" class="slider" id="myRange">
+                    <div class="ranges">
+                        <p>0</p>
+                        <p>100</p>
+                    </div>
+                    <output id="rangeValue" for="myRange">100</output>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-right-side">
+            <button class="button button-share"><i class="fa-regular fa-share-from-square icon-blue"></i>Share</button>
+            <button class="button button-share"><i class="fa-solid fa-upload icon-blue"></i>Upload images</button>
+            <button class="button button-blue"><i class="fa-solid fa-download icon"></i> Export</button>
+            <i class="fa-regular fa-bell icon icon-nav"></i>
+            
+            <div class="dropdown">
+                <button class="button button-icons dropdown-toggle" id="dropdownMenuButton">
+                    <span class="mdi mdi-cog-outline icon icon-nav"></span>
+                </button>
+                <div class="dropdown-menu" id="settings-menu" aria-labelledby="dropdownMenuButton">
+                    <label class="dropdown-item" for="allow-collecting-data">
+                        Allow collecting data
+                        <input type="checkbox" id="allow-collecting-data">
+                        <span class="toggle"></span>
+                    </label>
+                    <a class="dropdown-item" href="#" onclick="openExplicitFeedback()">Send us feedback</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main">
+        <aside class="left-aside">
+            <div class="search-div">
+                <input type="text" class="search" placeholder="Search image" oninput="searchImages()">
+                <i class="fa-solid fa-xmark icon icon-clear-search" onclick="clearSearch()"></i>
+            </div>            
+            <div class="button-for-images">
+                <button class="button button-common">
+                    <i class="fa-regular fa-trash-can icon icon-common"></i>
+                    Delete all images
+                </button>
+            </div>
+            <div class="uploaded-images">
+                <div id="noAnnotationMessage">No annotation found</div>
+                
+                <div class="uploaded-image">
+                    <div class="uploaded-image-collapsible">
+                        <div class="uploaded-image-img-p" onclick="seenImage(this)">
+                            <img src="../images/Tv17.png" alt="Image 1">
+                            <p>Annotation 1</p>
+                        </div>
+                        <div class="uploaded-image-icons">
+                            <i class="fa-regular fa-trash-can icon"></i>
+                            <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable icon" onclick="toggleAnnotations(this)"></i>
+                        </div>
+                    </div>
+                    <div class="uploaded-image-annotations">
+                        <table class="table-annotations">
+                            <tbody id="image1-annotations-table" cellspacing="0">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="uploaded-image">
+                    <div class="uploaded-image-collapsible">
+                        <div class="uploaded-image-img-p" onclick="seenImage(this)">
+                            <img src="../images/Tv7.png" alt="Image 1">
+                            <p>Annotation 2</p>
+                        </div>
+                        <div class="uploaded-image-icons">
+                            <i class="fa-regular fa-trash-can icon"></i>
+                            <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable icon" onclick="toggleAnnotations(this)"></i>
+                        </div>
+                    </div>
+                    <div class="uploaded-image-annotations">
+                        <table class="table-annotations">
+                            <tbody id="image2-annotations-table" cellspacing="0">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </aside>
+        <div class="main-content">
+            <div id="image-annotations">
+                <img src="" alt="" id="mainImage">
+            </div>
+
+            <div id="statistics">
+                <img src="../assets/statistics.png" alt="Statistics" id="image-statistics" class="image">
+            </div>
+
+            <div id="welcome-to-run-annotation">
+                <div id="welcome-to-run-annotation-content">
+                    <button class="close" onclick="stopInboarding()">&times;</button>
+                    <img src="../assets/welcome-to-run-annotation.gif" alt="Welcome to Run Annotation" id="image-welcome-to-run-annotation" class="image">
+                    <button class="button button-blue" id="next-button" onclick="inboarding(this)">Next</button>
+                </div>
+            </div>
+
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="icon close" onclick="closeModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            To activate automatic annotation, simply select <br>"<b>Run Annotation</b>" in dropdown menu. 
+                            <br><br>
+                            Our AI technology will then swiftly analyze the current image, highlighting celia for further review.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <p>1 of 8</p>
+                        <div style="column-gap: 5px; display: flex;">
+                            <button id="backStep" class="button button-common" onclick="backStep()" style="display: none">Back</button>
+                            <button id="nextStep" class="button button-blue" onclick="nextStep()">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="explicit-feedback">
+                <div id="explicit-feedback-content">
+                    <div id="feedback-header"style="display: flex;">
+                        <h3>Give us feedback</h3>
+                        <p id="feedback-steps">Step 1 of 5</p>
+                        <button class="close" onclick="closeExplicitFeedback()">&times;</button>
+                    </div>
+                    <div id="feedback-response">
+                        <p>
+                        Thank you for your feedback on CiliaScan!
+
+                        We sincerely appreciate you taking the time to share your thoughts with us. Your feedback is incredibly valuable and will be instrumental in helping us enhance the CiliaScan experience for all our users.
+
+                        If you have any further comments or suggestions, please don't hesitate to reach out to us. We're committed to delivering the best possible experience and greatly value your input.
+
+                        Thank you once again for your valuable feedback!
+                        </p>
+                    </div>
+                    <div id="form-feedback">
+                        <div class="one-two-questions">
+                            <h4>1. Overall Satisfaction</h4>
+                            <p>How satisfied are you with CiliaScan?</p>
+                            <div class="rating">
+                                <button class="rating-btn-satisfaction" value="1">Very Dissatisfied</button>
+                                <button class="rating-btn-satisfaction" value="2">Dissatisfied</button>
+                                <button class="rating-btn-satisfaction" value="3">Neutral</button>
+                                <button class="rating-btn-satisfaction" value="4">Satisfied</button>
+                                <button class="rating-btn-satisfaction" value="5">Very Satisfied</button>
+                            </div>
+                            
+                            <hr>
+    
+                            <h4>2. Ease of Use:</h4>
+                            <p>How easy was it to learn how to use CiliaScan?</p>
+                            <div class="rating">
+                                <button class="rating-btn-easy" value="1">Very Difficult</button>
+                                <button class="rating-btn-easy" value="2">Difficult</button>
+                                <button class="rating-btn-easy" value="3">Neutral</button>
+                                <button class="rating-btn-easy" value="4">Easy</button>
+                                <button class="rating-btn-easy" value="5">Very Easy</button>
+                            </div>
+        
+                            <p>Did you encounter any difficulties or challenges while using the annotation tool?</p>
+                            <textarea name="feedback" id="feedback" placeholder="Write your difficulties here"></textarea>
+                        </div>
+
+                        <div class="three-questions ">
+                            <h4>3. Functionality and Features:</h4>
+                            <p>Which features of CiliaScan did you find most useful for annotating cilia and diagnosing PCD?</p>
+                            <textarea name="feedback" id="feedback" placeholder="Write useful features here"></textarea>
+                            <p>Are there any additional features or functionalities you would like to see added to CiliaScan?</p>
+                            <textarea name="feedback" id="feedback" placeholder="Write additional featureshere"></textarea>
+                        </div>
+
+                        <div class="four-questions">
+                            <h4>4. Accuracy and Reliability:</h4>
+                            <p>How accurate do you find the AI model's annotations in CiliaScan?</p>
+                            <textarea name="feedback" id="feedback" placeholder="Write useful features here"></textarea>
+                            <p>Have you encountered any instances where the AI model's annotations were inaccurate or unreliable?</p>
+                            <textarea name="feedback" id="feedback" placeholder="Write additional featureshere"></textarea>
+                        </div>
+
+                        <div class="five-questions">
+                            <h4>5. Suggestions for Improvement</h4>
+                            <p>Do you have any suggestions for how we can improve CiliaScan to better meet your needs?</p>
+                            <textarea name="feedback" id="feedback" placeholder="Write useful features here"></textarea>
+                            <p>Is there anything specific you would like to see changed or enhanced in future updates of CiliaScan?</p>
+                            <textarea name="feedback" id="feedback" placeholder="Write additional featureshere"></textarea>
+                        </div>
+                        <div class="six-questions">
+                            <h4>6. Demographic Information:</h4>
+                            <p>Optional: Please provide some demographic information (e.g., occupation, years of experience in pathology) to help us better understand our user base.</p>
+                            <textarea name="feedback" id="feedback" placeholder="Write useful features here"></textarea>
+
+                            <hr>
+                            
+                            <h4>7. Demographic Information:</h4>
+                            <p>Is there anything else you would like to share about your experience with CiliaScan?</p>
+                            <textarea name="feedback" id="feedback" placeholder="Write useful features here"></textarea>
+                        </div>
+
+                        <div>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="explicit-feedback-footer">
+                        <button class="button button-common" id="back-button" onclick="stepBack()">Back</button>
+                        <button class="button button-blue" id="submit-button" onclick="stepForward()">Next</button>
+                    </div>  
+                </div>
+            </div>
+
+        </div>  
+        <aside class="right-aside"> 
+            <div class="collapsible">
+                <div class="collapsible-head" onclick="toggleCollapsible(this)">
+                    <h3>Statistics</h3>
+                    <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable icon"></i>
+                </div>
+                <div class="collapsible-content">
+                    <table class="stats">
+                        <tr>
+                           <td>Total:</td>
+                            <td>100</td>
+                            <td style="text-align: end;"><button class="button button-common" id="btnStatistics" onclick="showStatistics()">Show statistics</button></td>
+                        </tr>
+                        <tr>
+                            <td>Total DA:</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>Total MTDs:</td>
+                            <td>100.00%</td>
+                        </tr>
+                        <tr>
+                            <td>Total ODA:</td>
+                            <td>100.00%</td>
+                        </tr>
+                        <tr>
+                            <td>Total IDA:</td>
+                            <td>100.00%</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="collapsible" id="annotation-info">
+                <div class="collapsible-head" onclick="toggleCollapsible(this)">
+                    <h3>Annotation info</h3>
+                    <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
+                </div>
+                <div class="collapsible-content">
+                    <div class="annotation-info">
+                        <div class="cilia-info">
+                            <table class="table-annotation-info">
+                                <tr>
+                                    <td>MT defect:</td>
+                                    <td><select name="mtds" id="mtds">
+                                        <option disabled selected value=""></option>
+                                        <option value="Disarranged">Disarranged</option>
+                                        <option value="Extra tubule">Extra tubule</option>
+                                        <option value="Single tubule">Single tubule</option>
+                                        <option value="Transposition">Transposition</option>
+                                        <option value="One of central pair missing">One of central pair missing</option>
+                                        <option value="Both missing">Both missing</option>
+                                        <option value="Compound">Compound</option>
+                                        <option value="Other defects">Other defects</option>
+                                    </select></td>
+                                </tr>
+                                <tr>
+                                    <td>Dynein arms:</td>
+                                    <td><select name="dynein" id="dynein">
+                                        <option disabled selected value=""></option>
+                                        <option value="0">No arms missing</option>
+                                        <option value="1">Inner arms missing</option>
+                                        <option value="2">Outer arms missing</option>
+                                        <option value="3">Both arms missing</option>
+                                        <option value="4">Unknown</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Conf. level
+                                        <sup>
+                                            <div class="tooltip-container">
+                                                <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
+                                                <div class="tooltip">Tooltip text goes here</div>
+                                            </div>
+                                        </sup>
+                                        :
+                                        </td>
+                                    <td class="conf-level chip">--%</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collapsible">
+                <div class="collapsible-head" onclick="toggleCollapsible(this)">
+                    <h3>Notes</h3>
+                    <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
+                </div>
+                <div class="collapsible-content">
+                    <textarea name="notes" id="notes" placeholder="Write your notes here"></textarea>
+                </div>
+            </div>
+        </aside>
+    </main>
+    
+    <script src="../scripts/select.js"></script>
+    <script src="../scripts/scripts.js"></script>
+    <script src="../scripts/annotate.js"></script>
+    <script src="../scripts/statistics.js"></script>
+    <script src="../scripts/slider.js"></script>
+    <script src="../scripts/inboarding.js"></script>
+    <script src="../scripts/explicit-feedback.js"></script>
+</body>
+</html>

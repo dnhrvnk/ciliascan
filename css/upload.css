@@ -1,0 +1,31 @@
+#upload-div {
+    height: calc(100vh - 38px);
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+#upload {
+    width: 30%;
+    height: 35%;
+    border-radius: 10px;
+    border: 1px dashed rgb(60, 60, 92);
+    background-color: transparent;
+    cursor: pointer;
+    color: white;
+}
+
+.icon-upload {
+    font-size: 40px;
+}
+
+.format-info {
+    color: rgb(60, 60, 92);
+    font-size: 12px;
+    text-align: start;
+    width: 30%;
+}

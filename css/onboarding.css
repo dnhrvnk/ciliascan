@@ -1,0 +1,74 @@
+.onboarding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 38px);
+  width: 100vw;
+}
+
+#onboarding-modal {
+    width: auto;
+    height: 80%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
+    border-radius: 10px;
+    border: 0.8px solid #101021;
+}
+
+.onboarding .button-blue {
+    width: 100px;
+    height: 40px;
+    background-color: #006CEB;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.onboarding .button-common {
+    width: 100px;
+    height: 40px;
+    background-color: transparent;
+    color: #7272a2;
+    border: 0.8px solid #7272a2;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#implicit-feedback {
+    display: none;
+    color: white;
+    position: absolute;
+    bottom: 200px;
+    left: 220px;
+}
+
+.input-label {
+    display: flex;
+}
+
+.input-label label {
+    margin-left: 10px;
+}
+
+.input-label input {
+    width: 18px;
+    border-radius: 10px;
+    border: 0.8px solid #006CEB;
+}
+
+.onboarding-buttons {
+    position: absolute;
+    bottom: 100px;
+    width: 78%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#back-button {
+    display: none;
+}
+
+
