@@ -183,13 +183,16 @@ let create_annot_row = (annot_class, id, confidence, auto=false) => {
   cell_icon.appendChild(annot);
   row.appendChild(cell_icon);
 
-  cell_text.innerHTML = selector_class_full_name;
-  row.appendChild(cell_text);
   conf.innerHTML = ``;
+  cell_text.innerHTML = selector_class_full_name;
   if(auto){
     conf.innerHTML = `${confidence}%`;
     conf.className = 'chip';
+    const s_c = annot_class.split(' ').reverse()[1];
+    const s_c_n = Object.keys(annot_map).find(key => annot_map[key] === s_c);
+    cell_text.innerHTML = s_c_n;
   }
+  row.appendChild(cell_text);
   cell_conf.appendChild(conf);
   row.appendChild(cell_conf);
 
@@ -311,7 +314,7 @@ const simulate_click = () => {
     let start_x = rect.left
     let start_y = rect.top
 
-    for (let i = 0; i < 1; i++){
+    for (let i = 0; i < 20; i++){
       x_rand = Math.floor(Math.random()*600 + 100)
       y_rand = Math.floor(Math.random()*600 + 100)
       x = start_x + x_rand
