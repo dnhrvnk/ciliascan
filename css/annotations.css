@@ -3,7 +3,7 @@
   background-color: black;
   color: black;
   text-align: center;
-  padding: 10px 10px;
+  padding: 7px 7px;
   font-size: 12px;
   border-radius: 20px;
   cursor: pointer;
@@ -29,7 +29,7 @@
   border: 1px solid transparent;
   /* border-top-color: #2222ff; */
   /* border-bottom: 0; */
-  background-color: #006CEB;
+  background-color: white;
   margin: 0px;
   right: 101%;
 }
@@ -43,7 +43,7 @@
   border: 1px solid transparent;
   /* border-top-color: #2222ff; */
   /* border-bottom: 0; */
-  background-color: #006CEB;
+  background-color: white;
   margin: 0px;
   left: 101%;
 }
@@ -52,56 +52,58 @@
 .annotation.inner::after {
   content: "";
   position: absolute;
-  top: 40%;
-  width: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7px;
   height: 2px;
   border: 1px solid transparent;
-  background-color: #006CEB;
+  background-color: white;
   margin: 0px;
   left: 0;
-  width: 20px;
+  width: 14px;
 }
 
 .annotation.both::after {
   content: "";
   position: absolute;
-  top: 40%;
-  width: 36px;
+  top: 50%;
+  width: 32px;
   height: 2px;
   border: 1px solid transparent;
   /* border-top-color: #2222ff; */
   /* border-bottom: 0; */
-  background-color: #006CEB;
+  background-color: white;
   margin: 0px;
-  right: -40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .annotation.none::after {
   content: "";
   position: absolute;
-  top: 40%;
+  top: 50%;
   width: 15px;
   height: 2px;
   border: 1px solid transparent;
-  background-color: #006CEB;
+  background-color: white;
   margin: 0px;
   left: 0;
-  width: 20px;
-  transform: rotate(45deg);
+  width: 14px;
+  transform:  translateY(-50%) rotate(-45deg);
 }
 
 .annotation.none::before {
   content: "";
   position: absolute;
-  top: 40%;
+  top: 50%;
   width: 15px;
   height: 2px;
   border: 1px solid transparent;
-  background-color: #006CEB;
+  background-color: white;
   margin: 0px;
   left: 0;
-  width: 20px;
-  transform: rotate(-45deg);
+  width: 14px;
+  transform:  translateY(-50%) rotate(45deg);
 }
 
 #image-annotations .annotation:hover {
@@ -112,7 +114,7 @@
 box-shadow: 0 0 10px #006CEB
 }
 
-.annotation.dissaranged {
+.annotation.disarranged {
   background-color: #FF7F00;
 }
 

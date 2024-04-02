@@ -1,0 +1,126 @@
+function closeExplicitFeedback() {
+  document.getElementById('explicit-feedback').style.display = 'none';
+}
+
+function openExplicitFeedback() {
+  document.getElementById('explicit-feedback').style.display = 'flex';
+}
+
+const ratingButtonsSattisfaction = document.querySelectorAll('.rating-btn-satisfaction');
+        ratingButtonsSattisfaction.forEach(button => {
+            button.addEventListener('click', () => {
+                ratingButtonsSattisfaction.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+});
+
+const ratingButtonsEasy = document.querySelectorAll('.rating-btn-easy');
+        ratingButtonsEasy.forEach(button => {
+            button.addEventListener('click', () => {
+                ratingButtonsEasy.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+});
+
+function stepForward() {
+    let section1 = document.querySelector('.one-two-questions');
+    let section2 = document.querySelector('.three-questions');
+    let section3 = document.querySelector('.four-questions');
+    let section4 = document.querySelector('.five-questions');
+    let section5 = document.querySelector('.six-questions');
+    let btn = document.querySelector('#submit-button');
+    let btn_back = document.querySelector('#back-button');
+    let btns = document.querySelector('.explicit-feedback-footer');
+    let steps = document.querySelector('#feedback-steps');
+    
+    let section1DisplayStyle = window.getComputedStyle(section1).getPropertyValue('display');
+    
+    if(section1DisplayStyle === 'block') {
+        section1.style.display = 'none';
+        section2.style.display = 'block';
+        btn_back.style.display = 'block';
+        btns.style.justifyContent = 'space-between';
+        steps.textContent = 'Step 2 of 5';
+    } else if(section2.style.display == 'block') { 
+        section2.style.display = 'none';
+        section3.style.display = 'block';
+        steps.textContent = 'Step 3 of 5';
+    } else if(section3.style.display == 'block') {
+        section3.style.display = 'none';
+        section4.style.display = 'block';
+        steps.textContent = 'Step 4 of 5';
+    } else if(section4.style.display == 'block') { 
+        section4.style.display = 'none';
+        section5.style.display = 'block';
+        btn.textContent = 'Submit';
+        steps.textContent = 'Step 5 of 5';
+
+        btn.addEventListener('click', () => {
+            let response = document.querySelector('#feedback-response');
+            response.style.display = 'block';
+    
+            let feedback_header = document.querySelector('#feedback-header');
+            let form_feedback = document.querySelector('#form-feedback');
+            let btns = document.querySelector('.explicit-feedback-footer');
+    
+            feedback_header.style.display = 'none';
+            form_feedback.style.display = 'none';
+            btns.style.display = 'none';
+        });
+    }
+};
+
+
+function stepBack() {
+    let section1 = document.querySelector('.one-two-questions');
+    let section2 = document.querySelector('.three-questions');
+    let section3 = document.querySelector('.four-questions');
+    let section4 = document.querySelector('.five-questions');
+    let section5 = document.querySelector('.six-questions');
+    let btn_back = document.querySelector('#back-button');
+    let btn = document.querySelector('#submit-button');
+    let btns = document.querySelector('.explicit-feedback-footer');
+    let steps = document.querySelector('#feedback-steps');
+
+    if(section2.style.display == 'block') {
+        section2.style.display = 'none';
+        section1.style.display = 'block';
+        steps.textContent = 'Step 1 of 5';
+    } else if(section3.style.display == 'block') {
+        section3.style.display = 'none';
+        section2.style.display = 'block';
+        steps.textContent = 'Step 2 of 5';
+    } else if(section4.style.display == 'block') {  
+        section4.style.display = 'none';
+        section3.style.display = 'block';
+        steps.textContent = 'Step 3 of 5';
+    } else if(section5.style.display == 'block') {  
+        section5.style.display = 'none';
+        section4.style.display = 'block';
+        btn.textContent = 'Next';
+        steps.textContent = 'Step 4 of 5';
+    } else if(section1.style.display == 'block') {
+        btn_back.style.display = 'none';
+        btns.style.justifyContent = 'flex-end';
+        steps.textContent = 'Step 1 of 5';
+    }
+};
+
+let submit_btn = document.querySelector('#submit-button');
+console.log(submit_btn.textContent);
+if(submit_btn.textContent === 'Submit'  ) {
+    submit_btn.addEventListener('click', () => {
+
+
+        let response = document.querySelector('#feedback-response');
+        response.style.display = 'block';
+
+        let feedback_header = document.querySelector('#feedback-header');
+        let form_feedback = document.querySelector('#form-feedback');
+        let btns = document.querySelector('.explicit-feedback-footer');
+
+        feedback_header.style.display = 'none';
+        form_feedback.style.display = 'none';
+        btns.style.display = 'none';
+    });
+}

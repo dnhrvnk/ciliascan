@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Website</title>
+    <title>CiliaScan</title>
     <link rel="stylesheet" href="./css/general.css">
     <link rel="stylesheet" href="./css/macos-menu-bar.css">
     <link rel="stylesheet" href="./css/nav-tools-bar.css">
@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/annotations.css">
     <link rel="stylesheet" href="./css/custom-select.css">
     <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/onboarding.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
 </head>
@@ -25,239 +26,58 @@
         </div>
     </div>
 
-    <nav class="nav-tools-bar">
-        <div class="nav-left-side">
-            <img src="./assets/logo-icon.svg" alt="Logo Icon" class="logo">
-            <h5>CiliaScan modul</h5>
-        </div>
-
-        <div class="nav-middle-side">
-            <div class="dropdown" id="run-annotation">
-                <button class="button button-icons dropdown-toggle" id="dropdownMenuButton" onclick="openDropdown()">
-                  <i class="fa-regular fa-pen-to-square"></i>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Run annotation</a>
-                  <a class="dropdown-item" href="#">Hide annotations</a>
-                  <a class="dropdown-item" href="#">Reset annotation</a>
-                </div>
-            </div>
-              
-            <div class="main-button-icons">
-                <button class="button button-icons"><i class="fa-solid fa-hand icon"></i></button>
-                <button class="button button-icons"><i class="fa-solid fa-magnifying-glass-plus icon"></i></i></button>
-            </div>
-            <div class="dropdown">
-                <button 
-                    id="mtds-tool-btn"
-                    class="dropbtn button button-icons"
-                    onclick="myFunction()"
-                >
-                    <div class="annotation table dissaranged"></div>
-                    <span>Disarranged</span>
-                    <ul class="dropdown-content" id="mtds-tool-dropdown-content">
-                        <li onclick="set_tool('dissaranged',this)" class="active"><div class="annotation table dissaranged"></div><span>Disarranged</span></li>
-                        <li onclick="set_tool('extra-tuble',this)"><div class="annotation table extra-tuble"></div><span>Extra tubule</span></li>
-                        <li onclick="set_tool('single-tuble',this)"><div class="annotation table single-tuble"></div><span>Single tubule</span></li>
-                        <li onclick="set_tool('transposition',this)"><div class="annotation table transposition"></div><span>Transposition</span></li>
-                        <li onclick="set_tool('one-central-pair-missing',this)"><div class="annotation table one-central-pair-missing"></div><span>One of central pair missing</span></li>
-                        <li onclick="set_tool('both-missing',this)"><div class="annotation table both-missing"></div><span>Both missing</span></li>
-                        <li onclick="set_tool('compound',this)"><div class="annotation table compound"></div><span>Compound</span></li>
-                        <li onclick="set_tool('other',this)"><div class="annotation table other"></div><span>Other defects</span></li>
-                    </ul>
-                </button>
-            </div>
-            <div class="dropdown">
-                <button class="button button-icons dropdown-toggle" id="dropdownMenuButton">
-                    <i class="mdi mdi-circle-opacity icon"></i>
-                </button>
-                <div class="dropdown-menu dm2" aria-labelledby="dropdownMenuButton">
-                    <input type="range" min="1" max="100" value="100" class="slider" id="myRange">
-                    <div class="ranges">
-                        <p>0</p>
-                        <p>100</p>
-                    </div>
-                    <output id="rangeValue" for="myRange">100</output>
-                </div>
+    <div class="onboarding">
+        <img src="../assets/1page.png" alt="page1" id="onboarding-modal">
+        <div id="implicit-feedback">
+            <div class="input-label" style="display: flex">
+                <input type="checkbox" id="agree-checkbox"> 
+                <label for="agree-checkbox"> I agree to allow CiliaScan to collect anonymized data on <br> my interactions with the application.</label>
             </div>
         </div>
-
-        <div class="nav-right-side">
-            <button class="button button-share"><i class="fa-regular fa-share-from-square icon-blue"></i>Share</button>
-            <button class="button button-share"><i class="fa-solid fa-upload icon-blue"></i>Upload images</button>
-            <button class="button button-blue"><i class="fa-solid fa-download icon"></i> Export</button>
-            <i class="fa-regular fa-bell icon icon-nav"></i>
-            <span class="mdi mdi-cog-outline icon icon-nav"></span>
+        <div class="onboarding-buttons">
+            <button class="onboarding-button button button-common" id="back-button" onclick="changePage(-1)">Back</button>
+            <button class="onboarding-button button button-blue" id="next-button" onclick="changePage(+1)">Next</button>
         </div>
-    </nav>
-
-    <main class="main">
-        <aside class="left-aside">
-            <div class="search-div">
-                <input type="text" class="search" placeholder="Search image" oninput="searchImages()">
-                <i class="fa-solid fa-xmark icon icon-clear-search" onclick="clearSearch()"></i>
-            </div>            
-            <div class="button-for-images">
-                <button class="button button-common">
-                    <i class="fa-regular fa-trash-can icon icon-common"></i>
-                    Delete all images
-                </button>
-            </div>
-            <div class="uploaded-images">
-                <div id="noAnnotationMessage">No annotation found</div>
-                
-                <div class="uploaded-image">
-                    <div class="uploaded-image-collapsible">
-                        <div class="uploaded-image-img-p" onclick="inboarding(this)">
-                            <img src="images/Tv14.png" alt="Image 1">
-                            <p>Annotation 1</p>
-                        </div>
-                        <div class="uploaded-image-icons">
-                            <i class="fa-regular fa-trash-can icon"></i>
-                            <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable icon" onclick="toggleAnnotations(this)"></i>
-                        </div>
-                    </div>
-                    <div class="uploaded-image-annotations">
-                        <table class="table-annotations">
-                            <tbody id="image1-annotations-table" cellspacing="0">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </aside>
-        <div class="main-content">
-            <div id="image-annotations">
-                <img src="" alt="" id="mainImage">
-            </div>
-
-            <div id="modal" class="modal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <span class="icon close" onclick="closeModal()">&times;</span>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            To activate automatic annotation, simply select "<b>Run Annotation</b>" in dropdown menu. 
-                            <br><br>
-                            Our AI technology will then swiftly analyze the current image, highlighting celia for further review.
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <p>1 of 8</p>
-                        <div style="column-gap: 5px; display: flex;">
-                            <button class="button button-common" onclick="backStep()">Back</button>
-                            <button id="nextStep" class="button button-blue" onclick="nextStep()">Next</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>  
-        <aside class="right-aside"> 
-            <div class="collapsible">
-                <div class="collapsible-head" onclick="toggleCollapsible(this)">
-                    <h3>Statistics</h3>
-                    <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable icon"></i>
-                </div>
-                <div class="collapsible-content">
-                    <div style="justify-content: end; display: flex;">
-                        <button class="button button-common" onclick="openModal()">More detailed statistics</button>
-                    </div>
-                    <table class="stats">
-                        <tr>
-                           <td>Total:</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>Total DA:</td>
-                            <td>50</td>
-                        </tr>
-                        <tr>
-                            <td>Total MTDs:</td>
-                            <td>100.00%</td>
-                        </tr>
-                        <tr>
-                            <td>Total ODA:</td>
-                            <td>100.00%</td>
-                        </tr>
-                        <tr>
-                            <td>Total IDA:</td>
-                            <td>100.00%</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            <div class="collapsible" id="annotation-info">
-                <div class="collapsible-head" onclick="toggleCollapsible(this)">
-                    <h3>Annotation info</h3>
-                    <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
-                </div>
-                <div class="collapsible-content">
-                    <div class="annotation-info">
-                        <div class="cilia-info">
-                            <table class="table-annotation-info">
-                                <tr>
-                                    <td>MT defect:</td>
-                                    <td><select name="mtds" id="mtds">
-                                        <option disabled selected value=""></option>
-                                        <option value="Disarranged">Disarranged</option>
-                                        <option value="Extra tubule">Extra tubule</option>
-                                        <option value="Single tubule">Single tubule</option>
-                                        <option value="Transposition">Transposition</option>
-                                        <option value="One of central pair missing">One of central pair missing</option>
-                                        <option value="Both missing">Both missing</option>
-                                        <option value="Compound">Compound</option>
-                                        <option value="Other defects">Other defects</option>
-                                    </select></td>
-                                </tr>
-                                <tr>
-                                    <td>Dynein arms:</td>
-                                    <td><select name="dynein" id="dynein">
-                                        <option disabled selected value=""></option>
-                                        <option value="0">No arms missing</option>
-                                        <option value="1">Inner arms missing</option>
-                                        <option value="2">Outer arms missing</option>
-                                        <option value="3">Both arms missing</option>
-                                        <option value="4">Unknown</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Conf. level
-                                        <sup>
-                                            <div class="tooltip-container">
-                                                <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
-                                                <div class="tooltip">Tooltip text goes here</div>
-                                            </div>
-                                        </sup>
-                                        :
-                                        </td>
-                                    <td class="conf-level chip">--%</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="collapsible">
-                <div class="collapsible-head" onclick="toggleCollapsible(this)">
-                    <h3>Notes</h3>
-                    <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
-                </div>
-                <div class="collapsible-content">
-                    <textarea name="notes" id="notes" placeholder="Write your notes here"></textarea>
-                </div>
-            </div>
-        </aside>
-    </main>
-    
-    <script src="./scripts/scripts.js"></script>
-    <script src="./scripts/annotate.js"></script>
-    <script src="./scripts/select.js"></script>
-    <script src="./scripts/statistics.js"></script>
-    <script src="./scripts/slider.js"></script>
-    <script src="./scripts/inboarding.js"></script>
+    </div>
 </body>
+
+<script>
+    function changePage(step) {
+        var img = document.getElementById('onboarding-modal');
+        if(img.alt == "page1") {
+            if(step == 1) {
+                img.src = "../assets/2page.gif"; 
+                img.alt = "page2";
+
+                var onboardingButtons = document.querySelector('.onboarding-buttons');
+                document.getElementById('back-button').style.display = 'inline-block';
+                onboardingButtons.style.justifyContent = 'space-between';
+            }
+        } else if(img.alt == "page2") {
+            if(step == 1) {
+                img.src = "../assets/3page.png"; 
+                img.alt = "page3";
+                var implicit_feedback = document.getElementById('implicit-feedback');
+                implicit_feedback.style.display = "block";
+                document.getElementById('next-button').textContent = 'Done';
+            } else {
+                img.src = "../assets/1page.png"; 
+                img.alt = "page1";
+
+                var onboardingButtons = document.querySelector('.onboarding-buttons');
+                document.getElementById('back-button').style.display = 'none';
+                onboardingButtons.style.justifyContent = 'flex-end';
+            }
+        } else if(img.alt == "page3") {
+            if(step == 1) {
+                window.location.href = './pages/upload.html';
+            } else {
+                img.src = "../assets/2page.gif"; 
+                img.alt = "page2";
+                var implicit_feedback = document.getElementById('implicit-feedback');
+                implicit_feedback.style.display = "none";
+            }
+        }
+    }
+</script>
 </html>

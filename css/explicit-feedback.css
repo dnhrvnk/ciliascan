@@ -1,0 +1,137 @@
+#explicit-feedback {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+}
+
+#explicit-feedback-content {
+    border-radius: 10px;
+    width: 45%; 
+    max-height: 75%; 
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
+    border: 0.8px solid #101021;
+    z-index: 100;
+    position: relative;
+    background-color: #101021;
+}
+
+#explicit-feedback h3 {
+   margin-left: 30px;
+    margin-top: 20px;
+}
+
+.explicit-feedback-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+}
+
+.rating {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.rating button {
+    border: none;
+    transition: 0.3s ease-out;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #6a6a89;
+    margin: 5px;
+    padding: 0;
+}
+
+.rating button:hover,
+.rating button.active {
+    font-weight: bold;
+    color: #006CEB;
+    scale: 1.1;
+}
+
+#form-feedback {
+    padding-inline: 30px;
+    padding-bottom: 20px;
+}
+
+#form-feedback textarea {
+    color: white;
+    background-color: #212134;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px;
+    width: 95%;
+    resize: none;
+    margin-top: 10px;
+    height: 100px;
+    overflow-y: auto;
+}
+
+#form-feedback textarea::-webkit-scrollbar {
+    width: 3px;
+}
+
+#form-feedback textarea::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 6px;
+}
+
+#form-feedback hr {
+    border: none;
+    border-bottom: rgb(64, 64, 104) 1px solid;
+    margin-top: 10px;
+}
+
+#back-button {
+    display: none;
+}
+
+.one-two-questions {
+    display: block;
+}
+
+.three-questions {
+    display: none;
+}
+
+.four-questions {
+    display: none;
+}
+
+.five-questions {
+    display: none;
+}
+
+.six-questions {
+    display: none;
+}
+
+#feedback-steps {
+    padding: 0;
+    margin-left: 15px;
+    font-size: 12px;
+    margin-top: 27px;
+    color: #6a6a89;
+}
+
+#feedback-header {
+    display: flex;
+}
+
+#feedback-response {
+    padding: 20px 30px 20px 30px;
+    display: none;
+    text-align: center;
+}
