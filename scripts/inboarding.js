@@ -154,8 +154,8 @@ function nextStep() {
         modalFooter.textContent = "6 of 8";
 
         let modal = document.getElementById('modal');
-        modal.style.top = "335px"
-        modal.style.left = "850px"
+        modal.style.top = "310px"
+        modal.style.left = "870px"
 
         var annotationInfo = document.getElementById('annotation-info');
         annotationInfo.style.borderTop = "0.8px solid #006CEB";

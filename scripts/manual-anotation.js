@@ -45,50 +45,138 @@ function seenImage(element) {
 }
 
 var step = 1;
+var modal = document.querySelector("#manual-anotate-modal");
+var modalBody = document.querySelector('#manual-anotate-modal .modal-body p');
+var modalFooter = document.querySelector('#manual-anotate-modal .modal-footer p');
+
 function nextManual() {
-    console.log("aaa");
-
-    
-    var modalBody = document.querySelector('#manual-anotate-modal .modal-body p');
-    var modalFooter = document.querySelector('#manual-anotate-modal .modal-footer p');
-
     if(step == 0) {
-        modalBody.innerHTML = 'Lets learn how to manually annotate an image.';
+        modalBody.innerHTML = "Let's learn how to <b>manually annotate</b> an image.";
         modalFooter.textContent = "1 of 8";
+        
+        dropdown = document.getElementById("mtds-tool-dropdown-content");
+        dropdown.style.display = "none";
+        
+        modal.style.top = "45%";
+        modal.style.left = "40%";
+
+        let back = document.getElementById('backManual');
+        back.style.display = "none";
+
         step = 1;
     }
     else if(step == 1) {
         modalBody.innerHTML = "Select the appropriate microtubular defect from the provided dropdown menu.";
         modalFooter.textContent = "2 of 8";
+    
+        dropdown = document.getElementById("mtds-tool-dropdown-content");
+        dropdown.style.display = "block";
+
+        let back = document.getElementById('backManual');
+        back.style.display = "block";
+
+        modal.style.top = "30%";
+        modal.style.left = "33%";
+
         step = 2;
     } else if(step == 2) {
         modalBody.innerHTML = "Now that you've selected the microtubular defect, it's time to annotate the image by placing annotations directly on the areas of interest. <br><br> Position your cursor over the area of the image where the defect is located. <b>Click on the image to place an annotation</b> at that precise point.";
         modalFooter.textContent = "3 of 8";
+
+        dropdown = document.getElementById("mtds-tool-dropdown-content");
+        dropdown.style.display = "none";
+
+        modal.style.top = "16%";
+        modal.style.left = "56%";
+
         step = 3;
     } else if(step == 3) {
         modalBody.innerHTML = "Once you've placed an annotation on the image, you can easily adjust its dynein arms by clicking on it. <br><br> Simply <b>click on the annotation<b> to cycle through the available dynein arms until you are satisfied.";
         modalFooter.textContent = "4 of 8";
+
+        modal.style.top = "16%";
+        modal.style.left = "56%";
+
+        var listAnnotations = document.querySelector('.uploaded-image-annotations.active');
+        listAnnotations.style.border = "none";
+
         step = 4; 
     } else if(step == 4) {
         modalBody.innerHTML = "Annotations are automatically saved as you place them on the image. <br><br> You can also see them in the <b>annotation list</b> on the right side of the screen.";
         modalFooter.textContent = "5 of 8";
+
+        var listAnnotations = document.querySelector('.uploaded-image-annotations.active');
+        listAnnotations.style.border = "2px solid #006CEB";
+
+        modal.style.top = "250px"
+        modal.style.left = "300px"
+
+        var annotationInfo = document.getElementById('annotation-info');
+        annotationInfo.style.borderTop = "none";
+        annotationInfo.style.borderBottom = "0.8px solid rgb(45, 45, 66)";
+
         step = 5;
     } else if(step == 5) {
         modalBody.innerHTML = "You can also see details about annotation by clicking on the annotation in the list or by clicking on the annotation on the image. <br><br> You can <b>change the annotation</b> by selecting the correct microtubular defect or dynein arms from the dropdown menu.";
         modalFooter.textContent = "6 of 8";
+
+        modal.style.top = "310px"
+        modal.style.left = "870px"
+
+        var annotationInfo = document.getElementById('annotation-info');
+        annotationInfo.style.borderTop = "0.8px solid #006CEB";
+        annotationInfo.style.borderBottom = "0.8px solid #006CEB";
+
+        var listAnnotations = document.querySelector('.uploaded-image-annotations.active');
+        listAnnotations.style.border = "none";
+
         step = 6;
     } else if(step == 6) {
         modalBody.innerHTML = "You can delete an annotation by clicking on the <b>trash icon</b> in the list of annotations or by <b>right-clicking</b> on the annotation on the image.";
         modalFooter.textContent = "7 of 8";
+
+        var annotationInfo = document.getElementById('annotation-info');
+        annotationInfo.style.borderTop = "none";
+        annotationInfo.style.borderBottom = "0.8px solid rgb(45, 45, 66)";
+
+        modal.style.top = "16%";
+        modal.style.left = "56%";
+
+        var nextButton = document.getElementById('nextManual');
+        nextButton.textContent = "Next";
+
         step = 7;
     } else if (step == 7) {
         modalBody.innerHTML = "You have successfully completed the tutorial. <br><br> Click on the <b>Done</b> button to continue.";
         modalFooter.textContent = "8 of 8";
         step = 8;
+
         var nextButton = document.getElementById('nextManual');
         nextButton.textContent = "Done";
+
+        modal.style.top = "45%";
+        modal.style.left = "40%";
     } else if(step == 8) {
-        nextButton.onclick = closeModal();
+        nextButton.onclick = closeManual();
     }
 }
 
+function closeManual() {
+    var modal = document.querySelector("#manual-anotate-modal");
+    modal.style.display = "none";
+
+    dropdown = document.getElementById("mtds-tool-dropdown-content");
+    dropdown.style.display = "none";
+
+    var listAnnotations = document.querySelector('.uploaded-image-annotations.active');
+    listAnnotations.style.border = "none";
+
+    var annotationInfo = document.getElementById('annotation-info');
+    annotationInfo.style.borderTop = "none";
+    annotationInfo.style.borderBottom = "0.8px solid rgb(45, 45, 66)";
+}
+
+function backManual() {
+    step -= 2;
+    nextManual();
+}
