@@ -131,7 +131,7 @@
 }
 
 #feedback-response {
-    margin-left: 30px;
-    margin-top: 20px;
+    padding: 20px 30px 20px 30px;
     display: none;
+    text-align: center;
 }

@@ -283,6 +283,4 @@ input[type="checkbox"]:checked + .toggle::after {
 
 input[type="checkbox"]:checked + .toggle {
     background-color: #29C740; 
-    top: 40px;
-    left: -35px;
 }

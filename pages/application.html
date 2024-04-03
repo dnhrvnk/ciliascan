@@ -54,10 +54,10 @@
                     class="dropbtn button button-icons"
                     onclick="myFunction()"
                 >
-                    <div class="annotation table dissaranged"></div>
+                    <div class="annotation table disarranged"></div>
                     <span>Disarranged</span>
                     <ul class="dropdown-content dropdown-menu" id="mtds-tool-dropdown-content">
-                        <li onclick="set_tool('dissaranged',this)" class="active"><div class="annotation table dissaranged"></div><span>Disarranged</span></li>
+                        <li onclick="set_tool('disarranged',this)" class="active"><div class="annotation table disarranged"></div><span>Disarranged</span></li>
                         <li onclick="set_tool('extra-tuble',this)"><div class="annotation table extra-tuble"></div><span>Extra tubule</span></li>
                         <li onclick="set_tool('single-tuble',this)"><div class="annotation table single-tuble"></div><span>Single tubule</span></li>
                         <li onclick="set_tool('transposition',this)"><div class="annotation table transposition"></div><span>Transposition</span></li>
@@ -199,6 +199,25 @@
                 </div>
             </div>
 
+            <div id="manual-anotate-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="icon close" onclick="closeManual()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Let's learn how to <b>manually annotate</b> an image.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <p>1 of 8</p>
+                        <div style="column-gap: 5px; display: flex;">
+                            <button id="backManual" class="button button-common" onclick="backManual()" style="display: none">Back</button>
+                            <button id="nextManual" class="button button-blue" onclick="nextManual()">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="modal-loading" class="modal loading">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -215,14 +234,14 @@
                         <button class="close" onclick="closeExplicitFeedback()">&times;</button>
                     </div>
                     <div id="feedback-response">
+                        <button class="close" onclick="closeExplicitFeedback()">&times;</button>
+                        <h3 style="color: #006CEB">Thank you for your feedback on CiliaScan!</h3>
                         <p>
-                        Thank you for your feedback on CiliaScan!
-
-                        We sincerely appreciate you taking the time to share your thoughts with us. Your feedback is incredibly valuable and will be instrumental in helping us enhance the CiliaScan experience for all our users.
-
-                        If you have any further comments or suggestions, please don't hesitate to reach out to us. We're committed to delivering the best possible experience and greatly value your input.
-
-                        Thank you once again for your valuable feedback!
+                            We sincerely appreciate you taking the time to share your thoughts with us. Your feedback is incredibly valuable and will be instrumental in helping us enhance the CiliaScan experience for all our users.
+                            <br><br> 
+                            If you have any further comments or suggestions, please don't hesitate to reach out to us. We're committed to delivering the best possible experience and greatly value your input.
+                            <br><br>
+                            <b>Thank you once again for your valuable feedback!</b>
                         </p>
                     </div>
                     <div id="form-feedback">
@@ -405,5 +424,6 @@
     <script src="../scripts/slider.js"></script>
     <script src="../scripts/inboarding.js"></script>
     <script src="../scripts/explicit-feedback.js"></script>
+    <script src="../scripts/manual-anotation.js"></script>
 </body>
 </html>

@@ -8,6 +8,36 @@ function startInboarding() {
     explainedAI = true;
 }
 
+function inboarding() {
+    let welcome = document.querySelector('#welcome-to-run-annotation');
+    welcome.style.display = "none";
+
+    openModal();
+
+    let dropdown = document.querySelector('#run-annotation');
+        dropdown.style.display = "block";
+
+    let btn_run_annotation = document.querySelector('#btn-run-annotation');
+    btn_run_annotation.style.backgroundColor = "#006CEB";   
+    
+    document.getElementById('mainImage').src = "../images/Tv17.png";
+
+    let btn = document.querySelector('#dropdownMenuButton');
+    btn.classList.remove('pulse');
+    let dot = document.querySelector('.notification-dot');
+    dot.style.display = "none";
+}
+
+function stopInboarding() {
+    let welcome = document.querySelector('#welcome-to-run-annotation');
+    welcome.style.display = "none";
+
+    let btn = document.querySelector('#dropdownMenuButton');
+    btn.classList.remove('pulse');
+    let dot = document.querySelector('.notification-dot');
+    dot.style.display = "none";
+}
+
 
 var modal = document.getElementById("modal");
 var btn = document.querySelector(".button-common");
@@ -40,44 +70,6 @@ function closeModal() {
     var annotationInfo = document.getElementById('annotation-info');
     annotationInfo.style.borderTop= "none";
     annotationInfo.style.borderBottom = "0.8px solid rgb(45, 45, 66)";
-}
-
-function seenImage(element) {
-    var imgSrc = element.querySelector('img').src;
-    document.getElementById('mainImage').src = imgSrc
-    document.getElementById('mainImage').alt = element.querySelector('img').alt;
-
-    var parentElement = element.parentNode;
-    parentElement.classList.add('seen');    
-    
-    var annotationsDiv = element.parentElement.nextElementSibling;
-    var chevronIcon = element.parentElement.querySelector('.chevron-icon');
-
-    var isOpen = annotationsDiv.classList.contains('active');
-    var openAnnotations = document.querySelectorAll('.uploaded-image-annotations.active');
-    openAnnotations.forEach(function(annotation) {
-        annotation.classList.remove('active');
-    });
-
-    var rotatedChevronIcons = document.querySelectorAll('.chevron-icon.rotate');
-    rotatedChevronIcons.forEach(function(rotatedIcon) {
-        rotatedIcon.classList.remove('rotate');
-    });
-
-    if (!isOpen) {
-        annotationsDiv.classList.add("active");
-        chevronIcon.classList.add('rotate');
-    }
-
-    annot_space = document.getElementById('image-annotations');
-    var annotations = annot_space.querySelectorAll(`div`)
-    for (var i = 0; i < annotations.length; i++) {
-        annotations[i].style.display = "none";
-    }
-    var annotations = annot_space.querySelectorAll(`[id$="${element.querySelector('img').alt}"]`)
-    for (var i = 0; i < annotations.length; i++) {
-        annotations[i].style.display = "block";
-    }
 }
 
 var currentStep = 1;
@@ -163,8 +155,8 @@ function nextStep() {
         modalFooter.textContent = "6 of 8";
 
         let modal = document.getElementById('modal');
-        modal.style.top = "335px"
-        modal.style.left = "850px"
+        modal.style.top = "310px"
+        modal.style.left = "870px"
 
         var annotationInfo = document.getElementById('annotation-info');
         annotationInfo.style.borderTop = "0.8px solid #006CEB";

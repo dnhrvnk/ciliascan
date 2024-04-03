@@ -54,6 +54,19 @@ function stepForward() {
         section5.style.display = 'block';
         btn.textContent = 'Submit';
         steps.textContent = 'Step 5 of 5';
+
+        btn.addEventListener('click', () => {
+            let response = document.querySelector('#feedback-response');
+            response.style.display = 'block';
+    
+            let feedback_header = document.querySelector('#feedback-header');
+            let form_feedback = document.querySelector('#form-feedback');
+            let btns = document.querySelector('.explicit-feedback-footer');
+    
+            feedback_header.style.display = 'none';
+            form_feedback.style.display = 'none';
+            btns.style.display = 'none';
+        });
     }
 };
 
@@ -94,9 +107,9 @@ function stepBack() {
 };
 
 let submit_btn = document.querySelector('#submit-button');
+console.log(submit_btn.textContent);
 if(submit_btn.textContent === 'Submit'  ) {
     submit_btn.addEventListener('click', () => {
-        console.log('Feedback submitted');
 
 
         let response = document.querySelector('#feedback-response');

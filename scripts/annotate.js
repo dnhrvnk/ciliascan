@@ -10,7 +10,7 @@ let dynein = document.getElementById('dynein')
 let confLevelCell = document.querySelector('.conf-level');
 
 
-let selector_class = "dissaranged"
+let selector_class = "disarranged"
 let selector_class_full_name = "Disarranged"
 let selected_annotation = null;
 
@@ -314,9 +314,15 @@ const simulate_click = () => {
     let start_x = rect.left
     let start_y = rect.top
 
+    let end_x = rect.right
+    let end_y = rect.bottom
+
+    let x_size = end_x  - start_x - 100;
+    let y_size = end_y - start_y - 100;
+
     for (let i = 0; i < 20; i++){
-      x_rand = Math.floor(Math.random()*600 + 100)
-      y_rand = Math.floor(Math.random()*600 + 100)
+      x_rand = Math.floor(Math.random()*x_size + 50)
+      y_rand = Math.floor(Math.random()*y_size + 50)
       x = start_x + x_rand
       y = start_y + y_rand
       create_annot(x,y,true)
