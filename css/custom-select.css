@@ -57,6 +57,7 @@
   overflow-x: hidden;
   transition: max-width 0.5s;
   color: #0000;
+  scale: initial;
 }
 
 #mtds-tool-btn > span {

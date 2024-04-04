@@ -48,6 +48,7 @@ var step = 1;
 var modal = document.querySelector("#manual-anotate-modal");
 var modalBody = document.querySelector('#manual-anotate-modal .modal-body p');
 var modalFooter = document.querySelector('#manual-anotate-modal .modal-footer p');
+var call_backs = []
 
 function nextManual() {
     if(step == 0) {
@@ -59,6 +60,14 @@ function nextManual() {
         
         modal.style.top = "45%";
         modal.style.left = "40%";
+
+        document.getElementById('nextManual').style.display = 'block'
+
+        if(call_backs.length!=0){
+            document.querySelectorAll('mtds-tool-dropdown-content li').forEach((element) => {
+                element.onclick = call_backs.pop()
+            })
+        }
 
         let back = document.getElementById('backManual');
         back.style.display = "none";
@@ -75,6 +84,18 @@ function nextManual() {
         let back = document.getElementById('backManual');
         back.style.display = "block";
 
+        document.getElementById('nextManual').style.display = 'none'
+        document.querySelectorAll('#mtds-tool-dropdown-content li').forEach((element) => {
+            const call_back = element.onclick
+            element.onclick = (e) => {
+                nextManual()
+                element.onclick = call_back
+                element.click()
+            }
+            call_backs.push(call_back)
+        })
+        call_backs.reverse()
+
         modal.style.top = "30%";
         modal.style.left = "33%";
 
@@ -86,8 +107,14 @@ function nextManual() {
         dropdown = document.getElementById("mtds-tool-dropdown-content");
         dropdown.style.display = "none";
 
+        document.querySelectorAll('mtds-tool-dropdown-content li').forEach((element) => {
+            element.onclick = call_backs.pop()
+        })
+
         modal.style.top = "16%";
         modal.style.left = "56%";
+
+        document.getElementById('nextManual').style.display = 'block'
 
         step = 3;
     } else if(step == 3) {
@@ -157,7 +184,7 @@ function nextManual() {
         modal.style.top = "45%";
         modal.style.left = "40%";
     } else if(step == 8) {
-        nextButton.onclick = closeManual();
+        closeModal();
     }
 }
 

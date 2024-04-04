@@ -57,14 +57,14 @@
                     <div class="annotation table disarranged"></div>
                     <span>Disarranged</span>
                     <ul class="dropdown-content dropdown-menu" id="mtds-tool-dropdown-content">
-                        <li onclick="set_tool('disarranged',this)" class="active"><div class="annotation table disarranged"></div><span>Disarranged</span></li>
-                        <li onclick="set_tool('extra-tuble',this)"><div class="annotation table extra-tuble"></div><span>Extra tubule</span></li>
-                        <li onclick="set_tool('single-tuble',this)"><div class="annotation table single-tuble"></div><span>Single tubule</span></li>
-                        <li onclick="set_tool('transposition',this)"><div class="annotation table transposition"></div><span>Transposition</span></li>
-                        <li onclick="set_tool('one-central-pair-missing',this)"><div class="annotation table one-central-pair-missing"></div><span>One of central pair missing</span></li>
-                        <li onclick="set_tool('both-missing',this)"><div class="annotation table both-missing"></div><span>Both missing</span></li>
-                        <li onclick="set_tool('compound',this)"><div class="annotation table compound"></div><span>Compound</span></li>
-                        <li onclick="set_tool('other',this)"><div class="annotation table other"></div><span>Other defects</span></li>
+                        <li onclick="((t)=>set_tool('disarranged',t))(this)" class="active"><div class="annotation table disarranged"></div><span>Disarranged</span></li>
+                        <li onclick="((t)=>set_tool('extra-tuble',t))(this)"><div class="annotation table extra-tuble"></div><span>Extra tubule</span></li>
+                        <li onclick="((t)=>set_tool('single-tuble',t))(this)"><div class="annotation table single-tuble"></div><span>Single tubule</span></li>
+                        <li onclick="((t)=>set_tool('transposition',t))(this)"><div class="annotation table transposition"></div><span>Transposition</span></li>
+                        <li onclick="((t)=>set_tool('one-central-pair-missing',t))(this)"><div class="annotation table one-central-pair-missing"></div><span>One of central pair missing</span></li>
+                        <li onclick="((t)=>{console.log(t);('both-missing',t)})(this)"><div class="annotation table both-missing"></div><span>Both missing</span></li>
+                        <li onclick="((t)=>set_tool('compound',t))(this)"><div class="annotation table compound"></div><span>Compound</span></li>
+                        <li onclick="((t)=>set_tool('other',t))(this)"><div class="annotation table other"></div><span>Other defects</span></li>
                     </ul>
                 </button>
             </div>
@@ -173,7 +173,7 @@
                 <div id="welcome-to-run-annotation-content">
                     <button class="close" onclick="stopInboarding()">&times;</button>
                     <img src="../assets/welcome-to-run-annotation.gif" alt="Welcome to Run Annotation" id="image-welcome-to-run-annotation" class="image">
-                    <button class="button button-blue" id="next-button" onclick="inboarding(this)">Next</button>
+                    <button class="button button-blue" id="next-button" onclick="inboarding()">Next</button>
                 </div>
             </div>
 
@@ -187,13 +187,15 @@
                             To activate automatic annotation, simply select <br>"<b>Run Annotation</b>" in dropdown menu. 
                             <br><br>
                             Our AI technology will then swiftly analyze the current image, highlighting celia for further review.
+                            <br>
+                            To continue with showcase run automatic annotation!
                         </p>
                     </div>
                     <div class="modal-footer">
                         <p>1 of 8</p>
                         <div style="column-gap: 5px; display: flex;">
                             <button id="backStep" class="button button-common" onclick="backStep()" style="display: none">Back</button>
-                            <button id="nextStep" class="button button-blue" onclick="nextStep()">Next</button>
+                            <button id="nextStep" class="button button-blue" style="display: none;" onclick="nextStep()">Next</button>
                         </div>
                     </div>
                 </div>
