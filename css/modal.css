@@ -28,12 +28,19 @@
     z-index: 100;
 }
 
-#modal-loading {
+#modal-loading, #modal-reminder {
     width: 20%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
+}
+
+#modal-reminder {
+    background-color: #006CEB;
+    top: 33%;
+    left: 44.9%;
+    clip-path: polygon(50% 0%, 55% 20%, 100% 20%, 100% 100%, 0 100%, 0 20%, 45% 20%);
 }
 
 #modal-loading .modal-body p::before {
