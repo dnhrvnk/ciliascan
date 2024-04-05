@@ -13,8 +13,6 @@ function startInboarding() {
     if(explainedAI == false) {
         let welcome = document.querySelector('#welcome-to-run-annotation');
         welcome.style.display = "flex";
-        let dropdown = document.querySelector('#run-annotation');
-        dropdown.style.display = "block"
         let btn_run_annotation = document.querySelector('#btn-run-annotation');
         btn_run_annotation.style.backgroundColor = "#006CEB";
     }
@@ -27,13 +25,17 @@ function inboarding() {
 
     openModal();
 
-    let dropdown = document.querySelector('#run-annotation');
-        dropdown.style.display = "block";
-
     let btn_run_annotation = document.querySelector('#btn-run-annotation');
     btn_run_annotation.style.backgroundColor = "#006CEB";   
     
     document.getElementById('mainImage').src = "../images/Tv17.png";
+
+    let dropdown = document.querySelector('#run-annotation');
+    setTimeout(()=>{
+        dropdown.classList.add('show')
+    },100)
+
+    console.log('dsdsadsadsads')
 
     let btn = document.querySelector('#dropdownMenuButton');
     btn.classList.remove('pulse');
@@ -67,7 +69,7 @@ function closeModal() {
     mainImage.style.border = "none";
   
     let dropdown = document.querySelector('#run-annotation');
-    dropdown.style.display = "none";
+    dropdown.classList.remove('show')
     
     let btn_run_annotation = document.querySelector('#btn-run-annotation');
     btn_run_annotation.style.backgroundColor = "transparent";
@@ -96,9 +98,6 @@ function nextStep() {
         modalBody.innerHTML = 'To activate automatic annotation, simply select "<b>Run Annotation</b>" in dropdown menu. <br><br>Our AI technology will then swiftly analyze the current image, highlighting celia for further review.';
         modalFooter.textContent = "1 of 8";
 
-        let dropdown = document.querySelector('#run-annotation');
-        dropdown.style.display = "block";
-
         let btn_run_annotation = document.querySelector('#btn-run-annotation');
         btn_run_annotation.style.backgroundColor = "#006CEB";
 
@@ -114,10 +113,12 @@ function nextStep() {
         mainImage.style.border = "5px solid #006CEB";
         
         let dropdown = document.querySelector('#run-annotation');
-        dropdown.style.display = "none";
+        setTimeout(()=>{
+            dropdown.classList.remove('show')
+        },100)
     
         let btn_run_annotation = document.querySelector('#btn-run-annotation');
-        btn_run_annotation.style.backgroundColor = "transparent";
+        btn_run_annotation.style.backgroundColor = "";
 
         let modal = document.getElementById('modal');
         modal.style.top = "150px"

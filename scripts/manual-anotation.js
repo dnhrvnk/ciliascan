@@ -56,7 +56,7 @@ function nextManual() {
         modalFooter.textContent = "1 of 8";
         
         dropdown = document.getElementById("mtds-tool-dropdown-content");
-        dropdown.style.display = "none";
+        dropdown.classList.remove("show");
         
         modal.style.top = "45%";
         modal.style.left = "40%";
@@ -79,7 +79,11 @@ function nextManual() {
         modalFooter.textContent = "2 of 8";
     
         dropdown = document.getElementById("mtds-tool-dropdown-content");
-        dropdown.style.display = "block";
+        console.log(dropdown.classList)
+        setTimeout(()=> {
+        dropdown.classList.add("show");
+        },1)
+        console.log(dropdown.classList)
 
         let back = document.getElementById('backManual');
         back.style.display = "block";
@@ -105,7 +109,22 @@ function nextManual() {
         modalFooter.textContent = "3 of 8";
 
         dropdown = document.getElementById("mtds-tool-dropdown-content");
-        dropdown.style.display = "none";
+        dropdown.classList.remove("show");
+        console.log(dropdown.classList)
+
+        document.querySelectorAll('mtds-tool-dropdown-content li').forEach((element) => {
+            element.onclick = call_backs.pop()
+        })
+
+        area = document.getElementById("mainImage")
+        let call_back = area.onclick
+        area.onclick = (event)=>{
+            call_back(event)
+            area.onclick = call_back
+            nextManual()
+        }
+
+        document.getElementById('nextManual').style.display = 'none'
 
         document.querySelectorAll('mtds-tool-dropdown-content li').forEach((element) => {
             element.onclick = call_backs.pop()
@@ -113,8 +132,6 @@ function nextManual() {
 
         modal.style.top = "16%";
         modal.style.left = "56%";
-
-        document.getElementById('nextManual').style.display = 'block'
 
         step = 3;
     } else if(step == 3) {
@@ -125,8 +142,9 @@ function nextManual() {
         modal.style.left = "56%";
 
         var listAnnotations = document.querySelector('.uploaded-image-annotations.active');
-        listAnnotations.style.border = "none";
+        listAnnotations.style.border = "initial";
 
+        document.getElementById('nextManual').style.display = 'block'
         step = 4; 
     } else if(step == 4) {
         modalBody.innerHTML = "Annotations are automatically saved as you place them on the image. <br><br> You can also see them in the <b>annotation list</b> on the right side of the screen.";
@@ -183,8 +201,10 @@ function nextManual() {
 
         modal.style.top = "45%";
         modal.style.left = "40%";
+        step = 8;
     } else if(step == 8) {
-        closeModal();
+        console.log('dsdsad')
+        closeManual();
     }
 }
 
@@ -193,7 +213,7 @@ function closeManual() {
     modal.style.display = "none";
 
     dropdown = document.getElementById("mtds-tool-dropdown-content");
-    dropdown.style.display = "none";
+    dropdown.classList.remove('show')
 
     var listAnnotations = document.querySelector('.uploaded-image-annotations.active');
     listAnnotations.style.border = "none";
