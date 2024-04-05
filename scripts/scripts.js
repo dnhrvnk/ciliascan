@@ -64,9 +64,12 @@ function toggleCollapsible(element) {
 }
 
 
-function toggleAnnotations(element) {
+function toggleAnnotations(element, img) {
     var annotationsDiv = element.parentElement.parentElement.nextElementSibling;
     var chevronIcon = element;
+
+    document.getElementById('mainImage').src = img;
+    document.getElementById('mainImage').alt = img;
 
     var isOpen = annotationsDiv.classList.contains('active');
 
@@ -75,15 +78,17 @@ function toggleAnnotations(element) {
         annotation.classList.remove('active');
     });
 
-    var rotatedChevronIcons = document.querySelectorAll('.chevron-icon.rotate');
+    var rotatedChevronIcons = document.querySelectorAll('.fa-chevron-right.rotate-right');
     rotatedChevronIcons.forEach(function(rotatedIcon) {
-        rotatedIcon.classList.remove('rotate');
+        rotatedIcon.classList.remove('rotate-right');
     });
 
     if (!isOpen) {
         annotationsDiv.classList.add("active");
-        chevronIcon.classList.add('rotate');
+        chevronIcon.classList.add('rotate-right');
     }
+
+    element.parentNode.parentNode.classList.add('seen'); 
 }
 
 function rotateArrow() {
