@@ -261,6 +261,10 @@ padding-left: 10px;
     max-height: 0;
 }
 
+.rotate-right {
+    transform: rotate(90deg);
+}
+
 .rotate {
     transform: rotate(-90deg);
 }

@@ -9,7 +9,7 @@ function seenImage(element) {
     parentElement.classList.add('seen');    
     
     var annotationsDiv = element.parentElement.nextElementSibling;
-    var chevronIcon = element.parentElement.querySelector('.chevron-icon');
+    var chevronIcon = element.parentElement.querySelector('.fa-chevron-right');
 
     var isOpen = annotationsDiv.classList.contains('active');
     var openAnnotations = document.querySelectorAll('.uploaded-image-annotations.active');
@@ -17,14 +17,14 @@ function seenImage(element) {
         annotation.classList.remove('active');
     });
 
-    var rotatedChevronIcons = document.querySelectorAll('.chevron-icon.rotate');
+    var rotatedChevronIcons = document.querySelectorAll('.fa-chevron-right.rotate-right');
     rotatedChevronIcons.forEach(function(rotatedIcon) {
-        rotatedIcon.classList.remove('rotate');
+        rotatedIcon.classList.remove('rotate-right');
     });
 
     if (!isOpen) {
         annotationsDiv.classList.add("active");
-        chevronIcon.classList.add('rotate');
+        chevronIcon.classList.add('rotate-right');
     }
 
     annot_space = document.getElementById('image-annotations');
@@ -184,7 +184,7 @@ function nextManual() {
         modal.style.top = "45%";
         modal.style.left = "40%";
     } else if(step == 8) {
-        closeModal();
+        closeManual();
     }
 }
 
