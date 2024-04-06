@@ -35,8 +35,6 @@ function inboarding() {
         dropdown.classList.add('show')
     },100)
 
-    console.log('dsdsadsadsads')
-
     let btn = document.querySelector('#dropdownMenuButton');
     btn.classList.remove('pulse');
     let dot = document.querySelector('.notification-dot');
@@ -51,6 +49,7 @@ function stopInboarding() {
     btn.classList.remove('pulse');
     let dot = document.querySelector('.notification-dot');
     dot.style.display = "none";
+    document.querySelector('#btn-run-annotation').onclick =  annot_callback;
 }
 
 
@@ -85,6 +84,10 @@ function closeModal() {
     var annotationInfo = document.getElementById('annotation-info');
     annotationInfo.style.borderTop= "none";
     annotationInfo.style.borderBottom = "0.8px solid rgb(45, 45, 66)";
+
+    document.querySelectorAll('.table-annotations tr').forEach((element) => {
+        element.onclick = row_click_callback(element)
+    })
 }
 
 var currentStep = 1;
