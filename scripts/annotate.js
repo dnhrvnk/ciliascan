@@ -4,6 +4,8 @@ let image_annotations_list = document.getElementById('image1-annotations-table')
 let dropdown_btn = document.getElementById('mtds-tool-btn')
 let tableRows = document.querySelectorAll('.table-annotations tr');
 
+let modal_reminder = document.getElementById('modal-reminder')
+
 
 let mtds = document.getElementById('mtds')
 let dynein = document.getElementById('dynein')
@@ -15,6 +17,8 @@ let selector_class_full_name = "Disarranged"
 let selected_annotation = null;
 
 let selected_image = null;
+
+let count = 0
 
 
 const annot_cycle = [
@@ -289,8 +293,16 @@ const create_annot = (x_page,y_page, auto=false) => {
 }
 
 annot_space.onclick = (event) => {
-  let rect = annot_space.getBoundingClientRect();
+  count+=1;
   create_annot(event.pageX,event.pageY)
+  console.log(count)
+  if((count+1) % 6  ==0){
+    console.log('adsadsa')
+    modal_reminder.classList.add('show')
+    setTimeout(()=>{
+      modal_reminder.classList.remove('show')
+    },5000)
+  }
 }
 
 
