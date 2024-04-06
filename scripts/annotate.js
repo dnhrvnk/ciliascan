@@ -223,6 +223,26 @@ let update_row = (id) => {
 
 }
 
+const create_annot_areas = ()=> {
+  const out = []
+  let child = document.createElement('div')
+  child.classList.add('area')
+  child.classList.add('first')
+  child.textContent =  '40%'
+  out.push(child)
+  child = document.createElement('div')
+  child.classList.add('area')
+  child.classList.add('second')
+  child.textContent =  '50%'
+  out.push(child)
+  child = document.createElement('div')
+  child.classList.add('area')
+  child.classList.add('thrid')
+  child.textContent =  '60%'
+  out.push(child)
+  return out
+}
+
 const open_loading = () => {
   let loading = document.getElementById('modal-loading');
   loading.style.display = 'block';
@@ -244,6 +264,9 @@ const create_annot = (x_page,y_page, auto=false) => {
   if (auto){
     s_c = annot_tools[Math.floor(Math.random()*annot_tools.length)]
     a_c = annot_cycle[Math.floor(Math.random()*annot_cycle.length)]
+    create_annot_areas().forEach(annot_child => {
+      annot.appendChild(annot_child)
+    })
   }
   let image = document.getElementById('mainImage').alt;
   selected_image = image
@@ -342,7 +365,7 @@ const simulate_click = () => {
       create_annot(x,y,true)
     }
     close_loading();
-  },1)
+  },4000)
 
   document.getElementById("warning-modal").style.display = "block";
 }

@@ -49,6 +49,7 @@ var modal = document.querySelector("#manual-anotate-modal");
 var modalBody = document.querySelector('#manual-anotate-modal .modal-body p');
 var modalFooter = document.querySelector('#manual-anotate-modal .modal-footer p');
 var call_backs = []
+var area_callback = undefined
 
 function nextManual() {
     if(step == 0) {
@@ -64,7 +65,7 @@ function nextManual() {
         document.getElementById('nextManual').style.display = 'block'
 
         if(call_backs.length!=0){
-            document.querySelectorAll('mtds-tool-dropdown-content li').forEach((element) => {
+            document.querySelectorAll('#mtds-tool-dropdown-content li').forEach((element) => {
                 element.onclick = call_backs.pop()
             })
         }
@@ -112,21 +113,21 @@ function nextManual() {
         dropdown.classList.remove("show");
         console.log(dropdown.classList)
 
-        document.querySelectorAll('mtds-tool-dropdown-content li').forEach((element) => {
+        document.querySelectorAll('#mtds-tool-dropdown-content li').forEach((element) => {
             element.onclick = call_backs.pop()
         })
 
         area = document.getElementById("mainImage")
-        let call_back = area.onclick
+        area_callback = area.onclick
         area.onclick = (event)=>{
-            call_back(event)
-            area.onclick = call_back
+            area_callback(event)
+            area.onclick = area_callback
             nextManual()
         }
 
         document.getElementById('nextManual').style.display = 'none'
 
-        document.querySelectorAll('mtds-tool-dropdown-content li').forEach((element) => {
+        document.querySelectorAll('#mtds-tool-dropdown-content li').forEach((element) => {
             element.onclick = call_backs.pop()
         })
 
@@ -220,6 +221,17 @@ function closeManual() {
     var annotationInfo = document.getElementById('annotation-info');
     annotationInfo.style.borderTop = "none";
     annotationInfo.style.borderBottom = "0.8px solid rgb(45, 45, 66)";
+
+    if(call_backs.length!=0){
+        console.log('closing',call_backs.length)
+        document.querySelectorAll('#mtds-tool-dropdown-content li').forEach((element) => {
+            element.onclick = call_backs.pop()
+            console.log(element.onclick)
+        })
+    }
+    if(area_callback) {
+        document.getElementById("mainImage") = area_callback
+    }
 }
 
 function backManual() {
