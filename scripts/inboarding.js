@@ -71,7 +71,8 @@ function closeModal() {
     dropdown.classList.remove('show')
     
     let btn_run_annotation = document.querySelector('#btn-run-annotation');
-    btn_run_annotation.style.backgroundColor = "transparent";
+    btn_run_annotation.style.backgroundColor = null;
+    btn_run_annotation.onclick = annot_callback;
 
     var listAnnotations = document.querySelector('.uploaded-image-annotations.active');
     listAnnotations.style.border = "none";

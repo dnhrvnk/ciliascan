@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/custom-select.css">
     <link rel="stylesheet" href="../css/modal.css">
     <link rel="stylesheet" href="../css/explicit-feedback.css">
+    <link rel="stylesheet" href="../css/decision-tree.css">
     <link rel="stylesheet" href="../css/model-information.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
@@ -514,6 +515,17 @@
                 </div>
                 <div class="collapsible-content">
                     <textarea name="notes" id="notes" placeholder="Write your notes here"></textarea>
+                </div>
+            </div>
+            <div class="collapsible">
+                <div class="collapsible-head" onclick="toggleCollapsible(this)">
+                    <h3>Desicion tree</h3>
+                    <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
+                </div>
+                <div class="collapsible-content">
+                    <div id="decision-tree">
+                        <img src="../assets/decision_tree.png">
+                    </div>
                 </div>
             </div>
         </aside>
