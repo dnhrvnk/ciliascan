@@ -301,7 +301,9 @@ const delete_annot = (annot_id) => {
 }
 
 
+let run_annotation = false;
 const simulate_click = () => {
+  run_annotation = true;
   if (document.querySelectorAll('.seen').length == 0) {
     console.error('No annotations to simulate')
     return

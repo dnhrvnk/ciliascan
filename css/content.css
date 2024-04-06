@@ -471,3 +471,48 @@ padding-left: 10px;
     top: 45%;
     left: 40%;
 }
+
+#warning-modal {
+    width: fit-content;
+    height: auto;
+    background-color: #FEBC2E;
+    border: #FEBC2E solid;
+    transition: 0.3s ease-out;
+    position: relative;
+    top: -47%;
+    left: 47%;
+    cursor: pointer;
+}
+
+#warning-modal:hover {
+    scale: 1.1;
+}
+
+#warning-modal .fa-exclamation {
+    font-size: 13px; 
+    font-weight: 900;
+    padding-inline: 3px;
+    color: #101021;
+}
+
+#warning-expl {
+    display: block;
+}
+
+#warning-content {
+    display: none;
+    transition: max-height 0.3s ease-out; /* Adjust the duration and timing function as needed */
+}
+
+
+
+#warning-content .fa-chevron-up {
+    color: #101021;
+}
+
+#warning-content p {
+    text-align: start !important;
+    color: #101021;
+    margin: 0 !important;
+    padding: 0 !important;
+}

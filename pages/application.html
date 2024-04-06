@@ -86,7 +86,7 @@
         <div class="nav-right-side">
             <button class="button button-share"><i class="fa-regular fa-share-from-square icon-blue"></i>Share</button>
             <button class="button button-share"><i class="fa-solid fa-upload icon-blue"></i>Upload images</button>
-            <button class="button button-blue"><i class="fa-solid fa-download icon"></i> Export</button>
+            <button class="button button-blue" onclick="export_annotations()"><i class="fa-solid fa-download icon"></i> Export</button>
             <i class="fa-regular fa-bell icon icon-nav"></i>
             
             <div class="dropdown">
@@ -177,6 +177,33 @@
                 </div>
             </div>
 
+            <div id="generate-modal" class="modal" style="width: 30%;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="icon close" onclick="closeModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <p><b style="color: #006CEB; font-size: 13px;">Are you sure that you want to generate annotations?</b></p>
+                        <p>Please note that the AI-generated output is provided for assistance purposes. While the AI model strives to provide accurate predictions, it may not always be correct, and there is a possibility of errors or inaccuracies.</p>
+                    </div>
+                    <div class="modal-footer" style="justify-content: center; margin-top: 20px;">
+                        <button class="button button-blue" onclick="show_succsess()">Generate</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="succesful-generate-modal" class="modal" style="">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="icon close" onclick="closeModal()">&times;</span>
+                    </div>
+                    <div class="modal-body" style="text-align: center;">
+                        <i class="fa-solid fa-circle-check" style="font-size: 60px; color: #29C740; margin-top: 20px;"></i>
+                        <p style="margin-top: 20px; margin-bottom: 10px;">Annotation were succesfully generated.</p>
+                    </div>
+                </div>
+            </div>
+
             <div id="modal" class="modal">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -220,10 +247,29 @@
                     </div>
                 </div>
             </div>
+
             <div id="modal-loading" class="modal loading">
                 <div class="modal-content">
                     <div class="modal-body">
                         <p>Loading</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="warning-modal" class="modal" style="display: block;" onclick="updateWarningMessage()">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="warning-expl">
+                            <i class="fa-solid fa-exclamation icon"></i>
+                        </div>
+                        <div id="warning-content">
+                            <div style="text-align: end;">
+                                <i class="fa-solid fa-chevron-up icon"></i>
+                            </div>
+                            <p><b>Number of undetermined cilias:</b> 10</p>
+                            <p><b>Number of undetermined dynein arms:</b> 26</p>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -427,5 +473,6 @@
     <script src="../scripts/inboarding.js"></script>
     <script src="../scripts/explicit-feedback.js"></script>
     <script src="../scripts/manual-anotation.js"></script>
+    <script src="../scripts/calibrate-trust.js"></script>
 </body>
 </html>
