@@ -4,6 +4,7 @@ function closeExplicitFeedback() {
 
 function openExplicitFeedback() {
   document.getElementById('explicit-feedback').style.display = 'flex';
+  let section1DisplayStyle = window.getComputedStyle(section1).getPropertyValue('display');
 }
 
 const ratingButtonsSattisfaction = document.querySelectorAll('.rating-btn-satisfaction');

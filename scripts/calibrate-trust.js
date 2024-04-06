@@ -10,8 +10,16 @@ function export_annotations() {
 
 function show_succsess() {
     document.getElementById("succesful-generate-modal").style.display = "block";
+    document.getElementById("generate-modal").style.display = "none";
 }
 
+function closeGenerate() {
+    document.getElementById("generate-modal").style.display = "none";
+}
+
+function closeSuccessGenerate() {
+    document.getElementById("succesful-generate-modal").style.display = "none";
+}
 
 function updateWarningMessage() {
     let msg = document.getElementById("warning-content");
@@ -36,3 +44,4 @@ function updateWarningMessage() {
         msg.style.maxHeight = "0px";
     }
 }
+

@@ -482,6 +482,8 @@ padding-left: 10px;
     top: -47%;
     left: 47%;
     cursor: pointer;
+    z-index: 0;
+    display: none;
 }
 
 #warning-modal:hover {
@@ -503,8 +505,6 @@ padding-left: 10px;
     display: none;
     transition: max-height 0.3s ease-out; /* Adjust the duration and timing function as needed */
 }
-
-
 
 #warning-content .fa-chevron-up {
     color: #101021;

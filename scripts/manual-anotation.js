@@ -101,7 +101,7 @@ function nextManual() {
         call_backs.reverse()
 
         modal.style.top = "30%";
-        modal.style.left = "33%";
+        modal.style.left = "32%";
 
         step = 2;
     } else if(step == 2) {

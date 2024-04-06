@@ -344,6 +344,7 @@ const simulate_click = () => {
     close_loading();
   },1)
 
+  document.getElementById("warning-modal").style.display = "block";
 }
 
 
