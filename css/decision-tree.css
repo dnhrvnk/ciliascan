@@ -5,6 +5,12 @@
   border-radius: 10px;
   align-self: baseline;
   margin: 20px 0px;
+  height: 75vh;
+  overflow-y: scroll;
+}
+
+#annotation-info-card::-webkit-scrollbar {
+  width: 3px; 
 }
 
 #decision-tree {
@@ -33,6 +39,7 @@
 .row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
 }
 
