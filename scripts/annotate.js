@@ -159,6 +159,7 @@ const select_annotation = (annot) => {
   annot_row.parentElement.parentElement.classList.add('selected-row');
 
   update_rightside(annot_row.parentElement.parentElement)
+  document.getElementById("decision-tree-collapsible").style.display = "block";
 }
 
 
