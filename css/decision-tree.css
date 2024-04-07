@@ -13,6 +13,10 @@
   width: 3px; 
 }
 
+#annotation-info-card hr {
+  border-color: #212134;
+}
+
 #decision-tree {
   overflow: scroll;
   height: 250px;
@@ -40,7 +44,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .left, .right {
@@ -61,4 +64,45 @@
   position: relative;
   top: 0;
   right: 0;
+}
+
+.Counterfactual-nav {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  column-gap: 25px;
+  margin-bottom: 15px;
+}
+
+.Counterfactual-nav a {
+  display: block;
+  margin-inline: 5px;
+  transition: 0.3s ease-in-out;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.Counterfactual-nav a:hover {
+  color: #006CEB;
+  font-weight: 600;
+}
+
+.Counterfactual-nav a.active {
+  color: #006CEB;
+  font-weight: 600;
+}
+
+.Counterfactual-imgs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.Counterfactual-imgs img {
+  width: 250px;
+  height: 180px;
+  border-radius: 10px;
+  display: none;
 }

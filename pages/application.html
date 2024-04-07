@@ -393,11 +393,12 @@
                     <h3>Information about AI decision</h3>
                     <button class="close" onclick="closeAnnotationInfo()">&times;</button>
                 </div>
-                <div style="display: flex; justify-content: space-between; color: white; font-size: 12px;">
+                <div style="display: flex; justify-content: space-between; color: white; font-size: 15px;">
                     <p><b>Microtubular defect:</b> Compound</p>
                     <p><b>Dynein arms defect:</b> No arms missing</p>
-                    <p><b>Conf. level:</b> 90%</p>
+                    <p><b>Confidence level:</b> 90%</p>
                 </div>
+                <hr>
                 <div>
                     <h4>Decision tree
                         <sup>
@@ -410,6 +411,7 @@
                     <div id="decision-tree">
                         <img src="../assets/decision_tree.png">
                     </div>
+                    <hr style="margin-top: 30px;">
                 </div>
                 <div>
                     <div class="row">
@@ -436,6 +438,7 @@
                             <img src="../assets/subclass.png" alt="Feature 2">
                         </div>
                     </div>
+                    <hr style="margin-top: 30px;">
                     <div class="row">
                         <div class="left">
                             <h4>Microtubular defect feature
@@ -460,25 +463,59 @@
                             <img src="../assets/subclass_shape.png" alt="Feature 2">
                         </div>
                     </div>
+                    <hr style="margin-top: 30px;">
                     <div class="row">
                         <div>
-                            <h4>Annotated Cilia:</h4>
-                            <img src="../assets/compound5.png" alt="Cilia" style="width: 150px; border-radius: 10px;">
+                            <h4>Annotated cilia:</h4>
+                            <img src="../assets/compound1.png" alt="Cilia" style="width: 80%; border-radius: 10px;">
                         </div>
                         <div>
-                            <span style="font-size: 5rem; color: white;">~</span>
-                        </div>
-                        <div>
-                            <h4>Similiar Compound cilias with no missing arms:</h4>
-                            <div style="display:flex;">
-                                <img src="../assets/compound2.png" alt="Cilia" style="width: 150px; margin: 0px 20px 0px 0px; border-radius: 10px;">
-                                <img src="../assets/compound3.png" alt="Cilia" style="width: 150px; margin: 0px 20px; border-radius: 10px;">
-                                <img src="../assets/compound4.png" alt="Cilia" style="width: 150px; margin: 0px 20px; border-radius: 10px;">
+                            <h4>Similiar compound cilias with no missing arms:
+                                <sup>
+                                    <div class="tooltip-container">
+                                        <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
+                                        <div class="tooltip">The decision tree shows how the model<br> made decisions when creating its suggestion.</div>
+                                    </div>
+                                </sup>
+                            </h4>
+                            <div style="display:flex; column-gap: 30px;">
+                                <img src="../assets/compound2.png" alt="Cilia" style="width: 100px; border-radius: 10px;">
+                                <img src="../assets/compound3.png" alt="Cilia" style="width: 100px; border-radius: 10px;">
+                                <img src="../assets/compound5.png" alt="Cilia" style="width: 100px; border-radius: 10px;">
+                                <img src="../assets/compound4.png" alt="Cilia" style="width: 100px; border-radius: 10px;">
                             </div>
                         </div>
                     </div>
+                    <hr style="margin-top: 30px;">
+                    <div class="row">
+                        <div>
+                            <h4>Why is it not other defect?
+                                <sup>
+                                    <div class="tooltip-container">
+                                        <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
+                                        <div class="tooltip">The decision tree shows how the model<br> made decisions when creating its suggestion.</div>
+                                    </div>
+                                </sup>
+                            </h4>
+                            <div class="Counterfactual-nav">
+                                <a href="#" onclick="showCounterfactual('Counterfactual-disarranged')" id="Counterfactual-disarranged-link" class="active">Disarranged</a>
+                                <a href="#" onclick="showCounterfactual('Counterfactual-extra-tubule')" id="Counterfactual-extra-tubule-link">Extra Tubule</a>
+                                <a href="#" onclick="showCounterfactual('Counterfactual-single-tubule')" id="Counterfactual-single-tubule-link">Single Tubule</a>
+                                <a href="#" onclick="showCounterfactual('Counterfactual-transposition')" id="Counterfactual-transposition-link">Transposition</a>
+                                <a href="#" onclick="showCounterfactual('Counterfactual-one-of-central-pair-missing')" id="Counterfactual-one-of-central-pair-missing-link">One of Central Pair Missing</a>
+                                <a href="#" onclick="showCounterfactual('Counterfactual-both-missing')" id="Counterfactual-both-missing-link">Both Missing</a>
+                            </div>
+                            <div class="Counterfactual-imgs">
+                                <img src="../assets/compound-dissarenged.png" id="Counterfactual-disarranged" alt="Cilia" style="display: block;">
+                                <img src="../assets/compound-both-pairs.png" id="Counterfactual-both-missing" alt="Cilia">
+                                <img src="../assets/compound-one-pairs.png" id="Counterfactual-one-of-central-pair-missing" alt="Cilia">
+                                <img src="../assets/compound-extra-tubule.png" id="Counterfactual-extra-tubule" alt="Cilia">
+                                <img src="../assets/compound-single-tubule.png" id="Counterfactual-single-tubule" alt="Cilia">
+                                <img src="../assets/compound-transposition.png" id="Counterfactual-transposition" alt="Cilia">
+                            </div>
+                        </div>
                 </div>
-
+                </div>
             </div>
 
             <div id="welcome-to-run-annotation">

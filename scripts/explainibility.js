@@ -66,3 +66,24 @@ function closeAnnotationInfo() {
     info.style.display = 'none';
     image.style.display = 'block';
 }
+
+function showCounterfactual(imageId) {
+    var images = document.querySelectorAll('.Counterfactual-imgs img');
+    images.forEach(function(image) {
+        image.style.display = 'none';
+    });
+
+    var imageToShow = document.getElementById(imageId);
+    if (imageToShow) {
+        imageToShow.style.display = 'block';
+    }
+
+    var activeLinks = document.querySelectorAll('.Counterfactual-nav a');
+    activeLinks.forEach(function(link) {
+        link.classList.remove('active');
+    });
+    var clickedLink = document.getElementById(imageId + '-link');
+    if (clickedLink) {
+        clickedLink.classList.add('active');
+    }
+}
