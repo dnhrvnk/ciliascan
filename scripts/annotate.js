@@ -58,12 +58,15 @@ const update_rightside = (row) => {
   let icon = row.cells[0].children[0]
   var defectType = row.cells[1].textContent.trim();
   var confLevel = row.cells[2].querySelector('.chip')?.textContent.trim();
-
+  let ccc = document.querySelector('#close-conf-level')
   mtds.onchange = undefined
   confLevelCell.onchange = undefined
 
   mtds.value = defectType;
-  confLevelCell.textContent = confLevel || '--%';
+  ccc.textContent = confLevel || '--%';
+  let val = confLevel || '--%'
+  console.log(val)
+  confLevelCell.innerHTML = ccc.outerHTML + (val == '--%' ? '' : '<button class="button button-common" id="btnInfo" onclick="showMoreInfo()" style="margin-left: 20px;">Show more info</button>');
   dynein.value = `${annot_cycle.indexOf(icon.className.split(' ').reverse()[0])}`
   calc_chips();
 

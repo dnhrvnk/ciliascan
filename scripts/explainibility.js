@@ -52,3 +52,17 @@ function showExample(defect) {
     }
 }
 
+function showMoreInfo() {
+    var moreInfo = document.getElementById('annotation-info-card');
+    moreInfo.style.display = 'block';
+    let image = document.getElementById('image-annotations');
+    image.style.display = 'none';
+
+}
+
+function closeAnnotationInfo() {
+    let info = document.getElementById('annotation-info-card');
+    let image = document.getElementById('image-annotations');
+    info.style.display = 'none';
+    image.style.display = 'block';
+}

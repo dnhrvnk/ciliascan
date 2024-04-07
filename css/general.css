@@ -4,6 +4,10 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+h3, h4 {
+    color: white;
+}
+
 .icon {
     color: white;
     font-size: 12px;

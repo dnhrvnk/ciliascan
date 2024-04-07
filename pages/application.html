@@ -64,7 +64,7 @@
                         <li onclick="((t)=>set_tool('single-tuble',t))(this)"><div class="annotation table single-tuble"></div><span>Single tubule</span></li>
                         <li onclick="((t)=>set_tool('transposition',t))(this)"><div class="annotation table transposition"></div><span>Transposition</span></li>
                         <li onclick="((t)=>set_tool('one-central-pair-missing',t))(this)"><div class="annotation table one-central-pair-missing"></div><span>One of central pair missing</span></li>
-                        <li onclick="((t)=>{console.log(t);('both-missing',t)})(this)"><div class="annotation table both-missing"></div><span>Both missing</span></li>
+                        <li onclick="((t)=>set_tool('both-missing',t))(this)"><div class="annotation table both-missing"></div><span>Both missing</span></li>
                         <li onclick="((t)=>set_tool('compound',t))(this)"><div class="annotation table compound"></div><span>Compound</span></li>
                         <li onclick="((t)=>set_tool('other',t))(this)"><div class="annotation table other"></div><span>Other defects</span></li>
                     </ul>
@@ -388,6 +388,58 @@
                 <img src="../assets/statistics.png" alt="Statistics" id="image-statistics" class="image">
             </div>
 
+            <div id="annotation-info-card" style="display: none;">
+                <div id="info-header" style="display: flex; justify-content: space-between">
+                    <h3>Information about decisions</h3>
+                    <button class="close" onclick="closeAnnotationInfo()">&times;</button>
+                </div>
+                <div style="display: flex; justify-content: space-between; color: white; font-size: 12px;">
+                    <p><b>Microtubular defect:</b> Compound</p>
+                    <p><b>Dynein arms defect:</b> No arms missing</p>
+                    <p><b>Conf. level:</b> 90%</p>
+                </div>
+                <div>
+                    <h4>Decision tree
+                        <sup>
+                            <div class="tooltip-container">
+                                <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
+                                <div class="tooltip">Tooltip text goes here</div>
+                            </div>
+                        </sup>
+                    </h4>
+                    <div id="decision-tree">
+                        <img src="../assets/decision_tree.png">
+                    </div>
+                </div>
+                <div>
+                    <div class="row">
+                        <div class="left">
+                            <h4>Microtubular defect type
+                                <sup>
+                                    <div class="tooltip-container">
+                                        <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
+                                        <div class="tooltip">Tooltip text goes here</div>
+                                    </div>
+                                </sup>
+                            </h4>
+                            <img src="../assets/class.png" alt="Feature 1">
+                        </div>
+                        <div class="right">
+                            <h4>Dynein arms defect type
+                                <sup>
+                                    <div class="tooltip-container">
+                                        <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
+                                        <div class="tooltip">Tooltip text goes here</div>
+                                    </div>
+                                </sup>
+                            </h4>
+                            <img src="../assets/subclass.png" alt="Feature 2">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
             <div id="welcome-to-run-annotation">
                 <div id="welcome-to-run-annotation-content">
                     <button class="close" onclick="stopInboarding()">&times;</button>
@@ -492,7 +544,7 @@
                 </div>
             </div>
                         
-            <div id="modal-reminder" class="modal" style="display: block;">
+            <div id="modal-reminder" class="modal">
                 <div class="modal-content">
                     <div class="modal-body">
                         <p>Did you know you can <b>speed up the process</b> by running automatic annotation?</p>
@@ -625,7 +677,6 @@
                     </table>
                 </div>
             </div>
-
             <div class="collapsible" id="annotation-info">
                 <div class="collapsible-head" onclick="toggleCollapsible(this)">
                     <h3>Annotation info</h3>
@@ -671,7 +722,7 @@
                                         </sup>
                                         :
                                         </td>
-                                    <td class="conf-level chip">--%</td>
+                                        <td class="conf-level"><span class="chip" id="close-conf-level">--%</span> </td>
                                 </tr>
                             </table>
                         </div>
@@ -686,17 +737,6 @@
                 </div>
                 <div class="collapsible-content">
                     <textarea name="notes" id="notes" placeholder="Write your notes here"></textarea>
-                </div>
-            </div>
-            <div class="collapsible">
-                <div class="collapsible-head" onclick="toggleCollapsible(this)">
-                    <h3>Desicion tree</h3>
-                    <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
-                </div>
-                <div class="collapsible-content">
-                    <div id="decision-tree">
-                        <img src="../assets/decision_tree.png">
-                    </div>
                 </div>
             </div>
         </aside>
