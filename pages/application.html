@@ -492,7 +492,7 @@
                 </div>
             </div>
                         
-            <div id="modal-reminder" class="modal" style="display: block;">
+            <div id="modal-reminder" class="modal">
                 <div class="modal-content">
                     <div class="modal-body">
                         <p>Did you know you can <b>speed up the process</b> by running automatic annotation?</p>
@@ -666,7 +666,7 @@
                                         <sup>
                                             <div class="tooltip-container">
                                                 <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
-                                                <div class="tooltip">Tooltip text goes here</div>
+                                                <div class="tooltip">The confidence level indicates the degree of certainty in the accuracy of this prediction made by the AI.</div>
                                             </div>
                                         </sup>
                                         :
@@ -688,9 +688,16 @@
                     <textarea name="notes" id="notes" placeholder="Write your notes here"></textarea>
                 </div>
             </div>
-            <div class="collapsible">
+            <div id="decision-tree-collapsible" class="collapsible" style="display: none;">
                 <div class="collapsible-head" onclick="toggleCollapsible(this)">
-                    <h3>Desicion tree</h3>
+                    <h3>Desicion tree
+                        <sup>
+                            <div class="tooltip-container">
+                                <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
+                                <div class="tooltip" style="font-weight: 300;">The decision tree shows how the model<br> made decisions when creating its suggestion.</div>
+                            </div>
+                        </sup>
+                    </h3>
                     <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
                 </div>
                 <div class="collapsible-content">
