@@ -33,13 +33,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
 #modal-reminder {
     background-color: #006CEB;
-    top: 33%;
-    left: 44.9%;
+    top: 16%;
+    left: 44.4%;
     clip-path: polygon(50% 0%, 55% 20%, 100% 20%, 100% 100%, 0 100%, 0 20%, 45% 20%);
 }
 
