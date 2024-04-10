@@ -1,4 +1,4 @@
-#model-information, #feedback-AI-info {
+#model-information, #feedback-AI-info, #feedback-AI-info-success {
     display: none;
     justify-content: center;
     align-items: center;
@@ -37,12 +37,25 @@
     border-radius: 10px;
 }
 
+#feedback-AI-info-content-success {
+    width: 30%; 
+    height: 10%;
+    border: 0.8px solid #101021;
+    z-index: 100;
+    position: relative;
+    background-color: #101021;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    padding-bottom: 50px;
+}
+
 #model-information h3, #feedback-AI-info h3 {
    margin-left: 30px;
    margin-top: 20px;
 }
 
-#model-information-info, #feedback-AI-info-info {
+#model-information-info, #feedback-AI-info-info, feedback-AI-info-success-info {
     display: flex;
     padding-inline: 30px;
     padding-top: 5px;

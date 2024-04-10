@@ -108,8 +108,13 @@ const openAnnotation = (element) => {
 
 function closeFeedbackAI() {
     document.getElementById("feedback-AI-info").style.display = "none";
+    document.getElementById("feedback-AI-info-success").style.display = "flex";
 }
 
 function openFeedbackAI() {
     document.getElementById("feedback-AI-info").style.display = "flex";
+}
+
+function closeFeedbackSuccess() {
+    document.getElementById("feedback-AI-info-success").style.display = "none";
 }
