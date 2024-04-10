@@ -58,6 +58,10 @@ function showMoreInfo() {
     let image = document.getElementById('image-annotations');
     image.style.display = 'none';
 
+    var annotationInfo = document.getElementById('btnInfo');
+    annotationInfo.textContent = 'Hide more info';
+    annotationInfo.onclick = () => closeAnnotationInfo();
+
 }
 
 function closeAnnotationInfo() {
@@ -65,6 +69,11 @@ function closeAnnotationInfo() {
     let image = document.getElementById('image-annotations');
     info.style.display = 'none';
     image.style.display = 'block';
+    
+    var annotationInfo = document.getElementById('btnInfo');
+    annotationInfo.textContent = 'Show more info';
+    annotationInfo.onclick = () => showMoreInfo();
+
 }
 
 function showCounterfactual(imageId) {
