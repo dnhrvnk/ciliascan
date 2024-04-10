@@ -377,10 +377,20 @@ const simulate_click = () => {
   },4000)
 
   document.getElementById("warning-modal").style.display = "block";
+  document.getElementById("btn-run-annotation").onclick = null;
+  document.getElementById("btn-run-annotation").style.color = "grey";
+
+  document.getElementById("btn-reset-annotation").style.color = "white";
+  document.getElementById("btn-reset-annotation").onclick = delete_automatic;
 }
 
-
 const delete_automatic = () => {
+  document.getElementById("btn-run-annotation").onclick = simulate_click;
+  document.getElementById("btn-run-annotation").style.color = "white";
+
+  document.getElementById("btn-reset-annotation").style.color = "grey";
+  document.getElementById("btn-reset-annotation").onclick = null;
+
   let annots = document.querySelectorAll('.annotation.automatic');
   (annots)
   for (let a of annots){
