@@ -26,6 +26,12 @@
         </div>
     </div>
 
+    <div id="alertF11" class="modal" style="display: block; color: white; padding: 20px; text-align: center;">
+        <p>For a better user experience, please turn on fullscreen (<b>F11</b>).</p>
+        <p>Please note that the app was not made responsive, so some buttons and modal windows may be misplaced.</p>
+        <button class="button button-blue" onclick="closeAlertF11()">OK</button>
+    </div>
+
     <div class="onboarding">
         <img src="../assets/1page.png" alt="page1" id="onboarding-modal">
         <div id="implicit-feedback">
@@ -42,6 +48,10 @@
 </body>
 
 <script>
+    function closeAlertF11() {
+        document.getElementById("alertF11").style.display = "none";
+    }
+
     function changePage(step) {
         var img = document.getElementById('onboarding-modal');
         if(img.alt == "page1") {

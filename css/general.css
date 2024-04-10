@@ -54,6 +54,26 @@ button:hover {
     padding: 8px 15px;
 }
 
+.button-grey {
+    color: rgb(148, 148, 148);
+    border-color: rgb(148, 148, 148);
+    font-size: 13px;
+    padding: 8px 15px;
+    cursor: default;
+}
+
+.button-grey i {
+    color: rgb(148, 148, 148);
+}
+
+.button-grey i:hover {
+    cursor: default;
+}
+
+.button-grey:hover {
+    scale: 1;
+}
+
 .button-common {
     font-size: 13px;
     color: #7272a2;
@@ -83,11 +103,13 @@ button:hover {
     border-color: #29C740;
 }
 
+.button-active {
+    
+}
+
 .dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
     margin-right: 4px;
 }
-
-

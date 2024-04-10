@@ -17,6 +17,7 @@
     background-color: transparent;
     cursor: pointer;
     color: white;
+    transition: 0.3s ease-out;
 }
 
 .icon-upload {

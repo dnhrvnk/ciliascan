@@ -37,7 +37,7 @@ function inboarding() {
 
     let btn = document.querySelector('#dropdownMenuButton');
     btn.classList.remove('pulse');
-    let dot = document.querySelector('.notification-dot');
+    let dot = document.querySelector('#notification-dot');
     dot.style.display = "none";
 }
 
@@ -47,7 +47,7 @@ function stopInboarding() {
 
     let btn = document.querySelector('#dropdownMenuButton');
     btn.classList.remove('pulse');
-    let dot = document.querySelector('.notification-dot');
+    let dot = document.querySelector('#notification-dot');
     dot.style.display = "none";
     document.querySelector('#btn-run-annotation').onclick =  annot_callback;
 }

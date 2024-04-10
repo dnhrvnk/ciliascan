@@ -101,6 +101,24 @@
     margin-right: 5px;
 }
 
+.button-icons-disabled {
+    color: grey;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    margin-right: 5px;
+    cursor: default;
+}
+
+.button-icons-disabled i {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
+
 .button-icons i {
     margin: 0;
     padding: 0;
@@ -121,6 +139,12 @@
     border-right: 0.8px solid rgb(45, 45, 66);
     display: flex;
     padding-inline: 5px;
+}
+
+.button-active {
+    background-color: #006CEB;
+    padding: 10px;
+    scale: 1.1;
 }
 
 
@@ -218,7 +242,7 @@
     padding: 8px;
 }
 
-.notification-dot {
+#notification-dot {
     position: absolute;
     top: 0;
     right: 0;
@@ -226,6 +250,7 @@
     height: 8px;
     background-color: #FF5F58;
     border-radius: 50%;
+    display: none;
 }
 
 #settings-menu {

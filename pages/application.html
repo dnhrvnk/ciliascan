@@ -36,9 +36,9 @@
 
         <div class="nav-middle-side">
             <div class="dropdown">
-                <button class="button button-icons dropdown-toggle pulse" id="dropdownMenuButton" onclick="startInboarding()">
+                <button class="button button-icons-disabled dropdown-toggle" id="dropdownMenuButton" onclick="startInboarding()" disabled>
                   <i class="fa-regular fa-pen-to-square"></i>
-                  <span class="notification-dot"></span>
+                  <span id="notification-dot"></span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="run-annotation">
                   <a class="dropdown-item" href="#" id="btn-run-annotation" onclick="simulate_click()">Run annotation</a>
@@ -71,10 +71,10 @@
                 </button>
             </div>
             <div class="dropdown">
-                <button class="button button-icons dropdown-toggle" id="dropdownMenuButton">
+                <button class="button button-icons dropdown-toggle" id="dropdownMenuButton2">
                     <i class="mdi mdi-circle-opacity icon"></i>
                 </button>
-                <div class="dropdown-menu dm2" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-menu dm2" aria-labelledby="dropdownMenuButton2">
                     <input type="range" min="0" max="100" value="100" class="slider" id="myRange">
                     <div class="ranges">
                         <p>0</p>
@@ -88,15 +88,17 @@
         <div class="nav-right-side">
             <button class="button button-share"><i class="fa-regular fa-share-from-square icon-blue"></i>Share</button>
             <button class="button button-share"><i class="fa-solid fa-upload icon-blue"></i>Upload images</button>
-            <button class="button button-blue" onclick="export_annotations()"><i class="fa-solid fa-download icon"></i> Export</button>
+
+            
+            <button id="btn-export" class="button button-grey" onclick="export_annotations()" disabled><i class="fa-solid fa-download icon"></i> Export</button>
             
             <button class="button button-icons" style="margin-right: 0;" onclick="openModelInfo()"><i class="fa-solid fa-robot icon icon-nav"></i></button>
             
             <div class="dropdown">
-                <button class="button button-icons dropdown-toggle" id="dropdownMenuButton">
+                <button class="button button-icons dropdown-toggle" id="dropdownMenuButton3">
                     <span class="mdi mdi-cog-outline icon icon-nav"></span>
                 </button>
-                <div class="dropdown-menu" id="settings-menu" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-menu" id="settings-menu" aria-labelledby="dropdownMenuButton3">
                     <label class="dropdown-item" for="allow-collecting-data">
                         Allow collecting data
                         <input type="checkbox" id="allow-collecting-data">
@@ -166,6 +168,23 @@
         <div class="main-content">
             <div id="image-annotations">
                 <img src="" alt="" id="mainImage">
+            </div>
+            
+            <div id="warning-modal" class="modal" onclick="updateWarningMessage()">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="warning-expl">
+                            <i class="fa-solid fa-exclamation icon"></i>
+                        </div>
+                        <div id="warning-content">
+                            <div style="text-align: end;">
+                                <i class="fa-solid fa-chevron-up icon"></i>
+                            </div>
+                            <p><b>Number of undetermined cilias:</b> 10</p>
+                            <p><b>Number of undetermined dynein arms:</b> 26</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div id="model-information">
@@ -400,14 +419,7 @@
                 </div>
                 <hr>
                 <div>
-                    <h4>Decision tree
-                        <sup>
-                            <div class="tooltip-container">
-                                <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
-                                <div class="tooltip">The decision tree shows how the model<br> made decisions when creating its suggestion.</div>
-                            </div>
-                        </sup>
-                    </h4>
+                    <h4>Decision tree</h4>
                     <div id="decision-tree">
                         <img src="../assets/decision_tree.png">
                     </div>
@@ -416,39 +428,18 @@
                 <div>
                     <div class="row">
                         <div class="left">
-                            <h4>Microtubular defect type
-                                <sup>
-                                    <div class="tooltip-container">
-                                        <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
-                                        <div class="tooltip">Tooltip text goes here</div>
-                                    </div>
-                                </sup>
-                            </h4>
+                            <h4>Microtubular defect type</h4>
                             <img src="../assets/class.png" alt="Feature 1">
                         </div>
                         <div class="right">
-                            <h4>Dynein arms defect type
-                                <sup>
-                                    <div class="tooltip-container">
-                                        <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
-                                        <div class="tooltip">Tooltip text goes here</div>
-                                    </div>
-                                </sup>
-                            </h4>
+                            <h4>Dynein arms defect type</h4>
                             <img src="../assets/subclass.png" alt="Feature 2">
                         </div>
                     </div>
                     <hr style="margin-top: 30px;">
                     <div class="row">
                         <div class="left">
-                            <h4>Microtubular defect feature
-                                <sup>
-                                    <div class="tooltip-container">
-                                        <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
-                                        <div class="tooltip">Tooltip text goes here</div>
-                                    </div>
-                                </sup>
-                            </h4>
+                            <h4>Microtubular defect feature</h4>
                             <img src="../assets/class_shape.png" alt="Feature 1">
                         </div>
                         <div class="right">
@@ -470,14 +461,7 @@
                             <img src="../assets/compound1.png" alt="Cilia" style="width: 80%; border-radius: 10px;">
                         </div>
                         <div>
-                            <h4>Similiar compound cilias with no missing arms:
-                                <sup>
-                                    <div class="tooltip-container">
-                                        <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
-                                        <div class="tooltip">The decision tree shows how the model<br> made decisions when creating its suggestion.</div>
-                                    </div>
-                                </sup>
-                            </h4>
+                            <h4>Similiar compound cilias with no missing arms:</h4>
                             <div style="display:flex; column-gap: 30px;">
                                 <img src="../assets/compound2.png" alt="Cilia" style="width: 100px; border-radius: 10px;">
                                 <img src="../assets/compound3.png" alt="Cilia" style="width: 100px; border-radius: 10px;">
@@ -489,14 +473,7 @@
                     <hr style="margin-top: 30px;">
                     <div class="row">
                         <div>
-                            <h4>Why is it not other defect?
-                                <sup>
-                                    <div class="tooltip-container">
-                                        <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
-                                        <div class="tooltip">The decision tree shows how the model<br> made decisions when creating its suggestion.</div>
-                                    </div>
-                                </sup>
-                            </h4>
+                            <h4>Why is it not other defect:</h4>
                             <div class="Counterfactual-nav">
                                 <a href="#" onclick="showCounterfactual('Counterfactual-disarranged')" id="Counterfactual-disarranged-link" class="active">Disarranged</a>
                                 <a href="#" onclick="showCounterfactual('Counterfactual-extra-tubule')" id="Counterfactual-extra-tubule-link">Extra Tubule</a>
@@ -601,23 +578,6 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <p>Loading</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="warning-modal" class="modal" onclick="updateWarningMessage()">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div id="warning-expl">
-                            <i class="fa-solid fa-exclamation icon"></i>
-                        </div>
-                        <div id="warning-content">
-                            <div style="text-align: end;">
-                                <i class="fa-solid fa-chevron-up icon"></i>
-                            </div>
-                            <p><b>Number of undetermined cilias:</b> 10</p>
-                            <p><b>Number of undetermined dynein arms:</b> 26</p>
-                        </div>
                     </div>
                 </div>
             </div>

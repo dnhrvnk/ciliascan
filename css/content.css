@@ -385,11 +385,9 @@ padding-left: 10px;
     margin: 0px;
 }
 
-/* Base style for tooltip */
 .tooltip-container {
-    position: relative;
+    position: absolute;
     display: inline-block;
-    z-index: 1;
 }
 
 .tooltip {
@@ -489,9 +487,9 @@ padding-left: 10px;
     background-color: #FEBC2E;
     border: #FEBC2E solid;
     transition: 0.3s ease-out;
-    position: relative;
-    top: -47%;
-    left: 47%;
+    position: absolute;
+    top: 13%;
+    left: 75%;
     cursor: pointer;
     z-index: 0;
     display: none;
@@ -504,7 +502,7 @@ padding-left: 10px;
 #warning-modal .fa-exclamation {
     font-size: 13px; 
     font-weight: 900;
-    padding-inline: 3px;
+    padding-inline: 0px;
     color: #101021;
 }
 
