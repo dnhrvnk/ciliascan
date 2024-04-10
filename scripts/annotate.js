@@ -259,12 +259,12 @@ const create_annot_areas = ()=> {
 }
 
 const open_loading = () => {
-  let loading = document.getElementById('modal-loading');
+  let loading = document.getElementById('modal-loading-overlay');
   loading.style.display = 'block';
 }
 
 const close_loading = () => {
-  let loading = document.getElementById('modal-loading');
+  let loading = document.getElementById('modal-loading-overlay');
   loading.style.display = 'none';
 }
 

@@ -1,6 +1,6 @@
 function export_annotations() {
     if(run_annotation) {
-        let modal = document.getElementById("generate-modal");
+        let modal = document.getElementById("modal-ggg-overlay");
         modal.style.display = "block";
     }
     else {
@@ -9,16 +9,16 @@ function export_annotations() {
 }
 
 function show_succsess() {
-    document.getElementById("succesful-generate-modal").style.display = "block";
-    document.getElementById("generate-modal").style.display = "none";
+    document.getElementById("modal-succ-overlay").style.display = "block";
+    document.getElementById("modal-ggg-overlay").style.display = "none";
 }
 
 function closeGenerate() {
-    document.getElementById("generate-modal").style.display = "none";
+    document.getElementById("modal-ggg-overlay").style.display = "none";
 }
 
 function closeSuccessGenerate() {
-    document.getElementById("succesful-generate-modal").style.display = "none";
+    document.getElementById("modal-succ-overlay").style.display = "none";
 }
 
 function updateWarningMessage() {
@@ -26,7 +26,7 @@ function updateWarningMessage() {
     let expl = document.getElementById("warning-expl");
     let modal = document.getElementById("warning-modal");
     console.log(msg.style)
-    if(msg.style.display == "none") {
+    if(msg.style.display == "none" || msg.style.display == "") {
         msg.style.display = "block";
         expl.style.display = "none";
         modal.style.left = "60%";
@@ -38,10 +38,5 @@ function updateWarningMessage() {
         //modal.style.top = null;
     }
 
-    if (msg.style.maxHeight === "0px") {
-        msg.style.maxHeight = msg.scrollHeight + "px";
-    } else {
-        msg.style.maxHeight = "0px";
-    }
 }
 

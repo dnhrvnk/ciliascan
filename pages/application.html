@@ -496,29 +496,33 @@
                 </div>
             </div>
 
-            <div id="generate-modal" class="modal" style="width: 30%;">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <span class="icon close" onclick="closeGenerate()">&times;</span>
-                    </div>
-                    <div class="modal-body">
-                        <p><b style="color: #006CEB; font-size: 13px;">Are you sure that you want to generate annotations?</b></p>
-                        <p>Please note that the AI-generated output is provided for assistance purposes. While the AI model strives to provide accurate predictions, it may not always be correct, and there is a possibility of errors or inaccuracies.</p>
-                    </div>
-                    <div class="modal-footer" style="justify-content: center; margin-top: 20px;">
-                        <button class="button button-blue" onclick="show_succsess()">Generate</button>
+            <div class="modal-overlay" id="modal-ggg-overlay">
+                <div id="generate-modal" class="modal" style="width: 30%;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="icon close" onclick="closeGenerate()">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            <p><b style="color: #006CEB; font-size: 13px;">Are you sure that you want to generate annotations?</b></p>
+                            <p>Please note that the AI-generated output is provided for assistance purposes. While the AI model strives to provide accurate predictions, it may not always be correct, and there is a possibility of errors or inaccuracies.</p>
+                        </div>
+                        <div class="modal-footer" style="justify-content: center; margin-top: 20px;">
+                            <button class="button button-blue" onclick="show_succsess()">Generate</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div id="succesful-generate-modal" class="modal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <span class="icon close" onclick="closeSuccessGenerate()">&times;</span>
-                    </div>
-                    <div class="modal-body" style="text-align: center;">
-                        <i class="fa-solid fa-circle-check" style="font-size: 60px; color: #29C740; margin-top: 20px;"></i>
-                        <p style="margin-top: 20px; margin-bottom: 10px;">Annotation were succesfully generated.</p>
+            <div class="modal-overlay" id="modal-succ-overlay">
+                <div id="succesful-generate-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="icon close" onclick="closeSuccessGenerate()">&times;</span>
+                        </div>
+                        <div class="modal-body" style="text-align: center;">
+                            <i class="fa-solid fa-circle-check" style="font-size: 60px; color: #29C740; margin-top: 20px;"></i>
+                            <p style="margin-top: 20px; margin-bottom: 10px;">Annotation were succesfully generated.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -566,15 +570,16 @@
                     </div>
                 </div>
             </div>
-
-            <div id="modal-loading" class="modal loading">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <p>Loading</p>
+            <div class="modal-overlay" id="modal-loading-overlay">
+                <div class="modal loading" id="modal-loading">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <p>Loading</p>
+                        </div>
                     </div>
                 </div>
             </div>
-                        
+                  
             <div id="modal-reminder" class="modal">
                 <div class="modal-content">
                     <div class="modal-body">
