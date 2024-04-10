@@ -403,14 +403,32 @@
                 </div>
             </div>
 
+            <div id="feedback-AI-info">
+                <div id="feedback-AI-info-content">
+                    <div id="feedback-AI-info-header "style="display: flex;">
+                        <h3>Is any decision wrong?</h3>
+                        <button class="close" onclick="closeFeedbackAI()">&times;</button>
+                    </div>
+                    <div id="feedback-AI-info-info">
+                        <textarea id="decision-textarea" placeholder="Write where AI did something wrong here..."></textarea>
+                    </div>
+                    <div style="text-align: end; padding-inline: 20px;">
+                        <button class="button button-blue" onclick="closeFeedbackAI()">Send</button>
+                    </div>
+                </div>
+            </div>
+
             <div id="statistics">
                 <img src="../assets/statistics.png" alt="Statistics" id="image-statistics" class="image">
             </div>
 
-            <div id="annotation-info-card">
-                <div id="info-header" style="display: flex; justify-content: space-between">
-                    <h3>Information about AI decision</h3>
-                    <button class="close" onclick="closeAnnotationInfo()">&times;</button>
+            <div id="annotation-info-card" style="display: block;">
+                <div id="info-header" style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3>Information about AI decisions</h3>
+                    <div style="display: flex;">
+                        <button class="close"><i class="fa-solid fa-message" style="font-size: 13px;" onclick="openFeedbackAI()"></i></button>
+                        <button class="close" onclick="closeAnnotationInfo()">&times;</button>
+                    </div>
                 </div>
                 <div style="display: flex; justify-content: space-between; color: white; font-size: 15px;">
                     <p><b>Microtubular defect:</b> Compound</p>

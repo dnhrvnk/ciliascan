@@ -105,3 +105,11 @@ const openAnnotation = (element) => {
     var annotation = element.children[0];
     seenImage(annotation)
 }
+
+function closeFeedbackAI() {
+    document.getElementById("feedback-AI-info").style.display = "none";
+}
+
+function openFeedbackAI() {
+    document.getElementById("feedback-AI-info").style.display = "flex";
+}
