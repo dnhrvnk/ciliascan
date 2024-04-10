@@ -190,17 +190,28 @@
 }
 
 .table-annotations td:nth-child(4){
-padding-left: 10px;
+    padding-left: 10px;
 }
 
 .table-annotations td:nth-child(4) > *:hover {
     cursor: pointer;
-    color: red;
+    color: #FF5F58;
+    scale: 1.1;
 }
 
 .table-annotations tr,  .table-annotation-info tr {
     line-height: 3;
     justify-content: center;
+}
+
+.fa-trash-can {
+    transition: 0.2s ease-in-out;
+}
+
+.fa-trash-can:hover {
+    cursor: pointer;
+    color: #FF5F58;
+    scale: 1.1;
 }
 
 .table-annotations tr:hover {
