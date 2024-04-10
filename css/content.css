@@ -386,21 +386,18 @@ padding-left: 10px;
 }
 
 .tooltip-container {
-    position: absolute;
     display: inline-block;
 }
 
 .tooltip {
+    position: absolute;
     visibility: hidden;
     width: max-content;
     background-color: #7272a2;
     color: white;
     padding-inline: 4px 10px;
     border-radius: 10px;
-    position: absolute;
     z-index: 1;
-    bottom: 90%;
-    left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
     overflow: hidden;
