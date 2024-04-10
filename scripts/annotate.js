@@ -334,7 +334,7 @@ annot_space.onclick = (event) => {
   count+=1;
   create_annot(event.pageX,event.pageY)
   console.log(count)
-  if((count+1) % 6  ==0){
+  if((count+1) % 6  ==0 && document.getElementById("btn-run-annotation").onclick !== null){
     console.log('adsadsa')
     modal_reminder.classList.add('show')
     setTimeout(()=>{
