@@ -81,8 +81,10 @@ const update_rightside = (row) => {
       i.className = keep.join(' ');
 
     }
-    if (confLevelCell.firstChild != null)
-      confLevelCell.textContent = '--%'
+    if (confLevelCell.firstChild != null){
+      ccc.textContent = '--%'
+      confLevelCell.innerHTML = ccc.outerHTML
+    }
     calc_chips();
   }
 
@@ -95,8 +97,10 @@ const update_rightside = (row) => {
       console.log(keep)
       i.className = keep.join(' ');
     }
-    if (confLevelCell.firstChild != null)
-      confLevelCell.textContent = '--%'
+    if (confLevelCell.firstChild != null) {
+        ccc.textContent = '--%'
+        confLevelCell.innerHTML = ccc.outerHTML
+    }
 
     calc_chips();
   }
