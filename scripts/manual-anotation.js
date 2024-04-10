@@ -41,18 +41,6 @@ function seenImage(element) {
         let tutorial = document.querySelector('#manual-anotate-modal');
         tutorial.style.display = "flex";
         manualAnnotateTutorial = true;
-
-        let btn_export = document.getElementById('btn-export');
-        btn_export.disabled = false;
-        btn_export.classList.remove("button-grey");
-        btn_export.classList.add("button-blue");
-
-        let btn_automatic = document.getElementById("dropdownMenuButton");
-        btn_automatic.disabled = false;
-        btn_automatic.classList.add("pulse");
-        btn_automatic.classList.remove("button-icons-disabled");
-        btn_automatic.classList.add("button-icons");
-        document.getElementById("notification-dot").style.display = "block";
     }
 }
 
@@ -246,9 +234,25 @@ function closeManual() {
             console.log(element.onclick)
         })
     }
+    let btn_export = document.getElementById('btn-export');
+    btn_export.classList.remove("button-grey");
+    btn_export.disabled = false;
+    btn_export.classList.add("button-blue");
+    
+    let btn_automatic = document.getElementById("dropdownMenuButton");
+    btn_automatic.disabled = false;
+    btn_automatic.classList.add("pulse");
+    btn_automatic.classList.remove("button-icons-disabled");
+    btn_automatic.classList.add("button-icons");
+    document.getElementById("notification-dot").style.display = "block";
+
+    let btn_annotations = document.getElementById("mtds-tool-btn");
+    btn_annotations.classList.add("button-active");
+    
     if(area_callback) {
         document.getElementById("mainImage") = area_callback
     }
+
 }
 
 function backManual() {

@@ -196,13 +196,23 @@ transition: all 0.3s ease-in-out;
 
 .table-annotations td:nth-child(4) > *:hover {
     cursor: pointer;
-    color: red;
+    color: #FF5F58;
     scale: 1.1;
 }
 
 .table-annotations tr,  .table-annotation-info tr {
     line-height: 3;
     justify-content: center;
+}
+
+.fa-trash-can {
+    transition: 0.2s ease-in-out;
+}
+
+.fa-trash-can:hover {
+    cursor: pointer;
+    color: #FF5F58;
+    scale: 1.1;
 }
 
 .table-annotations tr:hover {
@@ -388,21 +398,18 @@ transition: all 0.3s ease-in-out;
 }
 
 .tooltip-container {
-    position: absolute;
     display: inline-block;
 }
 
 .tooltip {
+    position: absolute;
     visibility: hidden;
     width: max-content;
     background-color: #7272a2;
     color: white;
     padding-inline: 4px 10px;
     border-radius: 10px;
-    position: absolute;
     z-index: 1;
-    bottom: 90%;
-    left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
     overflow: hidden;

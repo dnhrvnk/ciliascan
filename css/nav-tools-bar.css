@@ -143,10 +143,9 @@
 
 .button-active {
     background-color: #006CEB;
-    padding: 10px;
     scale: 1.1;
+    padding: 10px;
 }
-
 
 .dm {
     height: 50px;
