@@ -107,7 +107,9 @@ const row_click_callback = (row) => {return (event) => {
 
   // Extract information from the clicked row
   var icon = row.cells[0].children[0].id
-  annotate_list.querySelector(`#${icon}`).click();
+  let annot = annotate_list.querySelector(`#${icon}`)
+  if(!annot.classList.contains('selected'))
+    annotate_list.querySelector(`#${icon}`).click();
 }
 }
 
