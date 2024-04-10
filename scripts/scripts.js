@@ -1,30 +1,4 @@
 
-
-/*function toggleEye(element) {
-    var mainImageSrc = document.getElementById('mainImage').src;
-    var clickedImageSrc = element.closest('.uploaded-image').querySelector('img').src;
-
-    if (element.classList.contains('fa-eye')) {
-        element.classList.remove('fa-eye');
-        element.classList.add('fa-eye-slash');
-        
-        var parentElement = element.closest('.uploaded-image');
-        parentElement.classList.remove('seen');
-        
-        if (mainImageSrc == clickedImageSrc) {
-            document.getElementById('mainImage').src = "";
-        }
-    } else {
-        element.classList.remove('fa-eye-slash');
-        element.classList.add('fa-eye');
-        
-        var parentElement = element.closest('.uploaded-image');
-        parentElement.classList.add('seen');
-
-        document.getElementById('mainImage').src = clickedImageSrc;
-    }   
-}*/
-
 function searchImages() {
     var searchTerm = document.querySelector('.search').value.toLowerCase();
     var images = document.querySelectorAll('.uploaded-image');
@@ -61,34 +35,6 @@ function toggleCollapsible(element) {
     element.classList.toggle('collapsed');
     content.classList.toggle('collapsed');
     icon.classList.toggle('rotate');
-}
-
-
-function toggleAnnotations(element, img) {
-    var annotationsDiv = element.parentElement.parentElement.nextElementSibling;
-    var chevronIcon = element;
-
-    document.getElementById('mainImage').src = img;
-    document.getElementById('mainImage').alt = img;
-
-    var isOpen = annotationsDiv.classList.contains('active');
-
-    var openAnnotations = document.querySelectorAll('.uploaded-image-annotations.active');
-    openAnnotations.forEach(function(annotation) {
-        annotation.classList.remove('active');
-    });
-
-    var rotatedChevronIcons = document.querySelectorAll('.fa-chevron-right.rotate-right');
-    rotatedChevronIcons.forEach(function(rotatedIcon) {
-        rotatedIcon.classList.remove('rotate-right');
-    });
-
-    if (!isOpen) {
-        annotationsDiv.classList.add("active");
-        chevronIcon.classList.add('rotate-right');
-    }
-
-    element.parentNode.parentNode.classList.add('seen'); 
 }
 
 function rotateArrow() {
@@ -152,3 +98,10 @@ document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
         dropdownMenu.classList.toggle('show');
     });
 });
+
+
+const openAnnotation = (element) => {
+    console.log(element)
+    var annotation = element.children[0];
+    seenImage(annotation)
+}

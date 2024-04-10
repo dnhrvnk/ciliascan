@@ -81,8 +81,10 @@ const update_rightside = (row) => {
       i.className = keep.join(' ');
 
     }
-    if (confLevelCell.firstChild != null)
-      confLevelCell.textContent = '--%'
+    if (confLevelCell.firstChild != null){
+      ccc.textContent = '--%'
+      confLevelCell.innerHTML = ccc.outerHTML
+    }
     calc_chips();
   }
 
@@ -95,8 +97,10 @@ const update_rightside = (row) => {
       console.log(keep)
       i.className = keep.join(' ');
     }
-    if (confLevelCell.firstChild != null)
-      confLevelCell.textContent = '--%'
+    if (confLevelCell.firstChild != null) {
+        ccc.textContent = '--%'
+        confLevelCell.innerHTML = ccc.outerHTML
+    }
 
     calc_chips();
   }
@@ -107,7 +111,9 @@ const row_click_callback = (row) => {return (event) => {
 
   // Extract information from the clicked row
   var icon = row.cells[0].children[0].id
-  annotate_list.querySelector(`#${icon}`).click();
+  let annot = annotate_list.querySelector(`#${icon}`)
+  if(!annot.classList.contains('selected'))
+    annotate_list.querySelector(`#${icon}`).click();
 }
 }
 
@@ -159,7 +165,6 @@ const select_annotation = (annot) => {
   annot_row.parentElement.parentElement.classList.add('selected-row');
 
   update_rightside(annot_row.parentElement.parentElement)
-  document.getElementById("decision-tree-collapsible").style.display = "block";
 }
 
 
