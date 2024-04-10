@@ -55,6 +55,12 @@ let annotation_list = []
 
 
 const update_rightside = (row) => {
+  if (row == undefined){
+    mtds.value = ''
+    dynein.value = undefined
+    confLevelCell.innerHTML = '<div id="close-conf-level">--%</div>'
+    return
+  }
   let icon = row.cells[0].children[0]
   var defectType = row.cells[1].textContent.trim();
   var confLevel = row.cells[2].querySelector('.chip')?.textContent.trim();
@@ -339,6 +345,10 @@ annot_space.onclick = (event) => {
 
 
 const delete_annot = (annot_id) => {
+  let id = document.querySelectorAll('.annotation.selected')[0]?.id;
+  console.log(id)
+  if( id == annot_id)
+    update_rightside(undefined)
   annotate_list.removeChild(annotate_list.querySelector(`#${annot_id}`))
   image_list = document.getElementById(`${selected_image}-annotations-table`)
   image_list.removeChild(image_list.querySelector((`#${annot_id}`)).parentElement.parentElement)
