@@ -7,6 +7,7 @@
   margin: 20px 0px;
   height: 75vh;
   overflow-y: scroll;
+  display: none;
 }
 
 #annotation-info-card::-webkit-scrollbar {

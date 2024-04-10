@@ -50,6 +50,7 @@ function stopInboarding() {
     let dot = document.querySelector('.notification-dot');
     dot.style.display = "none";
     document.querySelector('#btn-run-annotation').onclick =  annot_callback;
+    document.querySelector('#btn-run-annotation').style.backgroundColor = null;
 }
 
 
@@ -100,7 +101,7 @@ function nextStep() {
 
     if(currentStep == 0) {
         modalBody.innerHTML = 'To activate automatic annotation, simply select "<b>Run Annotation</b>" in dropdown menu. <br><br>Our AI technology will then swiftly analyze the current image, highlighting celia for further review.';
-        modalFooter.textContent = "1 of 8";
+        modalFooter.textContent = "1 of 7";
 
         let btn_run_annotation = document.querySelector('#btn-run-annotation');
         btn_run_annotation.style.backgroundColor = "#006CEB";
@@ -128,12 +129,12 @@ function nextStep() {
         modal.style.top = "150px"
         modal.style.left = "850px"
 
-        modalFooter.textContent = "2 of 8";
+        modalFooter.textContent = "2 of 7";
         
         currentStep = 2;
     } else if(currentStep == 2) {
         modalBody.innerHTML = "This is <b>list of annotations</b> for the image.";
-        modalFooter.textContent = "3 of 8";
+        modalFooter.textContent = "3 of 7";
         
         var mainImage = document.getElementById('mainImage');
         mainImage.style.border = "none";
@@ -148,7 +149,7 @@ function nextStep() {
         currentStep = 3;
     } else if(currentStep == 3) {
         modalBody.innerHTML = "This is the <b>confidence level</b> of the annotated cilia. <br><br> If the confidence level is <b>high</b>, the annotation is likely accurate. <br><br> If the confidence level is <b>low</b>, the annotation may not be accurate and needs to be revalidated.";
-        modalFooter.textContent = "4 of 8";
+        modalFooter.textContent = "4 of 7";
 
         let chips = document.querySelectorAll('.chip');
         for (var i = 0; i < chips.length; i++) { 
@@ -167,7 +168,7 @@ function nextStep() {
         currentStep = 4;   
     } else if(currentStep == 4) {
         modalBody.innerHTML = "Select an annotation to <b>view the details</b> and <b>edit the annotation</b> by clicking on the row.";
-        modalFooter.textContent = "5 of 8";
+        modalFooter.textContent = "5 of 7";
 
         document.getElementById('nextStep').style.display = 'none'
 
@@ -189,7 +190,7 @@ function nextStep() {
         currentStep = 5;
     } else if(currentStep == 5) {
         modalBody.innerHTML = "Here are details of the selected annotation. <br><br> You can <b>edit the annotation</b> by selecting the correct microtubular defect or dynein arms from the dropdown menu.";
-        modalFooter.textContent = "6 of 8";
+        modalFooter.textContent = "6 of 7";
 
         let modal = document.getElementById('modal');
         modal.style.top = "310px"
@@ -206,7 +207,7 @@ function nextStep() {
         annotationInfo.style.borderTop = "0.8px solid #006CEB";
         annotationInfo.style.borderBottom = "0.8px solid #006CEB";
 
-        currentStep = 6;
+        currentStep = 7;
     } else if(currentStep == 6) {
         modalBody.innerHTML = "";
         modalFooter.textContent = "7 of 8";
@@ -223,7 +224,7 @@ function nextStep() {
         currentStep = 7;
     } else if (currentStep == 7) {
         modalBody.innerHTML = "You have successfully completed the tutorial. <br><br> Click on the <b>Done</b> button to continue.";
-        modalFooter.textContent = "8 of 8";
+        modalFooter.textContent = "7 of 7";
 
         let modal = document.getElementById('modal');
         modal.style.top = "40%"
