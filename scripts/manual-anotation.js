@@ -116,6 +116,11 @@ function nextManual() {
         modal.style.top = "30%";
         modal.style.left = "32%";
 
+        
+        if(area_callback) {
+            document.getElementById("mainImage").onclick = area_callback
+        }
+
         step = 2;
     } else if(step == 2) {
         modalBody.innerHTML = "Now that you've selected the microtubular defect, it's time to annotate the image by placing annotations directly on the areas of interest. <br><br> Position your cursor over the area of the image where the defect is located. <b>Click on the image to place an annotation</b> at that precise point.";
@@ -126,7 +131,7 @@ function nextManual() {
         console.log(dropdown.classList)
 
         document.querySelectorAll('#mtds-tool-dropdown-content li').forEach((element) => {
-            element.onclick = call_backs.pop()
+            console.log(element.onclick)
         })
 
         area = document.getElementById("mainImage")

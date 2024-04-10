@@ -29,13 +29,13 @@ function updateWarningMessage() {
     if(msg.style.display == "none") {
         msg.style.display = "block";
         expl.style.display = "none";
-        modal.style.left = "35%";
-        modal.style.top = "-45%";
+        modal.style.left = "60%";
+        //modal.style.top = "-45%";
     } else {
         msg.style.display = "none";
         expl.style.display = "block";
-        modal.style.left = "47%";
-        modal.style.top = "-47%";
+        modal.style.left = null;
+        //modal.style.top = null;
     }
 
     if (msg.style.maxHeight === "0px") {
