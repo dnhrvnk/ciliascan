@@ -31,7 +31,7 @@
     <nav class="nav-tools-bar">
         <div class="nav-left-side">
             <img src="../assets/logo-icon.svg" alt="Logo Icon" class="logo">
-            <h5>CiliaScan modul</h5>
+            <h5>CookieScan modul</h5>
         </div>
 
         <div class="nav-middle-side">
@@ -41,8 +41,8 @@
                   <span id="notification-dot"></span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="run-annotation">
-                  <a class="dropdown-item" href="#" id="btn-run-annotation" onclick="simulate_click()">Run annotation</a>
-                  <a class="dropdown-item" href="#" id="btn-reset-annotation" onclick="" style="color: grey">Reset annotation</a>
+                  <a class="dropdown-item" href="#" id="btn-run-annotation" onclick="simulate_click()">Spusti anotáciu</a>
+                  <a class="dropdown-item" href="#" id="btn-reset-annotation" onclick="" style="color: grey">Resetuj anotáciu</a>
                 </div>
             </div>
               
@@ -82,8 +82,8 @@
         </div>
 
         <div class="nav-right-side">
-            <button class="button button-share"><i class="fa-regular fa-share-from-square icon-blue"></i>Share</button>
-            <button class="button button-share"><i class="fa-solid fa-upload icon-blue"></i>Upload images</button>
+            <button class="button button-share"><i class="fa-regular fa-share-from-square icon-blue"></i>Zdieľaj</button>
+            <button class="button button-share"><i class="fa-solid fa-upload icon-blue"></i>Nahraj obrázky</button>
 
             
             <button id="btn-export" class="button button-grey" onclick="export_annotations()" disabled><i class="fa-solid fa-download icon"></i> Export</button>
@@ -96,11 +96,11 @@
                 </button>
                 <div class="dropdown-menu" id="settings-menu" aria-labelledby="dropdownMenuButton3">
                     <label class="dropdown-item" for="allow-collecting-data">
-                        Allow collecting data
+                        Povoliť zber údajov
                         <input type="checkbox" id="allow-collecting-data">
                         <span class="toggle"></span>
                     </label>
-                    <a class="dropdown-item" href="#" onclick="openExplicitFeedback()">Send us feedback</a>
+                    <a class="dropdown-item" href="#" onclick="openExplicitFeedback()">Daj nám spätnú väzbu</a>
                 </div>
             </div>
         </div>
@@ -109,17 +109,17 @@
     <main class="main">
         <aside class="left-aside">
             <div class="search-div">
-                <input type="text" class="search" placeholder="Search image" oninput="searchImages()">
+                <input type="text" class="search" placeholder="Vyhľadaj obrázok" oninput="searchImages()">
                 <i class="fa-solid fa-xmark icon icon-clear-search" onclick="clearSearch()"></i>
             </div>            
             <div class="button-for-images">
                 <button class="button button-common">
                     <i class="fa-regular fa-trash-can icon icon-common"></i>
-                    Delete all images
+                    Vymaž obrázky
                 </button>
             </div>
             <div class="uploaded-images">
-                <div id="noAnnotationMessage">No annotation found</div>
+                <div id="noAnnotationMessage">Obrázok neexistuje</div>
                 
                 <div class="uploaded-image">
                     <div class="uploaded-image-collapsible" onclick="openAnnotation(this)">
@@ -252,8 +252,8 @@
                             <div style="text-align: end;">
                                 <i class="fa-solid fa-chevron-up icon"></i>
                             </div>
-                            <p><b>Number of undetermined cilias:</b> 10</p>
-                            <p><b>Number of undetermined dynein arms:</b> 26</p>
+                            <p><b>Počet neoznačených príchutí:</b> 4</p>
+                            <p><b>Počet neoznačených typov kúskov:</b> 11</p>
                         </div>
                     </div>
                 </div>
@@ -262,197 +262,152 @@
             <div id="model-information">
                 <div id="model-information-content">
                     <div id="model-information-header "style="display: flex;">
-                        <h3>Introduction to Our AI Model</h3>
+                        <h3>Predstavenie nášho modelu umelej inteligencie</h3>
                         <button class="close" onclick="closeModelInformation()">&times;</button>
                     </div>
                     <div id="model-information-info">
                         <div id="model-nav">
-                            <a href="#" onclick="showContent('overview')" id="overview-link" class="active">Overview</a>
-                            <a href="#" onclick="showContent('microtubular-defect')" id="microtubular-defect-link">Microtubular defects</a>
-                            <a href="#" onclick="showContent('dynein-arms')" id="dynein-arms-link">Dynein arms</a>
+                            <a href="#" onclick="showContent('overview')" id="overview-link" class="active">Prehľad</a>
+                            <a href="#" onclick="showContent('microtubular-defect')" id="microtubular-defect-link">Príchute sušienok</a>
+                            <a href="#" onclick="showContent('dynein-arms')" id="dynein-arms-link">Typy kúskov v sušienkach</a>
                         </div>
                         <div id="model-content">
                             <div id="overview" class="content-section">
-                                <h4>Overview</h4>
-                                <p>Our cutting-edge AI model is designed to <b>assist in the annotation and analysis of cilia for PCD diagnosis.</b></p>
-                                <p>Our AI model is meticulously trained on a vast dataset of annotated microscopic images, meticulously labeled by expert pathologists. </p>
-                                <p>Through advanced machine learning algorithms, the model has been primed to identify and classify various features of cilia with remarkable precision.</p>
+                                <h4>Prehľad</h4>
+                                <p>Náš špičkový model umelej inteligencie je navrhnutý tak, aby <b>pomáhal pri anotácii a analýze sušienok na diagnostiku SušienkoChoroby</b>.</p>
+                                <p>Náš model AI je starostlivo vycvičený na rozsiahlom súbore anotovaných snímok sušienok, ktoré starostlivo označili sušienkoexperti. </p>
+                                <p>Prostredníctvom pokročilých algoritmov strojového učenia bol model vycvičený na identifikáciu a klasifikáciu rôznych vlastností sušienok s pozoruhodnou presnosťou.</p>
                                 <hr>
-                                <h4>Limitations</h4>
-                                <p>Like any AI system, occasional false positives or false negatives may occur. </p>
-                                <p>Therefore, <b>human oversight and validation remain crucial</b> in interpreting the model's annotations.</p>
-                                <p>Also, our model <b>does not annotate all cilia</b> but only those that are mostly certain.</p>
-                                <p>Thus, the images still need to be checked and annotated.</p>
+                                <h4>Limitácie</h4>
+                                <p>Ako pri každom systéme umelej inteligencie sa môžu občas vyskytnúť falošne pozitívne alebo falošne negatívne výsledky.</p>
+                                <p>Preto <b>ľudská kontrola</b> je kľúčová pri interpretácii označení modelu.</p>
+                                <p>Takisto náš model <b>neanotuje všetky sušienky</b>, ale len tie, s ktorými si je najviac istý.</p>
+                                <p>Obrázky je teda potrebné ešte skontrolovať a poprípadne opraviť.</p>
                                 <hr>
-                                <h4>Performance</h4>
-                                <p><b>Mean predictor error:</b> ±5%</p>
-                                <p><b>Max predictor error:</b>  ±15%</p>
-                               <p>The AI tool can explain 85% of the variation od the training data</p>
-                               
+                                <h4>Výkonnosť</h4>
+                                <p><b>Priemerná chyba modelu:</b> ±5%</p>
+                                <p><b>Maximálna chyba modelu:</b>  ±15%</p>
+                                <p>Nástroj umelej inteligencie dokáže vysvetliť 85 % odchýlok od trénovaných údajov</p>
                             </div>
                             <div id="microtubular-defect" class="content-section" style="display: none;">
-                                <h4>Microtubular defect</h4>
-                                <p>Our model was trained to recognize microtubular defects in the cilia. </p>
+                                <h4>Príchute sušienok</h4>
+                                <p>Náš model bol natrénovaný určiť príchuť sušienky.</p>
                                 <hr>
-                                <p style="font-size: 13px;"><b>The numbers of microtubular defects that were present in the images in the dataset on which the model was trained are:</b></p>
+                                <p style="font-size: 13px;"><b>Počty príchutí sušienok, ktoré boli na snímkach v súbore údajov, na ktorých bol model natrénovaný:</b></p>
                                 <div style="text-align: center;">
                                     <img src="../assets/dataset-defects.png" alt="dataset-defects" width="60%" height="auto">
                                 </div>
                                 <hr>
-                                <p style="font-size: 13px;">Based on these <b>rules</b>, our AI model learned to recognize microtubular defects:</p>
+                                <p style="font-size: 13px;">Na základe týchto <b>pravidiel</b> sa náš model AI naučil rozpoznávať príchute sušienky:</p>
                                 <ol>
                                     <li>
-                                        <b>Disarranged:</b>
-                                        Analyze the spatial distribution and alignment of microtubules. Look for patterns indicative of disarrangement or lack of order.
+                                        <b>Vanilková príchuť:</b>
+                                        Identifikuj svetlú farbu sušienky a analyzuj mäkšiu textúru.
                                     </li>
                                     <li>
-                                        <b>Extra Tubule:</b>
-                                        Identify any abnormal protrusions or duplications of microtubules compared to the standard axonemal structure.
+                                        <b>Čokoládová príchuť:</b>
+                                        Identifikuj tmavú farbu sušienky a analyzuj hustejšiu textúru.
                                     </li>
                                     <li>
-                                        <b>Single Tubule:</b>
-                                        Examine the cross-section of the cilia to identify instances where a doublet is missing, leaving only a single tubule.
+                                        <b>Red velvet príchuť:</b>
+                                        Identifikuj charakteristickú červenú farbu sušienky
                                     </li>
                                     <li>
-                                        <b>Transposition:</b>
-                                        Look for instances where microtubules are found in locations they typically wouldn't occupy within the axonemal structure.                                    
-                                    </li>
-                                    <li>
-                                        <b>One of Central Pair Missing:</b>
-                                        Focus on the central region of the axoneme and identify cases where one of the central microtubules is absent.
-                                    </li>
-                                    <li>
-                                        <b>Both Missing:</b>
-                                        Focus on the central region of the axoneme and identify cases where both of the central microtubules is absent.
-                                    </li>
-                                    <li>
-                                        <b>Compound:</b>
-                                        Comprehensive analysis of ciliary morphology to identify instances where multiple defects coexist, indicating a compound anomaly.                                    
-                                    </li>
-                                    <li>
-                                        <b>Other Defects:</b>
-                                        Perform a thorough examination of ciliary ultrastructure, focusing on identifying any atypical features or irregularities.                                    
+                                        <b>Iná príchuť:</b>
+                                        Ak sa sušienka nezodpovedá žiadnej z vyššie uvedených príchutí, identifikuj ju ako "inú".                                
                                     </li>
                                 </ol>
                                 <hr>
-                                <p style="font-size: 13px;"><b>Typical examples</b> of each microtubular defect serve as reference points for identifying and understanding the characteristics of each defect.</p>
+                                <p style="font-size: 13px;"><b>Typické príklady</b> každej príchute sušienky slúžia ako referencie na identifikáciu a pochopenie vlastností každej príchute.</p>
                                 <div id="defect-navigation">
-                                    <a href="#" onclick="showExample('disarranged')" id="disarranged-link" class="active">Disarranged</a>
-                                    <a href="#" onclick="showExample('extra-tubule')" id="extra-tubule-link">Extra Tubule</a>
-                                    <a href="#" onclick="showExample('single-tubule')" id="single-tubule-link">Single Tubule</a>
-                                    <a href="#" onclick="showExample('transposition')" id="transposition-link">Transposition</a>
-                                    <a href="#" onclick="showExample('one-of-central-pair-missing')" id="one-of-central-pair-missing-link">One of Central Pair Missing</a>
-                                    <a href="#" onclick="showExample('both-missing')" id="both-missing-link">Both Missing</a>
-                                    <a href="#" onclick="showExample('compound')" id="compound-link">Compound</a>
+                                    <a href="#" onclick="showExample('disarranged')" id="disarranged-link" class="active">Vanilková príchuť</a>
+                                    <a href="#" onclick="showExample('extra-tubule')" id="extra-tubule-link">Čokoládová príchuť</a>
+                                    <a href="#" onclick="showExample('single-tubule')" id="single-tubule-link">Red velvet príchuť</a>
+                                    <a href="#" onclick="showExample('transposition')" id="transposition-link">Iná príchuť</a>
                                 </div>
                                 <div id="example-images" class="disarranged" style="display: flex">
-                                    <img src="../assets/disarranged1.png" alt="">
-                                    <img src="../assets/disarranged2.png" alt="">
-                                    <img src="../assets/disarranged3.png" alt="">
-                                    <img src="../assets/disarranged4.png" alt="">
-                                    <img src="../assets/disarranged5.png" alt="">
+                                    <img src="../assets/vanilla1.png" alt="">
+                                    <img src="../assets/vanilla2.png" alt="">
+                                    <img src="../assets/vanilla3.png" alt="">
+                                    <img src="../assets/vanilla4.png" alt="">
+                                    <img src="../assets/vanilla5.png" alt="">
                                 </div>
                                 <div id="example-images" class="extra-tubule">
-                                    <img src="../assets/extra-tubule1.png" alt="">
-                                    <img src="../assets/extra-tubule2.png" alt="">
-                                    <img src="../assets/extra-tubule3.png" alt="">
-                                    <img src="../assets/extra-tubule4.png" alt="">
-                                    <img src="../assets/extra-tubule5.png" alt="">
+                                    <img src="../assets/choco1.png" alt="">
+                                    <img src="../assets/choco2.png">
+                                    <img src="../assets/choco3.png" alt="">
+                                    <img src="../assets/choco4.png" alt="">
+                                    <img src="../assets/choco5.png" alt="">
                                 </div>
                                 <div id="example-images" class="single-tubule">
-                                    <img src="../assets/extra-tubule3.png" alt="">
-                                    <img src="../assets/transposition4.png" alt="">
-                                    <img src="../assets/disarranged2.png" alt="">
-                                    <img src="../assets/disarranged4.png" alt="">
-                                    <img src="../assets/extra-tubule1.png" alt="">
+                                    <img src="../assets/red1.png" alt="">
+                                    <img src="../assets/red2.png" alt="">
+                                    <img src="../assets/red3.png" alt="">
+                                    <img src="../assets/red4.png" alt="">
+                                    <img src="../assets/red5.png" alt="">
                                 </div>
                                 <div id="example-images" class="transposition">
-                                    <img src="../assets/transposition1.png" alt="">
-                                    <img src="../assets/transposition2.png" alt="">
-                                    <img src="../assets/transposition3.png" alt="">
-                                    <img src="../assets/transposition4.png" alt="">
-                                    <img src="../assets/transposition5.png" alt="">
-                                </div>
-                                <div id="example-images" class="one-of-central-pair-missing">
-                                    <img src="../assets/central-pair1.png" alt="">
-                                    <img src="../assets/central-pair2.png" alt="">
-                                    <img src="../assets/central-pair3.png" alt="">
-                                    <img src="../assets/central-pair4.png" alt="">
-                                    <img src="../assets/central-pair5.png" alt="">
-                                </div>
-                                <div id="example-images" class="both-missing">
-                                    <img src="../assets/central-pair5.png" alt="">
-                                    <img src="../assets/central-pair4.png" alt="">
-                                    <img src="../assets/central-pair1.png" alt="">
-                                    <img src="../assets/central-pair2.png" alt="">
-                                    <img src="../assets/central-pair3.png" alt="">
-                                </div>
-                                <div id="example-images" class="compound">
-                                    <img src="../assets/compound1.png" alt="">
-                                    <img src="../assets/compound2.png" alt="">
-                                    <img src="../assets/compound3.png" alt="">
-                                    <img src="../assets/compound4.png" alt="">
-                                    <img src="../assets/compound5.png" alt="">
+                                    <img src="../assets/ine1.png" alt="">
+                                    <img src="../assets/ine2.png" alt="">
+                                    <img src="../assets/ine3.png" alt="">
+                                    <img src="../assets/ine4.png" alt="">
+                                    <img src="../assets/ine5.png" alt="">
                                 </div>
                             </div>
                             <div id="dynein-arms" class="content-section" style="display: none;">
-                                <h4>Dynein arms</h4>
-                                <p>Our model was trained to recognize dynein arms defects in the cilia. </p>
+                                <h4>Typy kúskov v sušienkach</h4>
+                                <p>Náš model bol natrénovaný určiť typ kúskov v sušienkach.</p>
                                 <hr>
-                                <p style="font-size: 13px;"><b>The numbers of dynein arms defects that were present in the images in the dataset on which the model was trained are:</b></p>
+                                <p style="font-size: 13px;"><b>Počty typov kúskov v sušienkach, ktoré boli na snímkach v súbore údajov, na ktorých bol model natrénovaný:</b></p>
                                 <div style="text-align: center;">
                                     <img src="../assets/dataset-arms.png" alt="dataset-defects" width="60%" height="auto">
                                 </div>
                                 <hr>
-                                <p style="font-size: 13px;">Based on these <b>rules</b>, our AI model learned to recognize dynein arms defects:</p>
+                                <p style="font-size: 13px;">Na základe týchto <b>pravidiel</b> sa náš model AI naučil rozpoznávať typy kúskov v sušienkách:</p>
                                 <ol>
                                     <li>
-                                        <b>No arms missing:</b>
+                                        <b>Čokoládové kúsky:</b>
                                         Ensure a complete set of dynein arms is attached along the microtubules.
                                         Check for the presence of both inner and outer dynein arms throughout the axoneme.
                                     </li>
                                     <li>
-                                        <b>Inner arms missing:</b>
-                                        Identify instances where inner dynein arms are absent while outer dynein arms remain intact.
-                                        Analyze the arrangement and distribution of the remaining dynein arms for abnormalities.
+                                        <b>Lentilky:</b>
+                                        Hľadaj malé tmavé alebo svetlé kúsky, ktoré by mohli byť čokoládové čipy alebo nasekané kúsky čokolády. Analyzuj ich tvar a farbu a porovnaj ich s referenčnými čokoládovými kúskami.
                                     </li>
                                     <li>
-                                        <b>Outer arms missing:</b>
-                                        Detect the absence of outer dynein arms while inner dynein arms remain present.
-                                        Assess the integrity and distribution of the remaining dynein arms.
+                                        <b>Iné:</b>
+                                        Ak sa v sušienke vyskytujú kúsky, ktoré sa nezodpovedajú žiadnemu z vyššie uvedených typov, označ ich ako "iné kúsky".
                                     </li>
                                     <li>
-                                        <b>Outer arms missing:</b>
-                                        Look for complete absence of both inner and outer dynein arms along the axoneme.
-                                        Recognize this scenario as a more severe defect requiring attention.                             
+                                        <b>Žiadne kúsky:</b>
+                                        Ak sa v sušienke nevyskytujú žiadne viditeľné kúsky, označ ich ako "žiadne kúsky".                       
                                     </li>
                                     <li>
-                                        <b>Unknown:</b>
-                                        Label cases as "Unknown" when the presence or absence of dynein arms cannot be confidently determined.
-                                        Consider further investigation or human interpretation for cases falling under this category.
+                                        <b>Neviem určiť:</b>
+                                        Ak nie sú viditeľné žiadne charakteristické kúsky alebo ich prítomnosť nie je jasne rozpoznateľná, označ ich ako "neurčiteľnú".
                                     </li>
                                 </ol>
                                 <hr>
-                                <p style="font-size: 13px;"><b>Typical examples</b> of each dynein arms defects serve as reference points for identifying and understanding the characteristics of each defect.</p>
+                                <p style="font-size: 13px;"><b>Typické príklady</b> každého typu kúskov v sušienke slúžia ako referencie na identifikáciu a pochopenie vlastností každej príchute.</p>
                                 <div id="defect-navigation">
-                                    <a href="#" onclick="showExample('no-arms-missing')" id="no-arms-missing-link" class="active">No arms missing</a>
-                                    <a href="#" onclick="showExample('inner-arms-missing')" id="inner-arms-missing-link">Inner arms missing</a>
-                                    <a href="#" onclick="showExample('outer-arms-missing')" id="outer-arms-missing-link">Outer arms missing</a>
-                                    <a href="#" onclick="showExample('both-arms-missing')" id="both-arms-missing-link">Both arms missing</a>
+                                    <a href="#" onclick="showExample('no-arms-missing')" id="no-arms-missing-link" class="active">Čokoládové kúsky</a>
+                                    <a href="#" onclick="showExample('inner-arms-missing')" id="inner-arms-missing-link">Lentilky</a>
+                                    <a href="#" onclick="showExample('both-arms-missing')" id="both-arms-missing-link">Iné</a>
+                                    <a href="#" onclick="showExample('outer-arms-missing')" id="outer-arms-missing-link">Žiadne</a>
                                 </div>
                                 <div id="example-images" class="inner-arms-missing">
-                                    <img src="../assets/extra-tubule1.png" alt="">
-                                    <img src="../assets/extra-tubule2.png" alt="">
-                                    <img src="../assets/extra-tubule3.png" alt="">
-                                    <img src="../assets/extra-tubule4.png" alt="">
-                                    <img src="../assets/extra-tubule5.png" alt="">
+                                    <img src="../assets/ck1.png" alt="">
+                                    <img src="../assets/ck2.png" alt="">
+                                    <img src="../assets/ck3.png" alt="">
+                                    <img src="../assets/ck4.png" alt="">
+                                    <img src="../assets/ck5.png" alt="">
                                 </div>
                                 <div id="example-images" class="outer-arms-missing">
-                                    <img src="../assets/extra-tubule3.png" alt="">
-                                    <img src="../assets/transposition4.png" alt="">
-                                    <img src="../assets/disarranged2.png" alt="">
-                                    <img src="../assets/disarranged4.png" alt="">
-                                    <img src="../assets/extra-tubule1.png" alt="">
+                                    <img src="../assets/len1.png" alt="">
+                                    <img src="../assets/len2.png" alt="">
+                                    <img src="../assets/len3.png" alt="">
+                                    <img src="../assets/len4.png" alt="">
+                                    <img src="../assets/len5.png" alt="">
                                 </div>
                                 <div id="example-images" class="no-arms-missing" style="display: flex">
                                     <img src="../assets/disarranged1.png" alt="">
@@ -471,7 +426,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -672,6 +626,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="modal-overlay" id="modal-loading-overlay">
                 <div class="modal loading" id="modal-loading">
                     <div class="modal-content">
@@ -781,12 +736,11 @@
                     </div>  
                 </div>
             </div>
-
         </div>  
         <aside class="right-aside"> 
             <div class="collapsible">
                 <div class="collapsible-head" onclick="toggleCollapsible(this)">
-                    <h3>Statistics</h3>
+                    <h3>Štatistika</h3>
                     <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable icon"></i>
                 </div>
                 <div class="collapsible-content">
@@ -794,7 +748,7 @@
                         <tr>
                            <td>Total:</td>
                             <td>100</td>
-                            <td style="text-align: end;"><button class="button button-common" id="btnStatistics" onclick="showStatistics()">Show statistics</button></td>
+                            <td style="text-align: end;"><button class="button button-common" id="btnStatistics" onclick="showStatistics()">Zobraz štatistiku</button></td>
                         </tr>
                         <tr>
                             <td>Total DA:</td>
@@ -817,7 +771,7 @@
             </div>
             <div class="collapsible" id="annotation-info">
                 <div class="collapsible-head" onclick="toggleCollapsible(this)">
-                    <h3>Annotation info</h3>
+                    <h3>Informácie o sušienke</h3>
                     <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
                 </div>
                 <div class="collapsible-content">
@@ -847,11 +801,11 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Conf. level
+                                    <td>Úroveň dôvery
                                         <sup>
                                             <div class="tooltip-container">
                                                 <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
-                                                <div class="tooltip">The confidence level indicates the degree of certainty in the accuracy of this prediction made by the AI.</div>
+                                                <div class="tooltip">Úroveň dôvery udáva stupeň istoty presnosti označenia sušienky umelou inteligenciou.</div>
                                             </div>
                                         </sup>
                                         :
@@ -866,11 +820,11 @@
 
             <div class="collapsible">
                 <div class="collapsible-head" onclick="toggleCollapsible(this)">
-                    <h3>Notes</h3>
+                    <h3>Poznámky</h3>
                     <i class="fa-solid fa-chevron-down chevron-icon chevron-rotatable"></i>
                 </div>
                 <div class="collapsible-content">
-                    <textarea name="notes" id="notes" placeholder="Write your notes here"></textarea>
+                    <textarea name="notes" id="notes" placeholder="Sem napíš svoje poznámky"></textarea>
                 </div>
             </div>
         </aside>
