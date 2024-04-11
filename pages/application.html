@@ -56,17 +56,13 @@
                     class="dropbtn button button-icons"
                     onclick="myFunction()"
                 >
-                    <div class="annotation table disarranged"></div>
-                    <span>Disarranged</span>
+                    <div class="annotation table Vanilková"></div>
+                    <span>Vanilková</span>
                     <ul class="dropdown-content dropdown-menu" id="mtds-tool-dropdown-content">
-                        <li onclick="((t)=>set_tool('disarranged',t))(this)" class="active"><div class="annotation table disarranged"></div><span>Disarranged</span></li>
-                        <li onclick="((t)=>set_tool('extra-tuble',t))(this)"><div class="annotation table extra-tuble"></div><span>Extra tubule</span></li>
-                        <li onclick="((t)=>set_tool('single-tuble',t))(this)"><div class="annotation table single-tuble"></div><span>Single tubule</span></li>
-                        <li onclick="((t)=>set_tool('transposition',t))(this)"><div class="annotation table transposition"></div><span>Transposition</span></li>
-                        <li onclick="((t)=>set_tool('one-central-pair-missing',t))(this)"><div class="annotation table one-central-pair-missing"></div><span>One of central pair missing</span></li>
-                        <li onclick="((t)=>set_tool('both-missing',t))(this)"><div class="annotation table both-missing"></div><span>Both missing</span></li>
-                        <li onclick="((t)=>set_tool('compound',t))(this)"><div class="annotation table compound"></div><span>Compound</span></li>
-                        <li onclick="((t)=>set_tool('other',t))(this)"><div class="annotation table other"></div><span>Other defects</span></li>
+                        <li onclick="((t)=>set_tool('Vanilková',t))(this)" class="active"><div class="annotation table Vanilková"></div><span>Vanilková</span></li>
+                        <li onclick="((t)=>set_tool('Čokoládová',t))(this)"><div class="annotation table Čokoládová"></div><span>Čokoládová</span></li>
+                        <li onclick="((t)=>set_tool('Red-velvet',t))(this)"><div class="annotation table Red-velvet"></div><span>Red velvet</span></li>
+                        <li onclick="((t)=>set_tool('Iná',t))(this)"><div class="annotation table Iná"></div><span>Iná</span></li>
                     </ul>
                 </button>
             </div>
@@ -128,8 +124,8 @@
                 <div class="uploaded-image">
                     <div class="uploaded-image-collapsible" onclick="openAnnotation(this)">
                         <div class="uploaded-image-img-p" >
-                            <img src="../images/Tv17.png" alt="image1">
-                            <p>Annotation 1</p>
+                            <img src="../images/1.png" alt="image1">
+                            <p>Cookies 1</p>
                         </div>
                         <div class="uploaded-image-icons">
                             <i class="fa-regular fa-trash-can icon"></i>
@@ -147,8 +143,84 @@
                 <div class="uploaded-image">
                     <div class="uploaded-image-collapsible" onclick="openAnnotation(this)">
                         <div class="uploaded-image-img-p">
-                            <img src="../images/Tv7.png" alt="image2">
-                            <p>Annotation 2</p>
+                            <img src="../images/2.png" alt="image2">
+                            <p>Cookies 2</p>
+                        </div>
+                        <div class="uploaded-image-icons">
+                            <i class="fa-regular fa-trash-can icon"></i>
+                            <i class="fa-solid fa-chevron-right chevron-icon chevron-rotatable icon"></i>
+                        </div>
+                    </div>
+                    <div class="uploaded-image-annotations">
+                        <table class="table-annotations">
+                            <tbody id="image2-annotations-table" cellspacing="0">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="uploaded-image">
+                    <div class="uploaded-image-collapsible" onclick="openAnnotation(this)">
+                        <div class="uploaded-image-img-p">
+                            <img src="../images/3.png" alt="image2">
+                            <p>Cookies 3</p>
+                        </div>
+                        <div class="uploaded-image-icons">
+                            <i class="fa-regular fa-trash-can icon"></i>
+                            <i class="fa-solid fa-chevron-right chevron-icon chevron-rotatable icon"></i>
+                        </div>
+                    </div>
+                    <div class="uploaded-image-annotations">
+                        <table class="table-annotations">
+                            <tbody id="image2-annotations-table" cellspacing="0">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="uploaded-image">
+                    <div class="uploaded-image-collapsible" onclick="openAnnotation(this)">
+                        <div class="uploaded-image-img-p">
+                            <img src="../images/4.png" alt="image2">
+                            <p>Cookies 4</p>
+                        </div>
+                        <div class="uploaded-image-icons">
+                            <i class="fa-regular fa-trash-can icon"></i>
+                            <i class="fa-solid fa-chevron-right chevron-icon chevron-rotatable icon"></i>
+                        </div>
+                    </div>
+                    <div class="uploaded-image-annotations">
+                        <table class="table-annotations">
+                            <tbody id="image2-annotations-table" cellspacing="0">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="uploaded-image">
+                    <div class="uploaded-image-collapsible" onclick="openAnnotation(this)">
+                        <div class="uploaded-image-img-p">
+                            <img src="../images/5.png" alt="image2">
+                            <p>Cookies 5</p>
+                        </div>
+                        <div class="uploaded-image-icons">
+                            <i class="fa-regular fa-trash-can icon"></i>
+                            <i class="fa-solid fa-chevron-right chevron-icon chevron-rotatable icon"></i>
+                        </div>
+                    </div>
+                    <div class="uploaded-image-annotations">
+                        <table class="table-annotations">
+                            <tbody id="image2-annotations-table" cellspacing="0">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="uploaded-image">
+                    <div class="uploaded-image-collapsible" onclick="openAnnotation(this)">
+                        <div class="uploaded-image-img-p">
+                            <img src="../images/6.png" alt="image2">
+                            <p>Cookies 6</p>
                         </div>
                         <div class="uploaded-image-icons">
                             <i class="fa-regular fa-trash-can icon"></i>
@@ -753,28 +825,24 @@
                         <div class="cilia-info">
                             <table class="table-annotation-info">
                                 <tr>
-                                    <td>MT defect:</td>
+                                    <td>Príchuť:</td>
                                     <td><select name="mtds" id="mtds">
                                         <option disabled selected value=""></option>
-                                        <option value="Disarranged">Disarranged</option>
-                                        <option value="Extra tubule">Extra tubule</option>
-                                        <option value="Single tubule">Single tubule</option>
-                                        <option value="Transposition">Transposition</option>
-                                        <option value="One of central pair missing">One of central pair missing</option>
-                                        <option value="Both missing">Both missing</option>
-                                        <option value="Compound">Compound</option>
-                                        <option value="Other defects">Other defects</option>
+                                        <option value="Vanilková">Vanilková</option>
+                                        <option value="Čokoládová">Čokoládová</option>
+                                        <option value="Red velvet">Red velvet</option>
+                                        <option value="Iná">Iná</option>
                                     </select></td>
                                 </tr>
                                 <tr>
-                                    <td>Dynein arms:</td>
+                                    <td>Typ kúskov:</td>
                                     <td><select name="dynein" id="dynein">
                                         <option disabled selected value=""></option>
-                                        <option value="4">No arms missing</option>
-                                        <option value="2">Inner arms missing</option>
-                                        <option value="1">Outer arms missing</option>
-                                        <option value="3">Both arms missing</option>
-                                        <option value="0">Unknown</option>
+                                        <option value="4">Žiadne</option>
+                                        <option value="2">Biela čokoláda</option>
+                                        <option value="1">Mliečna čokoláda</option>
+                                        <option value="3">Lentilky</option>
+                                        <option value="0">Neviem určiť</option>
                                         </select>
                                     </td>
                                 </tr>

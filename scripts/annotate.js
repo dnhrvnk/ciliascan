@@ -12,8 +12,8 @@ let dynein = document.getElementById('dynein')
 let confLevelCell = document.querySelector('.conf-level');
 
 
-let selector_class = "disarranged"
-let selector_class_full_name = "Disarranged"
+let selector_class = "Vanilková"
+let selector_class_full_name = "Vanilková"
 let selected_annotation = null;
 
 let selected_image = null;
@@ -22,33 +22,25 @@ let count = 0
 
 
 const annot_cycle = [
-  'unknown',
-  'outer',
-  'inner',
-  'both',
-  'none'
+  'Neviem',
+  'Mliečna',
+  'Biela',
+  'Lentilky',
+  'Žiadne'
 ]
 
 const annot_tools = [
-  'disarranged',
-  'extra-tuble',
-  'single-tuble',
-  'transposition',
-  'one-central-pair-missing',
-  'both-missing',
-  'compound',
-  'other'
+  'Vanilková',
+  'Čokoládová',
+  'Red-velvet',
+  'Iná',
 ]
 
 const annot_map = {
-  'Disarranged': 'disarranged',
-  'Extra tubule': 'extra-tuble',
-  'Single tubule': 'single-tuble',
-  'Transposition': 'transposition',
-  'One of central pair missing': 'one-central-pair-missing',
-  'Both missing': 'both-missing',
-  'Compound': 'compound',
-  'Other defects': 'other'
+  'Vanilková': 'Vanilková',
+  'Čokoládová': 'Čokoládová',
+  'Red velvet': 'Red-velvet',
+  'Iná': 'Iná',
 }
 
 let annotation_list = []

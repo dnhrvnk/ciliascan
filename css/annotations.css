@@ -17,10 +17,10 @@
 }
 
 
-.annotation.unknown {
+.annotation.Neviem {
 }
 
-.annotation.outer::before {
+.annotation.Mliečna::before {
   content: "";
   position: absolute;
   top: 40%;
@@ -34,22 +34,20 @@
   right: 101%;
 }
 
-.annotation.outer::after {
+.annotation.Mliečna::after {
   content: "";
   position: absolute;
   top: 40%;
   width: 8px;
   height: 2px;
   border: 1px solid transparent;
-  /* border-top-color: #2222ff; */
-  /* border-bottom: 0; */
   background-color: white;
   margin: 0px;
   left: 101%;
 }
 
 
-.annotation.inner::after {
+.annotation.Biela::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -63,22 +61,20 @@
   width: 14px;
 }
 
-.annotation.both::after {
+.annotation.Lentilky::after {
   content: "";
   position: absolute;
   top: 50%;
   width: 32px;
   height: 2px;
   border: 1px solid transparent;
-  /* border-top-color: #2222ff; */
-  /* border-bottom: 0; */
   background-color: white;
   margin: 0px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.annotation.none::after {
+.annotation.Žiadne::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -92,7 +88,7 @@
   transform:  translateY(-50%) rotate(-45deg);
 }
 
-.annotation.none::before {
+.annotation.Žiadne::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -114,36 +110,20 @@
 box-shadow: 0 0 10px #006CEB
 }
 
-.annotation.disarranged {
-  background-color: #FF7F00;
-}
-
-.annotation.extra-tuble {
-  background-color: #AB47BC;
-}
-
-.annotation.single-tuble {
-  background-color: #FFD700;
-}
-
-.annotation.transposition {
-  background-color: #00CED1;
-}
-
-.annotation.one-central-pair-missing {
-  background-color: #FF69B4;
-}
-
-.annotation.both-missing {
+.annotation.Red-velvet {
   background-color: #32CD32 ;
 }
 
-.annotation.compound {
-  background-color: #6b0909 ;
+.annotation.Vanilková {
+  background-color: #AB47BC;
 }
 
-.annotation.other {
-  background-color: #ff3f3f;
+.annotation.Čokoládová {
+  background-color: #00CED1;
+}
+
+.annotation.Iná {
+  background-color: #FF69B4;
 }
 
 
