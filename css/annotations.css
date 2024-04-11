@@ -20,7 +20,7 @@
 .annotation.Neviem {
 }
 
-.annotation.Mliečna::before {
+.annotation.cokolada::before {
   content: "";
   position: absolute;
   top: 40%;
@@ -34,7 +34,7 @@
   right: 101%;
 }
 
-.annotation.Mliečna::after {
+.annotation.cokolada::after {
   content: "";
   position: absolute;
   top: 40%;
@@ -47,7 +47,7 @@
 }
 
 
-.annotation.Biela::after {
+.annotation.lentilky::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -61,7 +61,7 @@
   width: 14px;
 }
 
-.annotation.Lentilky::after {
+.annotation.ine::after {
   content: "";
   position: absolute;
   top: 50%;

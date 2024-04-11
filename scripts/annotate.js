@@ -20,12 +20,42 @@ let selected_image = null;
 
 let count = 0
 
+let inc = 0
+
+
+let annot_file = null
+fetch('../assets/annotations.json').then((response) => response.json()).then((data) => {
+  annot_file = data;
+  console.log(annot_file)
+})
+
+
+class LoggedAnnotation {
+  constructor(x,y,id) {
+    this.x = x;
+    this.y = y;
+    this.id = id;
+    this.class = selector_class;
+    this.cycle = 'Neviem';
+  }
+
+}
+
+const annot_export = {
+  "image1":[],
+  "image2":[],
+  "image3": [],
+  "image4":[],
+  "image5":[],
+  "image6":[],
+}
+
 
 const annot_cycle = [
   'Neviem',
-  'Mliečna',
-  'Biela',
-  'Lentilky',
+  'cokolada',
+  'lentilky',
+  'ine',
   'Žiadne'
 ]
 
@@ -47,6 +77,7 @@ let annotation_list = []
 
 
 const update_rightside = (row) => {
+  console.log(row)
   if (row == undefined){
     mtds.value = ''
     dynein.value = undefined
@@ -69,7 +100,6 @@ const update_rightside = (row) => {
   calc_chips();
 
   mtds.onchange = (event) => {
-    ('changed')
     row.cells[1].textContent = mtds.value;
     let icons = document.querySelectorAll(`[id="${icon.id}"]`)
     disable_automatic(icon.id)
@@ -260,7 +290,7 @@ const close_loading = () => {
   loading.style.display = 'none';
 }
 
-const create_annot = (x_page,y_page, auto=false) => {
+const create_annot = (x_page,y_page, auto=false, annot_log) => {
   let x = x_page-7;
   let y = y_page-7;
   let annot = document.createElement('div');
@@ -269,8 +299,8 @@ const create_annot = (x_page,y_page, auto=false) => {
   let s_c = selector_class;
   let a_c = annot_cycle[0]; 
   if (auto){
-    s_c = annot_tools[Math.floor(Math.random()*annot_tools.length)]
-    a_c = annot_cycle[Math.floor(Math.random()*annot_cycle.length)]
+    s_c = annot_log.class;
+    a_c = annot_log.cycle
     create_annot_areas().forEach(annot_child => {
       annot.appendChild(annot_child)
     })
@@ -278,7 +308,10 @@ const create_annot = (x_page,y_page, auto=false) => {
   let image = document.getElementById('mainImage').alt;
   selected_image = image
 
-  let id = 'annot-'+ Math.floor(Math.random() * 1000)+'-'+image;
+  const ss = selected_image
+
+  let id = 'annot-'+ (1001+inc)+'-'+image;
+  inc += 1;
   annot.className = 'annotation '
   if (auto)
     annot.className += 'automatic '
@@ -286,8 +319,9 @@ const create_annot = (x_page,y_page, auto=false) => {
   annot.id = id;
   annot.style.left = x + 'px';
   annot.style.top = y + 'px';
-  annot_row = create_annot_row(annot.className,id,annot_obj.confidence, auto);
+  const annot_row = create_annot_row(annot.className,id,annot_obj.confidence, auto);
   image_list = document.getElementById(`${selected_image}-annotations-table`)
+  annot_export[selected_image].push(new LoggedAnnotation(x,y,id))
   let insert_index = Array.prototype.findIndex.call(image_list.children,(row) => {
     return parseFloat(row.cells[2].textContent.trim().replace('%','')) > annot_obj.confidence;
   })
@@ -314,7 +348,7 @@ const create_annot = (x_page,y_page, auto=false) => {
       let keep = old_annot.slice(0, old_annot.length-1);
       a.className = keep.join(' ') + ' ' + new_annot;
     }
-
+    annot_export[ss].find((a) => a.id == id).cycle = new_annot;
     update_rightside(annot_row)
     
   }
@@ -344,6 +378,8 @@ const delete_annot = (annot_id) => {
   annotate_list.removeChild(annotate_list.querySelector(`#${annot_id}`))
   image_list = document.getElementById(`${selected_image}-annotations-table`)
   image_list.removeChild(image_list.querySelector((`#${annot_id}`)).parentElement.parentElement)
+
+  annot_export[selected_image] = annot_export[selected_image].filter((a) => a.id != annot_id)
 }
 
 
@@ -358,23 +394,11 @@ const simulate_click = () => {
   open_loading();
 
   setTimeout(() => {
-    let rect = annot_space.getBoundingClientRect();
-    let start_x = rect.left
-    let start_y = rect.top
-
-    let end_x = rect.right
-    let end_y = rect.bottom
-
-    let x_size = end_x  - start_x - 100;
-    let y_size = end_y - start_y - 100;
-
-    for (let i = 0; i < 20; i++){
-      x_rand = Math.floor(Math.random()*x_size + 50)
-      y_rand = Math.floor(Math.random()*y_size + 50)
-      x = start_x + x_rand
-      y = start_y + y_rand
-      create_annot(x,y,true)
-    }
+    console.log(document.getElementById('mainImage').alt)
+    console.log(annot_file)
+    annot_file[document.getElementById('mainImage').alt].forEach((annot) => {
+      create_annot(annot.x,annot.y,true,annot)
+    })
     close_loading();
   },4000)
 
