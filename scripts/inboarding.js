@@ -175,7 +175,7 @@ function nextStep() {
         document.querySelectorAll('.table-annotations tr').forEach((element) => {
             const call_back = element.onclick
             element.onclick = () => {
-                console.log(call_back)
+                
                 call_back()
                 nextStep()
                 element.onclick = call_back

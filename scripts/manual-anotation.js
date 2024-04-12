@@ -80,11 +80,11 @@ function nextManual() {
         modalFooter.textContent = "2 of 8";
     
         dropdown = document.getElementById("mtds-tool-dropdown-content");
-        console.log(dropdown.classList)
+        
         setTimeout(()=> {
         dropdown.classList.add("show");
         },1)
-        console.log(dropdown.classList)
+        
 
         let back = document.getElementById('backManual');
         back.style.display = "block";
@@ -116,10 +116,10 @@ function nextManual() {
 
         dropdown = document.getElementById("mtds-tool-dropdown-content");
         dropdown.classList.remove("show");
-        console.log(dropdown.classList)
+        
 
         document.querySelectorAll('#mtds-tool-dropdown-content li').forEach((element) => {
-            console.log(element.onclick)
+            
         })
 
         area = document.getElementById("mainImage")
@@ -228,10 +228,10 @@ function closeManual() {
     annotationInfo.style.borderBottom = "0.8px solid rgb(45, 45, 66)";
 
     if(call_backs.length!=0){
-        console.log('closing',call_backs.length)
+        
         document.querySelectorAll('#mtds-tool-dropdown-content li').forEach((element) => {
             element.onclick = call_backs.pop()
-            console.log(element.onclick)
+            
         })
     }
     let btn_export = document.getElementById('btn-export');

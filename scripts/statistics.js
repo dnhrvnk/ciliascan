@@ -1,5 +1,5 @@
 function showStatistics() {
-  console.log("heeyy");
+  
   var btnStatistics = document.getElementById("btnStatistics");
   var statistics = document.getElementById("statistics");
   var image = document.getElementById("image-annotations");

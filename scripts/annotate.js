@@ -35,8 +35,26 @@ let inc = 0
 let annot_file = null
 fetch('../assets/annotations.json').then((response) => response.json()).then((data) => {
   annot_file = data;
-  console.log(annot_file)
+  
 })
+
+const disableAutomatic = () => {
+  document.getElementById("warning-modal").style.display = "block";
+  document.getElementById("btn-run-annotation").onclick = null;
+  document.getElementById("btn-run-annotation").style.color = "grey";
+
+  document.getElementById("btn-reset-annotation").style.color = "white";
+  document.getElementById("btn-reset-annotation").onclick = delete_automatic;
+}
+
+const allowAutomatic = () => {
+  document.getElementById("warning-modal").style.display = "none";
+  document.getElementById("btn-run-annotation").onclick = simulate_click;
+  document.getElementById("btn-run-annotation").style.color = "white";
+
+  document.getElementById("btn-reset-annotation").style.color = "grey";
+  document.getElementById("btn-reset-annotation").onclick = null;
+}
 
 
 class LoggedAnnotation {
@@ -86,7 +104,7 @@ let annotation_list = []
 
 
 const update_rightside = (row) => {
-  console.log(row)
+  
   if (row == undefined){
     mtds.value = ''
     dynein.value = undefined
@@ -103,7 +121,7 @@ const update_rightside = (row) => {
   mtds.value = defectType;
   ccc.textContent = confLevel || '--%';
   let val = confLevel || '--%'
-  console.log(val)
+  
   confLevelCell.innerHTML = ccc.outerHTML + (val == '--%' ? '' : '<button class="button button-common" id="btnInfo" onclick="showMoreInfo()" style="margin-left: 20px;">Show more info</button>');
   dynein.value = `${annot_cycle.indexOf(icon.className.split(' ').reverse()[0])}`
   calc_chips();
@@ -131,7 +149,7 @@ const update_rightside = (row) => {
     for (let i of icons){
       let keep = i.className.split(' ');
       keep.splice(3,1,annot_cycle[dynein.value]);
-      console.log(keep)
+      
       i.className = keep.join(' ');
     }
     if (confLevelCell.firstChild != null) {
@@ -196,7 +214,7 @@ const select_annotation = (annot) => {
     r.classList.remove('selected-row');
   }
   let i = annot.id.split('-')[2];
-  console.log(i)  
+  
   image_list = document.getElementById(`${i}-annotations-table`)
   let annot_row = image_list.querySelector('[id="'+annot.id+'"]');
   annot_row.parentElement.parentElement.classList.add('selected-row');
@@ -368,9 +386,9 @@ const create_annot = (x_page,y_page, auto=false, annot_log) => {
 annot_space.onclick = (event) => {
   count+=1;
   create_annot(event.pageX,event.pageY)
-  console.log(count)
+  
   if((count+1) % 6  ==0 && document.getElementById("btn-run-annotation").onclick !== null){
-    console.log('adsadsa')
+    
     modal_reminder.classList.add('show')
     setTimeout(()=>{
       modal_reminder.classList.remove('show')
@@ -381,12 +399,14 @@ annot_space.onclick = (event) => {
 
 const delete_annot = (annot_id) => {
   let id = document.querySelectorAll('.annotation.selected')[0]?.id;
-  console.log(id)
+  
   if( id == annot_id)
     update_rightside(undefined)
+  console.log(annot_id)
   annotate_list.removeChild(annotate_list.querySelector(`#${annot_id}`))
   image_list = document.getElementById(`${selected_image}-annotations-table`)
-  image_list.removeChild(image_list.querySelector((`#${annot_id}`)).parentElement.parentElement)
+  console.log(image_list)
+  image_list.removeChild(image_list.querySelector(`#${annot_id}`).parentElement.parentElement)
 
   annot_export[selected_image] = annot_export[selected_image].filter((a) => a.id != annot_id)
 }
@@ -416,7 +436,7 @@ const simulate_click = () => {
     })
 
     for (var i =0; i < 10; i++) {
-      console.log('extra', P.extra_annot)
+      
       if(Math.random() < P.extra_annot) {
         let rect = annot_space.getBoundingClientRect();
         let start_x = rect.left
@@ -437,26 +457,16 @@ const simulate_click = () => {
         create_annot(x,y,true,logAnnot)
       }
     }
-    
+    disableAutomatic();
+
     close_loading();
   },4000)
 
-  document.getElementById("warning-modal").style.display = "block";
-  document.getElementById("btn-run-annotation").onclick = null;
-  document.getElementById("btn-run-annotation").style.color = "grey";
-
-  document.getElementById("btn-reset-annotation").style.color = "white";
-  document.getElementById("btn-reset-annotation").onclick = delete_automatic;
 }
 
 const delete_automatic = () => {
-  document.getElementById("btn-run-annotation").onclick = simulate_click;
-  document.getElementById("btn-run-annotation").style.color = "white";
-
-  document.getElementById("btn-reset-annotation").style.color = "grey";
-  document.getElementById("btn-reset-annotation").onclick = null;
-
-  let annots = document.querySelectorAll('.annotation.automatic');
+  allowAutomatic()
+  let annots = document.querySelectorAll(`.annotation.automatic[id$="${selected_image}"]`);
   (annots)
   for (let a of annots){
     delete_annot(a.id)
@@ -481,7 +491,7 @@ const disable_automatic = (id) => {
 opacity_range = document.getElementById('myRange');
 
 opacity_range.oninput = () => {
-  console.log('chaninig')
+  
 
   let annots = annotate_list.querySelectorAll('.annotation');
   for (let a of annots){

@@ -25,7 +25,7 @@ function updateWarningMessage() {
     let msg = document.getElementById("warning-content");
     let expl = document.getElementById("warning-expl");
     let modal = document.getElementById("warning-modal");
-    console.log(msg.style)
+    
     if(msg.style.display == "none" || msg.style.display == "") {
         msg.style.display = "block";
         expl.style.display = "none";

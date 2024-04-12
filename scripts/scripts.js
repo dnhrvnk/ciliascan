@@ -27,7 +27,7 @@ function clearSearch() {
     searchImages();
 }
 
-console.log(document.getElementById('notes').getBoundingClientRect().bottom);
+
 
 function toggleCollapsible(element) {
     var content = element.nextElementSibling;
@@ -101,9 +101,19 @@ document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
 
 
 const openAnnotation = (element) => {
-    console.log(element)
+    
     var annotation = element.children[0];
     seenImage(annotation)
+    var name = annotation.children[0].alt
+    selected_image = name
+    var annotations = document.querySelectorAll(`#image-annotations .automatic.annotation[id$="${name}"`)
+    console.log(annotations)
+    if(annotations.length == 0){
+        allowAutomatic()
+    }
+    else {
+        disableAutomatic()
+    }
 }
 
 function closeFeedbackAI() {
