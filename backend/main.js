@@ -37,9 +37,9 @@ const server = http.createServer(function (req, res) {
       case '.svg':
         contentType = 'image/svg+xml';
         break;
-      case '.wav':
-          contentType = 'audio/wav';
-          break;
+      case '.tif':
+        contentType = 'image/tiff';
+        break;
   }
 
 
