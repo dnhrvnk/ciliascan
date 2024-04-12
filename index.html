@@ -37,12 +37,14 @@
         <div id="implicit-feedback">
             <div class="input-label" style="display: flex">
                 <input type="checkbox" id="agree-checkbox"> 
-                <label for="agree-checkbox"> I agree to allow CiliaScan to collect anonymized data on <br> my interactions with the application.</label>
+                <label for="agree-checkbox"> 
+                    Súhlasím s tým, aby CiliaScan zhromažďoval anonymizované údaje <br> o mojich interakciách s aplikáciou.
+                </label>
             </div>
         </div>
         <div class="onboarding-buttons">
-            <button class="onboarding-button button button-common" id="back-button" onclick="changePage(-1)">Back</button>
-            <button class="onboarding-button button button-blue" id="next-button" onclick="changePage(+1)">Next</button>
+            <button class="onboarding-button button button-common" id="back-button" onclick="changePage(-1)">Späť</button>
+            <button class="onboarding-button button button-blue" id="next-button" onclick="changePage(+1)">Ďalej</button>
         </div>
     </div>
 </body>
@@ -69,7 +71,6 @@
                 img.alt = "page3";
                 var implicit_feedback = document.getElementById('implicit-feedback');
                 implicit_feedback.style.display = "block";
-                document.getElementById('next-button').textContent = 'Done';
             } else {
                 img.src = "../assets/1page.png"; 
                 img.alt = "page1";

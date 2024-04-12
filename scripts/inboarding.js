@@ -100,8 +100,8 @@ function nextStep() {
     var modalFooter = modal_a.querySelector('.modal-footer p');
 
     if(currentStep == 0) {
-        modalBody.innerHTML = 'To activate automatic annotation, simply select "<b>Run Annotation</b>" in dropdown menu. <br><br>Our AI technology will then swiftly analyze the current image, highlighting celia for further review.';
-        modalFooter.textContent = "1 of 7";
+        modalBody.innerHTML = 'Ak chcete aktivovať automatickú anotáciu, jednoducho vyberte <br>"<b>Spusti anotáciu</b>" z rozbaľovacieho zoznamu. <br><br> Náš model AI potom rýchlo zanalyzuje aktuálny obrázok a označí sušienky na ďalšie preskúmanie';
+        modalFooter.textContent = "1 z 7";
 
         let btn_run_annotation = document.querySelector('#btn-run-annotation');
         btn_run_annotation.style.backgroundColor = "#006CEB";
@@ -109,7 +109,7 @@ function nextStep() {
         currentStep = 1;
     }
     else if(currentStep == 1) {
-        modalBody.innerHTML = "This is the <b>image</b> with the annotated cilia.";
+        modalBody.innerHTML = "Toto je <b>obrázok</b> s označenými sušienkami.";
         
         let back = document.getElementById('backStep');
         back.style.display = "block";
@@ -129,12 +129,12 @@ function nextStep() {
         modal.style.top = "150px"
         modal.style.left = "850px"
 
-        modalFooter.textContent = "2 of 7";
+        modalFooter.textContent = "2 z 7";
         
         currentStep = 2;
     } else if(currentStep == 2) {
-        modalBody.innerHTML = "This is <b>list of annotations</b> for the image.";
-        modalFooter.textContent = "3 of 7";
+        modalBody.innerHTML = "Toto je <b>zoznam označení</b> na obrázku.";
+        modalFooter.textContent = "3 z 7";
         
         var mainImage = document.getElementById('mainImage');
         mainImage.style.border = "none";
@@ -148,8 +148,8 @@ function nextStep() {
 
         currentStep = 3;
     } else if(currentStep == 3) {
-        modalBody.innerHTML = "This is the <b>confidence level</b> of the annotated cilia. <br><br> If the confidence level is <b>high</b>, the annotation is likely accurate. <br><br> If the confidence level is <b>low</b>, the annotation may not be accurate and needs to be revalidated.";
-        modalFooter.textContent = "4 of 7";
+        modalBody.innerHTML = "Toto je <b>úroveň dôvery</b> označených sušienok. <br><br> Ak je úroveň dôvery <b>vysoká</b>, označenie je pravdepodobne presné. <br><br> Ak je úroveň dôvery <b>nízka</b>, označenie nemusí byť presné a je potrebné ho skontrolovať.";
+        modalFooter.textContent = "4 z 7";
 
         let chips = document.querySelectorAll('.chip');
         for (var i = 0; i < chips.length; i++) { 
@@ -167,8 +167,8 @@ function nextStep() {
 
         currentStep = 4;   
     } else if(currentStep == 4) {
-        modalBody.innerHTML = "Select an annotation to <b>view the details</b> and <b>edit the annotation</b> by clicking on the row.";
-        modalFooter.textContent = "5 of 7";
+        modalBody.innerHTML = "Výberom označenia v zozname môžete <b>zobraziť podrobnosti</b> o sušienke.";
+        modalFooter.textContent = "5 z 7";
 
         document.getElementById('nextStep').style.display = 'none'
 
@@ -189,8 +189,8 @@ function nextStep() {
 
         currentStep = 5;
     } else if(currentStep == 5) {
-        modalBody.innerHTML = "Here are details of the selected annotation. <br><br> You can <b>edit the annotation</b> by selecting the correct microtubular defect or dynein arms from the dropdown menu.";
-        modalFooter.textContent = "6 of 7";
+        modalBody.innerHTML = "Tu sú uvedené podrobnosti o vybranej sušienke. <br><br> Označenia môžete <b>upraviť</b> výberom správnej príchute alebo typu kúskov z rozbaľovacieho zoznamu.";
+        modalFooter.textContent = "6 z 7";
 
         let modal = document.getElementById('modal');
         modal.style.top = "310px"
@@ -202,39 +202,24 @@ function nextStep() {
             element.onclick = row_click_callback(element)
         })
 
-
         var annotationInfo = document.getElementById('annotation-info');
         annotationInfo.style.borderTop = "0.8px solid #006CEB";
         annotationInfo.style.borderBottom = "0.8px solid #006CEB";
 
-        currentStep = 7;
+        currentStep = 6;
     } else if(currentStep == 6) {
-        modalBody.innerHTML = "";
-        modalFooter.textContent = "7 of 8";
-
-        let modal = document.getElementById('modal');
-        modal.style.top = "150px"
-        modal.style.left = "850px"
-
-        var annotationInfo = document.getElementById('annotation-info');
-        annotationInfo.style.borderTop= "none";
-        annotationInfo.style.borderBottom = "0.8px solid rgb(45, 45, 66)";
-
-
-        currentStep = 7;
-    } else if (currentStep == 7) {
-        modalBody.innerHTML = "You have successfully completed the tutorial. <br><br> Click on the <b>Done</b> button to continue.";
-        modalFooter.textContent = "7 of 7";
+        modalBody.innerHTML = "Úspešne ste dokončili tutoriál automatického označovania. <br><br> Upozorňujeme, že AI nemusí označiť všetky sušienky na obrázku a je potrebná kontrola. <br><br> Pokračujte kliknutím na tlačidlo <b>Hotovo</b>.";
+        modalFooter.textContent = "7 z 7";
 
         let modal = document.getElementById('modal');
         modal.style.top = "40%"
         modal.style.left = "40%"
 
-        currentStep = 8;
+        currentStep = 7;
         var nextButton = document.getElementById('nextStep');
         nextButton.style.display = "block";
-        nextButton.textContent = "Done";
-    } else if(currentStep == 8) {
+        nextButton.textContent = "Hotovo";
+    } else if(currentStep == 7) {
         closeModal();
     }
 }
@@ -245,7 +230,7 @@ function backStep() {
 
     if(currentStep < 8) {
         var nextButton = document.getElementById('nextStep');
-        nextButton.textContent = "Next";
+        nextButton.textContent = "Ďalej";
     }
 
     if(currentStep == 5) {

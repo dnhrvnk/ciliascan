@@ -95,7 +95,7 @@ const update_rightside = (row) => {
   ccc.textContent = confLevel || '--%';
   let val = confLevel || '--%'
   console.log(val)
-  confLevelCell.innerHTML = ccc.outerHTML + (val == '--%' ? '' : '<button class="button button-common" id="btnInfo" onclick="showMoreInfo()" style="margin-left: 20px;">Show more info</button>');
+  //confLevelCell.innerHTML = ccc.outerHTML + (val == '--%' ? '' : '<button class="button button-common" id="btnInfo" onclick="showMoreInfo()" style="margin-left: 20px;">Show more info</button>');
   dynein.value = `${annot_cycle.indexOf(icon.className.split(' ').reverse()[0])}`
   calc_chips();
 

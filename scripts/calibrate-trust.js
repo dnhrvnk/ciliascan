@@ -30,12 +30,10 @@ function updateWarningMessage() {
         msg.style.display = "block";
         expl.style.display = "none";
         modal.style.left = "60%";
-        //modal.style.top = "-45%";
     } else {
         msg.style.display = "none";
         expl.style.display = "block";
         modal.style.left = null;
-        //modal.style.top = null;
     }
 
 }

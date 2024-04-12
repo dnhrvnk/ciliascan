@@ -53,8 +53,8 @@ var area_callback = undefined
 
 function nextManual() {
     if(step == 0) {
-        modalBody.innerHTML = "Let's learn how to <b>manually annotate</b> an image.";
-        modalFooter.textContent = "1 of 8";
+        modalBody.innerHTML = "Poďme sa naučiť ako <b>ručne anotovať</b> obrázok.";
+        modalFooter.textContent = "1 z 8";
         
         dropdown = document.getElementById("mtds-tool-dropdown-content");
         dropdown.classList.remove("show");
@@ -76,8 +76,8 @@ function nextManual() {
         step = 1;
     }
     else if(step == 1) {
-        modalBody.innerHTML = "Select the appropriate microtubular defect from the provided dropdown menu.";
-        modalFooter.textContent = "2 of 8";
+        modalBody.innerHTML = "Z rozbaľovacieho zoznamu vyberte príslušnú príchuť sušienky.";
+        modalFooter.textContent = "2 z 8";
     
         dropdown = document.getElementById("mtds-tool-dropdown-content");
         console.log(dropdown.classList)
@@ -111,8 +111,8 @@ function nextManual() {
 
         step = 2;
     } else if(step == 2) {
-        modalBody.innerHTML = "Now that you've selected the microtubular defect, it's time to annotate the image by placing annotations directly on the areas of interest. <br><br> Position your cursor over the area of the image where the defect is located. <b>Click on the image to place an annotation</b> at that precise point.";
-        modalFooter.textContent = "3 of 8";
+        modalBody.innerHTML ="Teraz, keď ste vybrali príchuť sušienky, môžete začať označovať sušienky na obrázku. <br><br> Umiestnite kurzor nad oblasť obrázka, kde sa nachádza sušienka danej príchute. <b>Kliknutím na obrázok umiestnite označenie</b> presne na dané miesto.";
+        modalFooter.textContent = "3 z 8";
 
         dropdown = document.getElementById("mtds-tool-dropdown-content");
         dropdown.classList.remove("show");
@@ -141,8 +141,8 @@ function nextManual() {
 
         step = 3;
     } else if(step == 3) {
-        modalBody.innerHTML = "Once you've placed an annotation on the image, you can easily adjust its dynein arms by clicking on it. <br><br> Simply <b>click on the annotation<b> to cycle through the available dynein arms until you are satisfied.";
-        modalFooter.textContent = "4 of 8";
+        modalBody.innerHTML = "Po umiestnení označenia môžete ľahko upraviť typ kúskov sušienky kliknutím na označenie. <br><br> Jednoducho <b>kliknite na označenie<b> a klikajte dokým nebudete spokojný so značkou typu kúskov.";
+        modalFooter.textContent = "4 z 8";
 
         modal.style.top = "16%";
         modal.style.left = "56%";
@@ -153,8 +153,8 @@ function nextManual() {
         document.getElementById('nextManual').style.display = 'block'
         step = 4; 
     } else if(step == 4) {
-        modalBody.innerHTML = "Annotations are automatically saved as you place them on the image. <br><br> You can also see them in the <b>annotation list</b> on the right side of the screen.";
-        modalFooter.textContent = "5 of 8";
+        modalBody.innerHTML = "Označenia sa automaticky ukladajú, keď ich umiestnite na obrázok. <br><br> Môžete ich tiež vidieť v <b>zozname označení</b> na pravej strane obrazovky."; 
+        modalFooter.textContent = "5 z 8";
 
         var listAnnotations = document.querySelector('.uploaded-image-annotations.active');
         listAnnotations.style.border = "2px solid #006CEB";
@@ -168,8 +168,8 @@ function nextManual() {
 
         step = 5;
     } else if(step == 5) {
-        modalBody.innerHTML = "You can also see details about annotation by clicking on the annotation in the list or by clicking on the annotation on the image. <br><br> You can <b>change the annotation</b> by selecting the correct microtubular defect or dynein arms from the dropdown menu.";
-        modalFooter.textContent = "6 of 8";
+        modalBody.innerHTML = "Podrobnosti o označení si môžete pozrieť aj kliknutím na riadok v zozname alebo kliknutím na označenie na obrázku. <br><br> Označenie môžete <b>zmeniť</b> výberom správnej príchute sušienky alebo typu kúskov z rozbaľovacieho zoznamu.";
+        modalFooter.textContent = "6 z 8";
 
         modal.style.top = "310px"
         modal.style.left = "870px"
@@ -183,9 +183,8 @@ function nextManual() {
 
         step = 6;
     } else if(step == 6) {
-        modalBody.innerHTML = "You can delete an annotation by clicking on the <b>trash icon</b> in the list of annotations or by <b>right-clicking</b> on the annotation on the image.";
-        modalFooter.textContent = "7 of 8";
-
+        modalBody.innerHTML = "Anotáciu môžete odstrániť kliknutím na <b>ikonu koša</b> v zozname označení alebo <b>pravým kliknutím</b> na označenie na obrázku.";        
+        modalFooter.textContent = "7 z 8";
         var annotationInfo = document.getElementById('annotation-info');
         annotationInfo.style.borderTop = "none";
         annotationInfo.style.borderBottom = "0.8px solid rgb(45, 45, 66)";
@@ -194,16 +193,16 @@ function nextManual() {
         modal.style.left = "56%";
 
         var nextButton = document.getElementById('nextManual');
-        nextButton.textContent = "Next";
+        nextButton.textContent = "Ďalej";
 
         step = 7;
     } else if (step == 7) {
-        modalBody.innerHTML = "You have successfully completed the tutorial. <br><br> Click on the <b>Done</b> button to continue.";
-        modalFooter.textContent = "8 of 8";
+        modalBody.innerHTML = "Úspešne ste dokončili tutoriál manuálneho označovania. <br><br> Pokračujte kliknutím na tlačidlo <b>Hotovo</b>.";
+        modalFooter.textContent = "8 z 8";
         step = 8;
 
         var nextButton = document.getElementById('nextManual');
-        nextButton.textContent = "Done";
+        nextButton.textContent = "Hotovo";
 
         modal.style.top = "45%";
         modal.style.left = "40%";
@@ -252,7 +251,6 @@ function closeManual() {
     if(area_callback) {
         document.getElementById("mainImage") = area_callback
     }
-
 }
 
 function backManual() {

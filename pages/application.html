@@ -85,10 +85,9 @@
             <button class="button button-share"><i class="fa-regular fa-share-from-square icon-blue"></i>Zdieľaj</button>
             <button class="button button-share"><i class="fa-solid fa-upload icon-blue"></i>Nahraj obrázky</button>
 
-            
             <button id="btn-export" class="button button-grey" onclick="export_annotations()" disabled><i class="fa-solid fa-download icon"></i> Export</button>
             
-            <button class="button button-icons" style="margin-right: 0;" onclick="openModelInfo()"><i class="fa-solid fa-robot icon icon-nav"></i></button>
+            <button class="button button-icons" style="margin-right: 0;" onclick="openModelInfo()" disabled><i class="fa-solid fa-robot icon icon-nav"></i></button>
             
             <div class="dropdown">
                 <button class="button button-icons dropdown-toggle" id="dropdownMenuButton3">
@@ -100,7 +99,7 @@
                         <input type="checkbox" id="allow-collecting-data">
                         <span class="toggle"></span>
                     </label>
-                    <a class="dropdown-item" href="#" onclick="openExplicitFeedback()">Daj nám spätnú väzbu</a>
+                    <a class="dropdown-item" href="#" onclick="openExplicitFeedback()">Spätná väzba</a>
                 </div>
             </div>
         </div>
@@ -242,21 +241,17 @@
                 <img src="" alt="" id="mainImage">
             </div>
             
-            <div id="warning-modal" class="modal" onclick="updateWarningMessage()">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div id="warning-expl">
-                            <i class="fa-solid fa-exclamation icon"></i>
-                        </div>
-                        <div id="warning-content">
-                            <div style="text-align: end;">
-                                <i class="fa-solid fa-chevron-up icon"></i>
-                            </div>
-                            <p><b>Počet neoznačených príchutí:</b> 4</p>
-                            <p><b>Počet neoznačených typov kúskov:</b> 11</p>
+            <div class="tooltip-container">
+                <div id="warning-modal" class="modal" onclick="updateWarningMessage()">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div id="warning-expl">
+                                <i class="fa-solid fa-exclamation icon"></i>
+                            </div>    
                         </div>
                     </div>
                 </div>
+                <div id="tooltip-warning" class="tooltip"><b>Pozor! </b> Model AI možno nevedel <br> niektoré sušienky označiť a je potrebná kontrola.</div>
             </div>
 
             <div id="model-information">
@@ -432,14 +427,14 @@
             <div id="feedback-AI-info">
                 <div id="feedback-AI-info-content">
                     <div id="feedback-AI-info-header "style="display: flex;">
-                        <h3>Is any decision wrong?</h3>
+                        <h3>Bolo niektoré rozhodnue AI modelu nekorektné?</h3>
                         <button class="close" onclick="closeFeedbackAI()">&times;</button>
                     </div>
                     <div id="feedback-AI-info-info">
-                        <textarea id="decision-textarea" placeholder="Write where AI did something wrong here..."></textarea>
+                        <textarea id="decision-textarea" placeholder="Napíš čo AI model spravil zle..."></textarea>
                     </div>
                     <div style="text-align: end; padding-inline: 20px;">
-                        <button class="button button-blue" onclick="closeFeedbackAI()">Send</button>
+                        <button class="button button-blue" onclick="closeFeedbackAI()">Odoslať</button>
                     </div>
                 </div>
             </div>
@@ -451,7 +446,7 @@
                     </div>
                     <div id="feedback-AI-info-success-info">
                         <p style="color:#006CEB"><b>Thank you for your feedback!</b></p>
-                        <p>We'll incorporate your suggestions and you'll see improvements next time!</p>
+                        <p>Zapracujeme Vaše návrhy a vylepšenia uvidíte pri najbližšom spustení automatickej anotácie!</p>
                     </div>
                 </div>
             </div>
@@ -548,7 +543,7 @@
                 <div id="welcome-to-run-annotation-content">
                     <button class="close" onclick="stopInboarding()">&times;</button>
                     <img src="../assets/welcome-to-run-annotation.gif" alt="Welcome to Run Annotation" id="image-welcome-to-run-annotation" class="image">
-                    <button class="button button-blue" id="next-button" onclick="inboarding()">Next</button>
+                    <button class="button button-blue" id="next-button" onclick="inboarding()">Ďalej</button>
                 </div>
             </div>
 
@@ -559,11 +554,11 @@
                             <span class="icon close" onclick="closeGenerate()">&times;</span>
                         </div>
                         <div class="modal-body">
-                            <p><b style="color: #006CEB; font-size: 13px;">Are you sure that you want to generate annotations?</b></p>
-                            <p>Please note that the AI-generated output is provided for assistance purposes. While the AI model strives to provide accurate predictions, it may not always be correct, and there is a possibility of errors or inaccuracies.</p>
+                            <p><b style="color: #006CEB; font-size: 13px;">Ste si istí, že chcete vygenerovať anotácie?</b></p>
+                            <p>Upozorňujeme, že výstup navrhnutý umelou inteligenciou slúži iba na pomocné účely. Hoci sa model AI snaží poskytovať presné označenia, nemusí byť vždy správny.</p>                        
                         </div>
-                        <div class="modal-footer" style="justify-content: center; margin-top: 20px;">
-                            <button class="button button-blue" onclick="show_succsess()">Generate</button>
+                        <div class="modal-footer" style="justify-content: end; margin-top: 20px;">
+                            <button class="button button-blue" onclick="show_succsess()">Vygenerovať</button>
                         </div>
                     </div>
                 </div>
@@ -577,7 +572,7 @@
                         </div>
                         <div class="modal-body" style="text-align: center;">
                             <i class="fa-solid fa-circle-check" style="font-size: 60px; color: #29C740; margin-top: 20px;"></i>
-                            <p style="margin-top: 20px; margin-bottom: 10px;">Annotation were succesfully generated.</p>
+                            <p style="margin-top: 20px; margin-bottom: 10px;">Anotácie boli úspešne vygenerované.</p>
                         </div>
                     </div>
                 </div>
@@ -590,18 +585,16 @@
                     </div>
                     <div class="modal-body">
                         <p>
-                            To activate automatic annotation, simply select <br>"<b>Run Annotation</b>" in dropdown menu. 
+                            Ak chcete aktivovať automatickú anotáciu, jednoducho vyberte <br>"<b>Spusti anotáciu</b>" z rozbaľovacieho zoznamu. 
                             <br><br>
-                            Our AI technology will then swiftly analyze the current image, highlighting celia for further review.
-                            <br>
-                            To continue with showcase run automatic annotation!
+                            Náš model AI potom rýchlo zanalyzuje aktuálny obrázok a označí sušienky na ďalšie preskúmanie.
                         </p>
                     </div>
                     <div class="modal-footer">
-                        <p>1 of 8</p>
+                        <p>1 z 7</p>
                         <div style="column-gap: 5px; display: flex;">
-                            <button id="backStep" class="button button-common" onclick="backStep()" style="display: none">Back</button>
-                            <button id="nextStep" class="button button-blue" style="display: none;" onclick="nextStep()">Next</button>
+                            <button id="backStep" class="button button-common" onclick="backStep()" style="display: none">Späť</button>
+                            <button id="nextStep" class="button button-blue" style="display: none;" onclick="nextStep()">Ďalej</button>
                         </div>
                     </div>
                 </div>
@@ -614,14 +607,14 @@
                     </div>
                     <div class="modal-body">
                         <p>
-                            Let's learn how to <b>manually annotate</b> an image.
+                            Poďme sa naučiť ako <b>ručne anotovať</b> obrázok.
                         </p>
                     </div>
                     <div class="modal-footer">
-                        <p>1 of 8</p>
+                        <p>1 z 8</p>
                         <div style="column-gap: 5px; display: flex;">
-                            <button id="backManual" class="button button-common" onclick="backManual()" style="display: none">Back</button>
-                            <button id="nextManual" class="button button-blue" onclick="nextManual()">Next</button>
+                            <button id="backManual" class="button button-common" onclick="backManual()" style="display: none">Späť</button>
+                            <button id="nextManual" class="button button-blue" onclick="nextManual()">Ďalej</button>
                         </div>
                     </div>
                 </div>
@@ -631,7 +624,7 @@
                 <div class="modal loading" id="modal-loading">
                     <div class="modal-content">
                         <div class="modal-body">
-                            <p>Loading</p>
+                            <p>Načítava sa</p>
                         </div>
                     </div>
                 </div>
@@ -640,7 +633,7 @@
             <div id="modal-reminder" class="modal">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <p>Did you know you can <b>speed up the process</b> by running automatic annotation?</p>
+                        <p>Vedeli ste, že proces môžete <b>zrýchliť</b> spustením automatickej anotácie?</p>
                     </div>
                 </div>
             </div>
@@ -648,95 +641,90 @@
             <div id="explicit-feedback">
                 <div id="explicit-feedback-content">
                     <div id="feedback-header"style="display: flex;">
-                        <h3>Give us feedback</h3>
-                        <p id="feedback-steps">Step 1 of 5</p>
+                        <h3>Pošli nám svoj názor</h3>
+                        <p id="feedback-steps">Krok 1 z 5</p>
                         <button class="close" onclick="closeExplicitFeedback()">&times;</button>
                     </div>
                     <div id="feedback-response">
                         <button class="close" onclick="closeExplicitFeedback()">&times;</button>
-                        <h3 style="color: #006CEB">Thank you for your feedback on CiliaScan!</h3>
+                        <h3 style="color: #006CEB">Ďakujeme za vašu spätnú väzbu na CookieScan!</h3>
                         <p>
-                            We sincerely appreciate you taking the time to share your thoughts with us. Your feedback is incredibly valuable and will be instrumental in helping us enhance the CiliaScan experience for all our users.
-                            <br><br> 
-                            If you have any further comments or suggestions, please don't hesitate to reach out to us. We're committed to delivering the best possible experience and greatly value your input.
+                            Vážime si, že ste si našli čas a podelili sa s nami o svoje názory. Vaša spätná väzba je neuveriteľne cenná a pomôže nám zlepšiť skúsenosti so systémom CookieScan pre všetkých našich používateľov.
+                            <br><br>                              
+                            Ak máte ďalšie pripomienky alebo návrhy, neváhajte nás kontaktovať. Snažíme sa stále vylepšovať Vaše skúsenosti.
                             <br><br>
-                            <b>Thank you once again for your valuable feedback!</b>
+                            <b>Ďakujeme Vám ešte raz za Vašu cennú spätnú väzbu!</b>
                         </p>
                     </div>
                     <div id="form-feedback">
                         <div class="one-two-questions">
-                            <h4>1. Overall Satisfaction</h4>
-                            <p>How satisfied are you with CiliaScan?</p>
-                            <div class="rating">
-                                <button class="rating-btn-satisfaction" value="1">Very Dissatisfied</button>
-                                <button class="rating-btn-satisfaction" value="2">Dissatisfied</button>
-                                <button class="rating-btn-satisfaction" value="3">Neutral</button>
-                                <button class="rating-btn-satisfaction" value="4">Satisfied</button>
-                                <button class="rating-btn-satisfaction" value="5">Very Satisfied</button>
-                            </div>
                             
+                        <h4>1. Celková spokojnosť</h4>
+                            <p>Ako ste spokojný so systémom CookieScan?</p>
+                            <div class="hodnotenie">
+                                <button class="rating-btn-satisfaction" value="1">Veľmi nespokojný</button>
+                                <button class="rating-btn-satisfaction" value="2">Nespokojný</button>
+                                <button class="rating-btn-satisfaction" value="3">Neutrálne</button>
+                                <button class="rating-btn-satisfaction" value="4">Spokojný</button>
+                                <button class="rating-btn-satisfaction" value="5">Veľmi spokojný</button>
+                            </div>
+            
                             <hr>
     
-                            <h4>2. Ease of Use:</h4>
-                            <p>How easy was it to learn how to use CiliaScan?</p>
-                            <div class="rating">
-                                <button class="rating-btn-easy" value="1">Very Difficult</button>
-                                <button class="rating-btn-easy" value="2">Difficult</button>
-                                <button class="rating-btn-easy" value="3">Neutral</button>
-                                <button class="rating-btn-easy" value="4">Easy</button>
-                                <button class="rating-btn-easy" value="5">Very Easy</button>
+                            <h4>2. Jednoduchosť používania:</h4>
+                            <p>Ako jednoduché bolo naučiť sa používať CookieScan? </p>
+                            <div class="hodnotenie">
+                                <button class="rating-btn-easy" value="1">Veľmi náročné</button>
+                                <button class="rating-btn-easy" value="2">Náročné</button>
+                                <button class="rating-btn-easy" value="3">Neutrálne</button>
+                                <button class="rating-btn-easy" value="4">Ľahké</button>
+                                <button class="rating-btn-easy" value="5">Veľmi ľahké</button>
                             </div>
         
-                            <p>Did you encounter any difficulties or challenges while using the annotation tool?</p>
-                            <textarea name="feedback" id="feedback" placeholder="Write your difficulties here"></textarea>
+                            <p>Stretli ste sa pri používaní s nejakými ťažkosťami alebo problémami?</p>
+                            <textarea name="feedback" id="feedback" placeholder="Napíšte svoje problémy sem"></textarea>
                         </div>
 
-                        <div class="three-questions ">
-                            <h4>3. Functionality and Features:</h4>
-                            <p>Which features of CiliaScan did you find most useful for annotating cilia and diagnosing PCD?</p>
-                            <textarea name="feedback" id="feedback" placeholder="Write useful features here"></textarea>
-                            <p>Are there any additional features or functionalities you would like to see added to CiliaScan?</p>
-                            <textarea name="feedback" id="feedback" placeholder="Write additional featureshere"></textarea>
+                        <div class="three-questions ">                             
+                            <h4>3. Funkčnosť a vlastnosti:</h4>
+                            <p>Ktoré funkcie programu CiliaScan považujete za najužitočnejšie pri anotovaní sušienok?
+                            <textarea name="feedback" id="feedback" placeholder="Napíšte sem užitočné funkcie"></textarea>
+                            <p>Existujú nejaké ďalšie funkcie alebo vlastnosti, ktoré Vám v CookieScan chýbali?</p>
+                            <textarea name="feedback" id="feedback" placeholder="Napíšte ďalšie funkcie sem"></textarea>
                         </div>
 
                         <div class="four-questions">
-                            <h4>4. Accuracy and Reliability:</h4>
-                            <p>How accurate do you find the AI model's annotations in CiliaScan?</p>
-                            <textarea name="feedback" id="feedback" placeholder="Write useful features here"></textarea>
-                            <p>Have you encountered any instances where the AI model's annotations were inaccurate or unreliable?</p>
-                            <textarea name="feedback" id="feedback" placeholder="Write additional featureshere"></textarea>
+                            <h4>4. Presnosť a spoľahlivosť:</h4>
+                            <p>Ako presné sú podľa vás anotácie modelu AI v CookieScan?
+                            <textarea name="feedback" id="feedback" placeholder="Napíšte sem Váš názor na presnosť anotácií"></textarea>
+                            <p>Stretli ste sa s prípadmi, keď boli anotácie modelu AI nepresné alebo nespoľahlivé?</p>
+                            <textarea name="feedback" id="feedback" placeholder="Napíšte prípady nepresnosti sem"></textarea>
                         </div>
 
-                        <div class="five-questions">
-                            <h4>5. Suggestions for Improvement</h4>
-                            <p>Do you have any suggestions for how we can improve CiliaScan to better meet your needs?</p>
-                            <textarea name="feedback" id="feedback" placeholder="Write useful features here"></textarea>
-                            <p>Is there anything specific you would like to see changed or enhanced in future updates of CiliaScan?</p>
-                            <textarea name="feedback" id="feedback" placeholder="Write additional featureshere"></textarea>
+                        <div class="five-questions">                             
+                            <h4>5. Návrhy na zlepšenie</h4>
+                            <p>Máte nejaké návrhy, ako by sme mohli zlepšiť CookieScan, aby lepšie vyhovoval Vašim potrebám?</p>
+                            <textarea name="feedback" id="feedback" placeholder="Napíšte vylepšienia sem"></textarea>
                         </div>
-                        <div class="six-questions">
-                            <h4>6. Demographic Information:</h4>
-                            <p>Optional: Please provide some demographic information (e.g., occupation, years of experience in pathology) to help us better understand our user base.</p>
-                            <textarea name="feedback" id="feedback" placeholder="Write useful features here"></textarea>
-
+                        <div class="six-questions">          
+                            <h4>6. Demografické údaje:</h4>
+                            <p>Voliteľné: </p>: Uveďte niektoré demografické informácie (napr. povolanie, roky praxe v sušienkach), ktoré nám pomôžu lepšie pochopiť našich používateľov.</p>
+                            <textarea name="feedback" id="feedback" placeholder="Napíšte niečo o sebe sem"></textarea>
                             <hr>
-                            
-                            <h4>7. Demographic Information:</h4>
-                            <p>Is there anything else you would like to share about your experience with CiliaScan?</p>
-                            <textarea name="feedback" id="feedback" placeholder="Write useful features here"></textarea>
-                        </div>
 
-                        <div>
-                            <p></p>
+                            <h4>7. Ďalšie informácie:</h4>
+                            <p>Je ešte niečo, o čo by ste nám chceli povedať?</p>
+                            <textarea name="feedback" id="feedback" placeholder="..."></textarea>
                         </div>
                     </div>
                     <div class="explicit-feedback-footer">
-                        <button class="button button-common" id="back-button" onclick="stepBack()">Back</button>
-                        <button class="button button-blue" id="submit-button" onclick="stepForward()">Next</button>
+                        <button class="button button-common" id="back-button" onclick="stepBack()">Späť</button>
+                        <button class="button button-blue" id="submit-button" onclick="stepForward()">Ďalej</button>
                     </div>  
                 </div>
             </div>
-        </div>  
+        </div>
+
         <aside class="right-aside"> 
             <div class="collapsible">
                 <div class="collapsible-head" onclick="toggleCollapsible(this)">
