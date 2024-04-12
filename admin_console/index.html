@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Console</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div>
+    <label for="ip">IP Address</label>
+    <input type="text" id="ip" name="ip" value="localhost:8080"/>
+    <button onclick="connectToServer(document.getElementById('ip').value)">Connect</button>
+    <span id="status">Not Connected</span>
+  </div>
+  <div>
+    <label for="missing">Probability of Missing Data</label>
+    <input type="range" id="missing" name="missing" min="0" max="1000" value="0" />
+  </div>
+  <div>
+    <label for="wrong_class">Probability of Wrong Class</label>0
+    <input type="range" id="wrong_class" name="wrong_class" min="0" max="1000" value="0"/> 
+  </div>
+  <div>
+    <label for="wrong_subclass">Probability of Wrong SubClass</label>
+    <input type="range" id="wrong_subclass" name="wrong_subclass" min="0" max="1000" value="0"/>
+  </div>
+  <div>
+    <label for="random_placement">Probability of Random placement</label>
+    <input type="range" id="random_placement" name="random_placement" min="0" max="1000" value="0"/>
+  </div>
+  <div>
+    <label for="extra_annot">Probability of Extra Annotations</label>
+    <input type="range" id="extra_annot" name="extra_annot" min="0" max="1000" value="0"/>
+  </div>
+  <div>
+    <button onclick="stopLoading()">Stop loading of annotations</button> <span><span id="seconds">0</span> seconds loading</span>
+  </div>
+    <script>
+        let socket = null;
+        let interval = null;
+        const connectToServer = (ip) => {
+            socket = new WebSocket(`ws://${ip}/admin`);
+            socket.onopen = function(e) {
+                console.log("[open] Connection established");
+                document.getElementById("status").innerText = "Connected";
+            };
+
+            socket.onmessage = function(event) {
+                console.log(`[message] Data received from server: ${event}`);
+                console.log(event);
+                if (event.data == '"start_loading"') {
+                  console.log("Starting loading");
+                    document.getElementById("seconds").innerText = "0";
+                    interval = setInterval(() => {
+                        document.getElementById("seconds").innerText = parseInt(document.getElementById("seconds").innerText) + 1;
+                    }, 1000);
+
+                }
+            };
+
+            socket.onclose = function(event) {
+                if (event.wasClean) {
+                    console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+                } else {
+                    console.log('[close] Connection died');
+                }
+            };
+
+            socket.onerror = function(error) {
+                console.log(`[error] ${error.message}`);
+            };
+        }
+
+        const sendToClient = (type,value) => {
+            if (socket.readyState === WebSocket.OPEN) {
+              console.log("Sending to client: ", type, value);
+                socket.send(JSON.stringify({type: type, value: value}));
+            } else {
+                console.log("The socket is not open.");
+            }
+        }
+
+        const stopLoading = () => {
+          sendToClient("stop_loading", 1);
+          clearInterval(interval)
+        }
+
+        var missing = document.getElementById("missing");
+        var wrong_class = document.getElementById("wrong_class");
+        var wrong_subclass = document.getElementById("wrong_subclass");
+        var random_placement = document.getElementById("random_placement");
+        var extra_annot = document.getElementById("extra_annot");
+
+
+        missing.addEventListener("change", function() {
+            sendToClient("missing",missing.value/1000.);
+        });
+
+        wrong_class.addEventListener("change", function() {
+            sendToClient("wrong_class",wrong_class.value/1000.);
+        });
+
+        wrong_subclass.addEventListener("change", function() {
+            sendToClient("wrong_subclass",wrong_subclass.value/1000.);
+        });
+
+        random_placement.addEventListener("change", function() {
+            sendToClient("random_placement",random_placement.value/1000.);
+        });
+
+        extra_annot.addEventListener("change", function() {
+            sendToClient("extra_annot",extra_annot.value/1000.);
+        });
+    </script>
+</body>

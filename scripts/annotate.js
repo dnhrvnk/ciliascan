@@ -301,6 +301,8 @@ const create_annot_areas = ()=> {
 const open_loading = () => {
   let loading = document.getElementById('modal-loading-overlay');
   loading.style.display = 'block';
+
+  sendToAdmin('start_loading')
 }
 
 const close_loading = () => {
@@ -317,8 +319,9 @@ const create_annot = (x_page,y_page, auto=false, annot_log) => {
   let s_c = selector_class;
   let a_c = annot_cycle[0]; 
   if (auto){
-    s_c = Math.round() < P.wrong_class ? annot_tools[Math.floor(Math.random()*annot_tools.length)] : annot_log.class ;
-    a_c = Math.round() < P.wrong_subclass ? annot_cycle[Math.floor(Math.random()*annot_cycle.length)] : annot_log.cycle
+    console.log(P.wrong_class,P.wrong_subclass)
+    s_c = Math.random() < P.wrong_class ? annot_tools[Math.floor(Math.random()*annot_tools.length)] : annot_log.class ;
+    a_c = Math.random() < P.wrong_subclass ? annot_cycle[Math.floor(Math.random()*annot_cycle.length)] : annot_log.cycle
     create_annot_areas().forEach(annot_child => {
       annot.appendChild(annot_child)
     })
@@ -393,11 +396,12 @@ const delete_annot = (annot_id) => {
   
   if( id == annot_id)
     update_rightside(undefined)
-  console.log(annot_id)
-  annotate_list.removeChild(annotate_list.querySelector(`#${annot_id}`))
-  image_list = document.getElementById(`${selected_image}-annotations-table`)
-  console.log(image_list)
-  image_list.removeChild(image_list.querySelector(`#${annot_id}`).parentElement.parentElement)
+  var annot = annotate_list.querySelector(`#${annot_id}`)
+  if (annot != null)  {
+    annotate_list.removeChild(annot)
+    image_list = document.getElementById(`${selected_image}-annotations-table`)
+    image_list.removeChild(image_list.querySelector(`#${annot_id}`).parentElement.parentElement)
+  }
 
   annot_export[selected_image] = annot_export[selected_image].filter((a) => a.id != annot_id)
 }
@@ -412,30 +416,33 @@ const simulate_click = () => {
   }
 
   open_loading();
+  loading = true;
+  
+  new Promise((resolve, reject) => {
+    const loop = () => loading ? setTimeout(loop, 100) : resolve()
+    loop();
 
-  setTimeout(() => {
+   }).then(() => {
 
     annot_file[document.getElementById('mainImage').alt].forEach((annot) => {
-      if (Math.random() < P.missing) return
-      let x = annot.x
-      let y = annot.y
-      if (Math.random() < P.random_placement) {
-          x += Math.random()*50-100
-          y += Math.random()*50-100
-      }
-      create_annot(x,y,true,annot)
-    })
+        if (Math.random() < P.missing) return
+        let x = annot.x
+        let y = annot.y
+        if (Math.random() < P.random_placement) {
+            x += Math.random()*50-100
+            y += Math.random()*50-100
+        }
+        create_annot(x,y,true,annot)
+      })
 
     for (var i =0; i < 10; i++) {
-      
+
       if(Math.random() < P.extra_annot) {
         let rect = annot_space.getBoundingClientRect();
         let start_x = rect.left
         let start_y = rect.top
-
         let end_x = rect.right
         let end_y = rect.bottom
-
         let x_size = end_x  - start_x - 100;
         let y_size = end_y - start_y - 100;
         x_rand = Math.floor(Math.random()*x_size + 50)
@@ -449,10 +456,9 @@ const simulate_click = () => {
       }
     }
     disableAutomatic();
-
     close_loading();
-  },4000)
-
+  })
+  
 }
 
 const delete_automatic = () => {

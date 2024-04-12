@@ -6,3 +6,5 @@ const P = {
   extra_annot: 0
 }
 
+let loading = false;
+
