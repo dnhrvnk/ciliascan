@@ -2,12 +2,6 @@ var explainedAI = false;
 
 const annot_callback = document.querySelector('#btn-run-annotation').onclick;
 
-document.querySelector('#btn-run-annotation').onclick = () => {
-    annot_callback()
-    document.querySelector('#btn-run-annotation').onclick = annot_callback
-    nextStep()
-    document.querySelector('#nextStep').style.display='block'
-}
 
 function startInboarding() {
     if(explainedAI == false) {
@@ -26,9 +20,16 @@ function inboarding() {
     openModal();
 
     let btn_run_annotation = document.querySelector('#btn-run-annotation');
-    btn_run_annotation.style.backgroundColor = "#006CEB";   
+    btn_run_annotation.style.backgroundColor = "#006CEB";  
+    btn_run_annotation.onclick = () => {
+        console.log('clicked', annot_callback)
+        annot_callback()
+        btn_run_annotation.onclick = annot_callback
+        nextStep()
+        document.querySelector('#nextStep').style.display='block'
+    } 
     
-    document.getElementById('mainImage').src = "../images/Tv17.png";
+    //document.getElementById('mainImage').src = "../images/Tv17.png";
 
     let dropdown = document.querySelector('#run-annotation');
     setTimeout(()=>{
@@ -175,7 +176,7 @@ function nextStep() {
         document.querySelectorAll('.table-annotations tr').forEach((element) => {
             const call_back = element.onclick
             element.onclick = () => {
-                console.log(call_back)
+                
                 call_back()
                 nextStep()
                 element.onclick = call_back

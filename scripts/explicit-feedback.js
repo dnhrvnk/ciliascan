@@ -131,7 +131,7 @@ function stepBack() {
 };
 
 let submit_btn = document.querySelector('#submit-button');
-console.log(submit_btn.textContent);
+
 if(submit_btn.textContent === 'Submit'  ) {
     submit_btn.addEventListener('click', () => {
 

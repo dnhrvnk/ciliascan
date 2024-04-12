@@ -26,8 +26,26 @@ let inc = 0
 let annot_file = null
 fetch('../assets/annotations.json').then((response) => response.json()).then((data) => {
   annot_file = data;
-  console.log(annot_file)
+  
 })
+
+const disableAutomatic = () => {
+  document.getElementById("warning-modal").style.display = "block";
+  document.getElementById("btn-run-annotation").onclick = null;
+  document.getElementById("btn-run-annotation").style.color = "grey";
+
+  document.getElementById("btn-reset-annotation").style.color = "white";
+  document.getElementById("btn-reset-annotation").onclick = delete_automatic;
+}
+
+const allowAutomatic = () => {
+  document.getElementById("warning-modal").style.display = "none";
+  document.getElementById("btn-run-annotation").onclick = simulate_click;
+  document.getElementById("btn-run-annotation").style.color = "white";
+
+  document.getElementById("btn-reset-annotation").style.color = "grey";
+  document.getElementById("btn-reset-annotation").onclick = null;
+}
 
 
 class LoggedAnnotation {
@@ -77,7 +95,7 @@ let annotation_list = []
 
 
 const update_rightside = (row) => {
-  console.log(row)
+  
   if (row == undefined){
     mtds.value = ''
     dynein.value = undefined
@@ -122,7 +140,7 @@ const update_rightside = (row) => {
     for (let i of icons){
       let keep = i.className.split(' ');
       keep.splice(3,1,annot_cycle[dynein.value]);
-      console.log(keep)
+      
       i.className = keep.join(' ');
     }
     if (confLevelCell.firstChild != null) {
@@ -187,7 +205,7 @@ const select_annotation = (annot) => {
     r.classList.remove('selected-row');
   }
   let i = annot.id.split('-')[2];
-  console.log(i)  
+  
   image_list = document.getElementById(`${i}-annotations-table`)
   let annot_row = image_list.querySelector('[id="'+annot.id+'"]');
   annot_row.parentElement.parentElement.classList.add('selected-row');
@@ -262,27 +280,29 @@ let update_row = (id) => {
 
 const create_annot_areas = ()=> {
   const out = []
-  let child = document.createElement('div')
-  child.classList.add('area')
-  child.classList.add('first')
-  child.textContent =  '40%'
-  out.push(child)
-  child = document.createElement('div')
-  child.classList.add('area')
-  child.classList.add('second')
-  child.textContent =  '50%'
-  out.push(child)
-  child = document.createElement('div')
-  child.classList.add('area')
-  child.classList.add('thrid')
-  child.textContent =  '60%'
-  out.push(child)
+  //let child = document.createElement('div')
+  //child.classList.add('area')
+  //child.classList.add('first')
+  //child.textContent =  '40%'
+  //out.push(child)
+  //child = document.createElement('div')
+  //child.classList.add('area')
+  //child.classList.add('second')
+  //child.textContent =  '50%'
+  //out.push(child)
+  //child = document.createElement('div')
+  //child.classList.add('area')
+  //child.classList.add('thrid')
+  //child.textContent =  '60%'
+  //out.push(child)
   return out
 }
 
 const open_loading = () => {
   let loading = document.getElementById('modal-loading-overlay');
   loading.style.display = 'block';
+
+  sendToAdmin('start_loading')
 }
 
 const close_loading = () => {
@@ -299,8 +319,9 @@ const create_annot = (x_page,y_page, auto=false, annot_log) => {
   let s_c = selector_class;
   let a_c = annot_cycle[0]; 
   if (auto){
-    s_c = annot_log.class;
-    a_c = annot_log.cycle
+    console.log(P.wrong_class,P.wrong_subclass)
+    s_c = Math.random() < P.wrong_class ? annot_tools[Math.floor(Math.random()*annot_tools.length)] : annot_log.class ;
+    a_c = Math.random() < P.wrong_subclass ? annot_cycle[Math.floor(Math.random()*annot_cycle.length)] : annot_log.cycle
     create_annot_areas().forEach(annot_child => {
       annot.appendChild(annot_child)
     })
@@ -359,9 +380,9 @@ const create_annot = (x_page,y_page, auto=false, annot_log) => {
 annot_space.onclick = (event) => {
   count+=1;
   create_annot(event.pageX,event.pageY)
-  console.log(count)
+  
   if((count+1) % 6  ==0 && document.getElementById("btn-run-annotation").onclick !== null){
-    console.log('adsadsa')
+    
     modal_reminder.classList.add('show')
     setTimeout(()=>{
       modal_reminder.classList.remove('show')
@@ -372,12 +393,15 @@ annot_space.onclick = (event) => {
 
 const delete_annot = (annot_id) => {
   let id = document.querySelectorAll('.annotation.selected')[0]?.id;
-  console.log(id)
+  
   if( id == annot_id)
     update_rightside(undefined)
-  annotate_list.removeChild(annotate_list.querySelector(`#${annot_id}`))
-  image_list = document.getElementById(`${selected_image}-annotations-table`)
-  image_list.removeChild(image_list.querySelector((`#${annot_id}`)).parentElement.parentElement)
+  var annot = annotate_list.querySelector(`#${annot_id}`)
+  if (annot != null)  {
+    annotate_list.removeChild(annot)
+    image_list = document.getElementById(`${selected_image}-annotations-table`)
+    image_list.removeChild(image_list.querySelector(`#${annot_id}`).parentElement.parentElement)
+  }
 
   annot_export[selected_image] = annot_export[selected_image].filter((a) => a.id != annot_id)
 }
@@ -392,32 +416,54 @@ const simulate_click = () => {
   }
 
   open_loading();
+  loading = true;
+  
+  new Promise((resolve, reject) => {
+    const loop = () => loading ? setTimeout(loop, 100) : resolve()
+    loop();
 
-  setTimeout(() => {
-    console.log(document.getElementById('mainImage').alt)
-    console.log(annot_file)
+   }).then(() => {
+
     annot_file[document.getElementById('mainImage').alt].forEach((annot) => {
-      create_annot(annot.x,annot.y,true,annot)
-    })
+        if (Math.random() < P.missing) return
+        let x = annot.x
+        let y = annot.y
+        if (Math.random() < P.random_placement) {
+            x += Math.random()*50-100
+            y += Math.random()*50-100
+        }
+        create_annot(x,y,true,annot)
+      })
+
+    for (var i =0; i < 10; i++) {
+
+      if(Math.random() < P.extra_annot) {
+        let rect = annot_space.getBoundingClientRect();
+        let start_x = rect.left
+        let start_y = rect.top
+        let end_x = rect.right
+        let end_y = rect.bottom
+        let x_size = end_x  - start_x - 100;
+        let y_size = end_y - start_y - 100;
+        x_rand = Math.floor(Math.random()*x_size + 50)
+        y_rand = Math.floor(Math.random()*y_size + 50)
+        let x = start_x + x_rand
+        let y = start_y + y_rand
+        const logAnnot = new LoggedAnnotation(x,y,'dsad')
+        logAnnot.class = annot_tools[Math.floor(Math.random()*annot_tools.length)]
+        logAnnot.cycle = annot_cycle[Math.floor(Math.random()*annot_cycle.length)]
+        create_annot(x,y,true,logAnnot)
+      }
+    }
+    disableAutomatic();
     close_loading();
-  },4000)
-
-  document.getElementById("warning-modal").style.display = "block";
-  document.getElementById("btn-run-annotation").onclick = null;
-  document.getElementById("btn-run-annotation").style.color = "grey";
-
-  document.getElementById("btn-reset-annotation").style.color = "white";
-  document.getElementById("btn-reset-annotation").onclick = delete_automatic;
+  })
+  
 }
 
 const delete_automatic = () => {
-  document.getElementById("btn-run-annotation").onclick = simulate_click;
-  document.getElementById("btn-run-annotation").style.color = "white";
-
-  document.getElementById("btn-reset-annotation").style.color = "grey";
-  document.getElementById("btn-reset-annotation").onclick = null;
-
-  let annots = document.querySelectorAll('.annotation.automatic');
+  allowAutomatic()
+  let annots = document.querySelectorAll(`.annotation.automatic[id$="${selected_image}"]`);
   (annots)
   for (let a of annots){
     delete_annot(a.id)
@@ -442,7 +488,7 @@ const disable_automatic = (id) => {
 opacity_range = document.getElementById('myRange');
 
 opacity_range.oninput = () => {
-  console.log('chaninig')
+  
 
   let annots = annotate_list.querySelectorAll('.annotation');
   for (let a of annots){
