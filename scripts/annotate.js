@@ -1,3 +1,12 @@
+const P = {
+  wrong_class: 0,
+  wrong_subclass: 0,
+  missing: 0,
+  random_placement: 0,
+  extra_annot: 0
+}
+
+
 let annot_space = document.getElementById('mainImage');
 let annotate_list = document.getElementById('image-annotations')
 let image_annotations_list = document.getElementById('image1-annotations-table')
@@ -299,8 +308,8 @@ const create_annot = (x_page,y_page, auto=false, annot_log) => {
   let s_c = selector_class;
   let a_c = annot_cycle[0]; 
   if (auto){
-    s_c = annot_log.class;
-    a_c = annot_log.cycle
+    s_c = Math.round() < P.wrong_class ? annot_tools[Math.floor(Math.random()*annot_tools.length)] : annot_log.class ;
+    a_c = Math.round() < P.wrong_subclass ? annot_cycle[Math.floor(Math.random()*annot_cycle.length)] : annot_log.cycle
     create_annot_areas().forEach(annot_child => {
       annot.appendChild(annot_child)
     })
@@ -394,11 +403,41 @@ const simulate_click = () => {
   open_loading();
 
   setTimeout(() => {
-    console.log(document.getElementById('mainImage').alt)
-    console.log(annot_file)
+
     annot_file[document.getElementById('mainImage').alt].forEach((annot) => {
-      create_annot(annot.x,annot.y,true,annot)
+      if (Math.random() < P.missing) return
+      let x = annot.x
+      let y = annot.y
+      if (Math.random() < P.random_placement) {
+          x += Math.random()*50-100
+          y += Math.random()*50-100
+      }
+      create_annot(x,y,true,annot)
     })
+
+    for (var i =0; i < 10; i++) {
+      console.log('extra', P.extra_annot)
+      if(Math.random() < P.extra_annot) {
+        let rect = annot_space.getBoundingClientRect();
+        let start_x = rect.left
+        let start_y = rect.top
+
+        let end_x = rect.right
+        let end_y = rect.bottom
+
+        let x_size = end_x  - start_x - 100;
+        let y_size = end_y - start_y - 100;
+        x_rand = Math.floor(Math.random()*x_size + 50)
+        y_rand = Math.floor(Math.random()*y_size + 50)
+        let x = start_x + x_rand
+        let y = start_y + y_rand
+        const logAnnot = new LoggedAnnotation(x,y,'dsad')
+        logAnnot.class = annot_tools[Math.floor(Math.random()*annot_tools.length)]
+        logAnnot.cycle = annot_cycle[Math.floor(Math.random()*annot_cycle.length)]
+        create_annot(x,y,true,logAnnot)
+      }
+    }
+    
     close_loading();
   },4000)
 
