@@ -1,12 +1,3 @@
-const P = {
-  wrong_class: 0,
-  wrong_subclass: 0,
-  missing: 0,
-  random_placement: 0,
-  extra_annot: 0
-}
-
-
 let annot_space = document.getElementById('mainImage');
 let annotate_list = document.getElementById('image-annotations')
 let image_annotations_list = document.getElementById('image1-annotations-table')
