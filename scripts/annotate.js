@@ -280,21 +280,21 @@ let update_row = (id) => {
 
 const create_annot_areas = ()=> {
   const out = []
-  let child = document.createElement('div')
-  child.classList.add('area')
-  child.classList.add('first')
-  child.textContent =  '40%'
-  out.push(child)
-  child = document.createElement('div')
-  child.classList.add('area')
-  child.classList.add('second')
-  child.textContent =  '50%'
-  out.push(child)
-  child = document.createElement('div')
-  child.classList.add('area')
-  child.classList.add('thrid')
-  child.textContent =  '60%'
-  out.push(child)
+  //let child = document.createElement('div')
+  //child.classList.add('area')
+  //child.classList.add('first')
+  //child.textContent =  '40%'
+  //out.push(child)
+  //child = document.createElement('div')
+  //child.classList.add('area')
+  //child.classList.add('second')
+  //child.textContent =  '50%'
+  //out.push(child)
+  //child = document.createElement('div')
+  //child.classList.add('area')
+  //child.classList.add('thrid')
+  //child.textContent =  '60%'
+  //out.push(child)
   return out
 }
 
