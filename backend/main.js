@@ -7,9 +7,11 @@ var fs = require('fs');
 const server = http.createServer(function (req, res) {
   console.log('request starting...', req.url);
 
-  var filePath = '../' + req.url;
-  if (filePath == './')
-      filePath = './index.html';
+  var filePath = '..' + req.url;
+  if (filePath == '../')
+      filePath = '../index.html';
+
+  console.log('filePath', filePath);
 
   var extname = path.extname(filePath);
   var contentType = 'text/html; charset=utf-8';
