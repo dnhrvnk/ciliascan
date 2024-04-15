@@ -170,21 +170,17 @@
                 <img src="" alt="" id="mainImage">
             </div>
             
-            <div id="warning-modal" class="modal" onclick="updateWarningMessage()">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div id="warning-expl">
-                            <i class="fa-solid fa-exclamation icon"></i>
-                        </div>
-                        <div id="warning-content">
-                            <div style="text-align: end;">
-                                <i class="fa-solid fa-chevron-up icon"></i>
+            <div class="tooltip-container">
+                <div id="warning-modal" class="modal" onclick="updateWarningMessage()">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div id="warning-expl">
+                                <i class="fa-solid fa-exclamation icon"></i>
                             </div>
-                            <p><b>Number of undetermined cilias:</b> 10</p>
-                            <p><b>Number of undetermined dynein arms:</b> 26</p>
                         </div>
                     </div>
                 </div>
+                <div id="tooltip-warning" class="tooltip"> <b>Warning!</b> The AI model may not have been able to <br>mark some cilia and a review is needed.</div>
             </div>
 
             <div id="model-information">

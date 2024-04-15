@@ -505,7 +505,7 @@ transition: all 0.3s ease-in-out;
 }
 
 #warning-modal:hover {
-    scale: 1.1;
+    scale: 1.05;
 }
 
 #warning-modal .fa-exclamation {
@@ -533,4 +533,12 @@ transition: all 0.3s ease-in-out;
     color: #101021;
     margin: 0 !important;
     padding: 0 !important;
+}
+
+#tooltip-warning {
+    background-color: #febc2ee3;;
+    color: #101021;
+    padding: 5px 10px;
+    top: 170px;
+    text-align: center;
 }
