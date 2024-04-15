@@ -74,20 +74,20 @@ function stepForward() {
         section2.style.display = 'block';
         btn_back.style.display = 'block';
         btns.style.justifyContent = 'space-between';
-        steps.textContent = 'Step 2 of 5';
+        steps.textContent = 'Krok 2 z 5';
     } else if(section2.style.display == 'block') { 
         section2.style.display = 'none';
         section3.style.display = 'block';
-        steps.textContent = 'Step 3 of 5';
+        steps.textContent = 'Krok 3 z 5';
     } else if(section3.style.display == 'block') {
         section3.style.display = 'none';
         section4.style.display = 'block';
-        steps.textContent = 'Step 4 of 5';
+        steps.textContent = 'Krok 4 z 5';
     } else if(section4.style.display == 'block') { 
         section4.style.display = 'none';
         section5.style.display = 'block';
-        btn.textContent = 'Submit';
-        steps.textContent = 'Step 5 of 5';
+        btn.textContent = 'Odoslať';
+        steps.textContent = 'Krok 5 z 5';
 
         btn.onclick = submit;
     }
@@ -108,31 +108,31 @@ function stepBack() {
     if(section2.style.display == 'block') {
         section2.style.display = 'none';
         section1.style.display = 'block';
-        steps.textContent = 'Step 1 of 5';
+        steps.textContent = 'Krok 1 z 5';
     } else if(section3.style.display == 'block') {
         section3.style.display = 'none';
         section2.style.display = 'block';
-        steps.textContent = 'Step 2 of 5';
+        steps.textContent = 'Krok 2 z 5';
     } else if(section4.style.display == 'block') {  
         section4.style.display = 'none';
         section3.style.display = 'block';
-        steps.textContent = 'Step 3 of 5';
+        steps.textContent = 'Krok 3 z 5';
     } else if(section5.style.display == 'block') {  
         section5.style.display = 'none';
         section4.style.display = 'block';
-        btn.textContent = 'Next';
+        btn.textContent = 'Ďalej';
         btn.onclick = stepForward;
-        steps.textContent = 'Step 4 of 5';
+        steps.textContent = 'Krok 4 z 5';
     } else if(section1.style.display == 'block') {
         btn_back.style.display = 'none';
         btns.style.justifyContent = 'flex-end';
-        steps.textContent = 'Step 1 of 5';
+        steps.textContent = 'Krok 1 z 5';
     }
 };
 
 let submit_btn = document.querySelector('#submit-button');
 
-if(submit_btn.textContent === 'Submit'  ) {
+if(submit_btn.textContent === 'Odoslať'  ) {
     submit_btn.addEventListener('click', () => {
 
 

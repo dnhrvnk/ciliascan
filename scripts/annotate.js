@@ -416,7 +416,7 @@ const simulate_click = () => {
   }
 
   open_loading();
-  loading = true;
+  loading = false;
   
   new Promise((resolve, reject) => {
     const loop = () => loading ? setTimeout(loop, 100) : resolve()
