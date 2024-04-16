@@ -33,7 +33,7 @@
     </div>
 
     <div class="onboarding">
-        <img src="../assets/1page.png" alt="page1" id="onboarding-modal">
+        <img src="./assets/1page.png" alt="page1" id="onboarding-modal">
         <div id="implicit-feedback">
             <div class="input-label" style="display: flex">
                 <input type="checkbox" id="agree-checkbox"> 
@@ -56,7 +56,7 @@
         var img = document.getElementById('onboarding-modal');
         if(img.alt == "page1") {
             if(step == 1) {
-                img.src = "../assets/2page.gif"; 
+                img.src = "./assets/2page.gif"; 
                 img.alt = "page2";
 
                 var onboardingButtons = document.querySelector('.onboarding-buttons');
@@ -65,13 +65,13 @@
             }
         } else if(img.alt == "page2") {
             if(step == 1) {
-                img.src = "../assets/3page.png"; 
+                img.src = "./assets/3page.png"; 
                 img.alt = "page3";
                 var implicit_feedback = document.getElementById('implicit-feedback');
                 implicit_feedback.style.display = "block";
                 document.getElementById('next-button').textContent = 'Done';
             } else {
-                img.src = "../assets/1page.png"; 
+                img.src = "./assets/1page.png"; 
                 img.alt = "page1";
 
                 var onboardingButtons = document.querySelector('.onboarding-buttons');
@@ -82,7 +82,7 @@
             if(step == 1) {
                 window.location.href = './pages/upload.html';
             } else {
-                img.src = "../assets/2page.gif"; 
+                img.src = "./assets/2page.gif"; 
                 img.alt = "page2";
                 var implicit_feedback = document.getElementById('implicit-feedback');
                 implicit_feedback.style.display = "none";
