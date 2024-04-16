@@ -36,18 +36,18 @@ node ./main.js
 
 ## Preview of screens
 
-![download.gif](C:\Users\robert.junas\Desktop\ciliascan\screens\download.gif)
+![download.gif](.\screens\download.gif)
 
-![download_1.gif](C:\Users\robert.junas\Desktop\ciliascan\screens\download_1.gif)
+![download_1.gif](.\screens\download_1.gif)
 
-![download_2.gif](C:\Users\robert.junas\Desktop\ciliascan\screens\download_2.gif)
+![download_2.gif](.\screens\download_2.gif)
 
-![download_3.gif](C:\Users\robert.junas\Desktop\ciliascan\screens\download_3.gif)
+![download_3.gif](.\screens\download_3.gif)
 
-![image.png](C:\Users\robert.junas\Desktop\ciliascan\screens\image.png)
+![image.png](.\screens\image.png)
 
-![image_2.png](C:\Users\robert.junas\Desktop\ciliascan\screens\image_2.png)
+![image_2.png](.\screens\image_2.png)
 
-![image_3.png](C:\Users\robert.junas\Desktop\ciliascan\screens\image_3.png)
+![image_3.png](.\screens\image_3.png)
 
-![image_1.png](C:\Users\robert.junas\Desktop\ciliascan\screens\image_1.png)
+![image_1.png](.\screens\image_1.png)
