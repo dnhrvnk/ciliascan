@@ -22,11 +22,7 @@ npm i ws
 node ./main.js
 ```
 
-
-
-> ⚠️ It is important to note that it was design for **one laptop screen** and might (will) break for others 🙃. To see how it looks refer to images in **Preview of screens** or `screen/samples`
-
-
+> ⚠️ It is important to note that it was design for **one laptop screen** and might (will) break for others 🙃. To see how it looks refer to images in **Preview of screens** or `screens/`
 
 ### Usage
 
@@ -40,4 +36,18 @@ node ./main.js
 
 ## Preview of screens
 
+![download.gif](C:\Users\robert.junas\Desktop\ciliascan\screens\download.gif)
 
+![download_1.gif](C:\Users\robert.junas\Desktop\ciliascan\screens\download_1.gif)
+
+![download_2.gif](C:\Users\robert.junas\Desktop\ciliascan\screens\download_2.gif)
+
+![download_3.gif](C:\Users\robert.junas\Desktop\ciliascan\screens\download_3.gif)
+
+![image.png](C:\Users\robert.junas\Desktop\ciliascan\screens\image.png)
+
+![image_2.png](C:\Users\robert.junas\Desktop\ciliascan\screens\image_2.png)
+
+![image_3.png](C:\Users\robert.junas\Desktop\ciliascan\screens\image_3.png)
+
+![image_1.png](C:\Users\robert.junas\Desktop\ciliascan\screens\image_1.png)
