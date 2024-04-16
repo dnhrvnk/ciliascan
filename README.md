@@ -11,7 +11,7 @@ Html+css+js prototype of application for annotating cilias for usability testing
  backend requies `nodejs` with libraries `ws`, `http`, `fs`,`path`: 
 
 ```bash
-npm i ws http fs path
+npm i ws 
 ```
 
 ### Run
