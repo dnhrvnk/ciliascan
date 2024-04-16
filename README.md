@@ -44,6 +44,8 @@ node ./main.js
 
 ![download_3.gif](./screens/download_3.gif)
 
+![download_4.gif](./screens/download_4.gif)
+
 ![image.png](./screens/image.png)
 
 ![image_2.png](./screens/image_2.png)
