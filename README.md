@@ -20,6 +20,8 @@ to run this version you can simply open `index.html` in your browser or use vsco
 
 ![download_4.gif](./screens/download_4.gif)
 
+![download_5.gif](./screens/download_5.gif)
+
 ![image.png](./screens/image.png)
 
 ![image_2.png](./screens/image_2.png)
