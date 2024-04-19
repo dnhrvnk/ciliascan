@@ -104,6 +104,13 @@ function nextStep() {
         modalBody.innerHTML = 'Ak chcete aktivovať automatickú anotáciu, jednoducho vyberte <br>"<b>Spusti anotáciu</b>" z rozbaľovacieho zoznamu. <br><br> Náš model AI potom rýchlo zanalyzuje aktuálny obrázok a označí sušienky na ďalšie preskúmanie';
         modalFooter.textContent = "1 z 7";
 
+        let modal = document.getElementById('modal');
+        
+        if (screenWidth <= 1494 && screenHeight <= 935) {
+            modal.style.top = "190px";
+            modal.style.left = "520px";
+        }
+
         let btn_run_annotation = document.querySelector('#btn-run-annotation');
         btn_run_annotation.style.backgroundColor = "#006CEB";
 
@@ -127,7 +134,11 @@ function nextStep() {
         btn_run_annotation.style.backgroundColor = "";
 
         let modal = document.getElementById('modal');
-        modal.style.top = "150px"
+        if (screenWidth <= 1494 && screenHeight <= 935) {
+            modal.style.top = "120px"
+        } else {
+            modal.style.top = "150px"
+        }
         modal.style.left = "850px"
 
         modalFooter.textContent = "2 z 7";
@@ -195,7 +206,11 @@ function nextStep() {
 
         let modal = document.getElementById('modal');
         modal.style.top = "310px"
-        modal.style.left = "870px"
+        if (screenWidth <= 1494 && screenHeight <= 935) {
+            modal.style.left = "840px"
+        } else {
+            modal.style.left = "870px"
+        }
 
         document.getElementById('nextStep').style.display = 'block'
 

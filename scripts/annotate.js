@@ -426,8 +426,9 @@ const simulate_click = () => {
 
     annot_file[document.getElementById('mainImage').alt].forEach((annot) => {
         if (Math.random() < P.missing) return
-        let x = annot.x
-        let y = annot.y
+        let space = annot_space.getBoundingClientRect();
+        let x = (annot.x-378.40)/(1095.26-378.40)*(space.right-space.left) + space.left 
+        let y = (annot.y-124.24)/(690.69-124.24)*(space.bottom-space.top) + space.top 
         if (Math.random() < P.random_placement) {
             x += Math.random()*50-100
             y += Math.random()*50-100

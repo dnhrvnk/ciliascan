@@ -50,6 +50,8 @@ var modalBody = document.querySelector('#manual-anotate-modal .modal-body p');
 var modalFooter = document.querySelector('#manual-anotate-modal .modal-footer p');
 var call_backs = []
 var area_callback = undefined
+let screenWidth = window.innerWidth;
+let screenHeight = window.innerHeight;
 
 function nextManual() {
     if(step == 0) {
@@ -84,7 +86,6 @@ function nextManual() {
         setTimeout(()=> {
         dropdown.classList.add("show");
         },1)
-        
 
         let back = document.getElementById('backManual');
         back.style.display = "block";
@@ -101,7 +102,7 @@ function nextManual() {
         })
         call_backs.reverse()
 
-        modal.style.top = "30%";
+        modal.style.top = "13%";
         modal.style.left = "32%";
 
         
@@ -116,10 +117,7 @@ function nextManual() {
 
         dropdown = document.getElementById("mtds-tool-dropdown-content");
         dropdown.classList.remove("show");
-        
-
         document.querySelectorAll('#mtds-tool-dropdown-content li').forEach((element) => {
-            
         })
 
         area = document.getElementById("mainImage")
@@ -136,7 +134,7 @@ function nextManual() {
             element.onclick = call_backs.pop()
         })
 
-        modal.style.top = "16%";
+        modal.style.top = "13%";
         modal.style.left = "56%";
 
         step = 3;
@@ -144,7 +142,7 @@ function nextManual() {
         modalBody.innerHTML = "Po umiestnení označenia môžete ľahko upraviť typ kúskov sušienky kliknutím na označenie. <br><br> Jednoducho <b>kliknite na označenie<b> a klikajte dokým nebudete spokojný so značkou typu kúskov.";
         modalFooter.textContent = "4 z 8";
 
-        modal.style.top = "16%";
+        modal.style.top = "13%";
         modal.style.left = "56%";
 
         var listAnnotations = document.querySelector('.uploaded-image-annotations.active');
@@ -172,7 +170,11 @@ function nextManual() {
         modalFooter.textContent = "6 z 8";
 
         modal.style.top = "310px"
-        modal.style.left = "870px"
+        if (screenWidth <= 1494 && screenHeight <= 935) {
+            modal.style.left = "840px"
+        } else {
+            modal.style.left = "870px"
+        }
 
         var annotationInfo = document.getElementById('annotation-info');
         annotationInfo.style.borderTop = "0.8px solid #006CEB";
@@ -189,7 +191,11 @@ function nextManual() {
         annotationInfo.style.borderTop = "none";
         annotationInfo.style.borderBottom = "0.8px solid rgb(45, 45, 66)";
 
-        modal.style.top = "16%";
+        if (screenWidth <= 1494 && screenHeight <= 935) {
+            modal.style.top = "13%";
+        } else {
+            modal.style.top = "15%";
+        }
         modal.style.left = "56%";
 
         var nextButton = document.getElementById('nextManual');

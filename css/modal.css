@@ -129,3 +129,15 @@
   border: 10px solid transparent;
   border-bottom-color: #ffffff;
 }
+
+@media only screen and (max-width: 1496px) and (max-height: 935px) {
+    .onboarding-buttons {
+        width: 85%;
+    }
+
+    .modal {
+        top: 190px;
+        left: 520px;
+    }
+}
+
