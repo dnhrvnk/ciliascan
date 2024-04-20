@@ -139,5 +139,9 @@
         top: 190px;
         left: 520px;
     }
-}
 
+    #modal-reminder {
+        top: 15%;
+        left: 44%;
+    }
+}

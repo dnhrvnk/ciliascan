@@ -547,4 +547,13 @@ transition: all 0.3s ease-in-out;
     #mainImage {
         max-height: 70vh;
     }
+
+    .left-aside, .right-aside {
+        height: 90vh;
+    }
+
+    .uploaded-images {
+        max-height: 76vh;
+    }
+    
 }
