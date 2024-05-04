@@ -430,7 +430,7 @@ transition: all 0.3s ease-in-out;
     width: auto;
 }
 
-#welcome-to-run-annotation, .modal-overlay {
+.modal-overlay {
     display: none;
     justify-content: center;
     align-items: center;
@@ -443,19 +443,15 @@ transition: all 0.3s ease-in-out;
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-#welcome-to-run-annotation-content {
-    width: auto; 
-    height: 75%; 
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
-    border: 0.8px solid #101021;
-    z-index: 100;
-    position: relative; 
-}
-
-#image-welcome-to-run-annotation {
-    border-radius: 10px;
-    width: auto;
-    height: 100%;
+#welcome-to-run-annotation {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    width: 40%;
+    top: 200px;
+    left: 450px;
 }
 
 .close {

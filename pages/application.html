@@ -92,7 +92,17 @@
             
             <button id="btn-export" class="button button-grey" onclick="export_annotations()" disabled><i class="fa-solid fa-download icon"></i> Export</button>
             
-            <button class="button button-icons" style="margin-right: 0;" onclick="openModelInfo()"><i class="fa-solid fa-robot icon icon-nav"></i></button>
+            <div class="dropdown">
+                <button class="button button-icons dropdown-toggle" id="dropdownMenuButton4" style="margin-right: 0;">
+                    <i class="fa-solid fa-circle-info"></i>
+                </button>
+                <div class="dropdown-menu" id="settings-menu" aria-labelledby="dropdownMenuButton4">
+                    <a class="dropdown-item" href="#">About CiliaScan</a> 
+                    <a class="dropdown-item" href="#" onclick="openModelInfo()">Model information</a>
+                    <a class="dropdown-item" href="#">Manual annotation tutorial</a>
+                    <a class="dropdown-item" href="#">Automatic annotation tutorial</a>
+                </div>
+            </div>
             
             <div class="dropdown">
                 <button class="button button-icons dropdown-toggle" id="dropdownMenuButton3">
@@ -208,10 +218,10 @@
                                 <p>Also, our model <b>does not annotate all cilia</b> but only those that are mostly certain.</p>
                                 <p>Thus, the images still need to be checked and annotated.</p>
                                 <hr>
-                                <h4>Performance</h4>
+                                <!--<h4>Performance</h4>
                                 <p><b>Mean predictor error:</b> ±5%</p>
                                 <p><b>Max predictor error:</b>  ±15%</p>
-                               <p>The AI tool can explain 85% of the variation od the training data</p>
+                               <p>The AI tool can explain 85% of the variation od the training data</p>-->
                                
                             </div>
                             <div id="microtubular-defect" class="content-section" style="display: none;">
@@ -443,7 +453,7 @@
                     <p><b>Dynein arms defect:</b> No arms missing</p>
                     <p><b>Confidence level:</b> 90%</p>
                 </div>
-                <hr>
+                <!--<hr>
                 <div>
                     <h4>Decision tree</h4>
                     <div id="decision-tree">
@@ -473,7 +483,7 @@
                             <img src="../assets/subclass_shape.png" alt="Feature 2">
                         </div>
                     </div>
-                    <hr style="margin-top: 30px;">
+                    <hr style="margin-top: 30px;">-->
                     <div class="row">
                         <div>
                             <h4>Annotated cilia:</h4>
@@ -514,11 +524,31 @@
                 </div>
             </div>
 
-            <div id="welcome-to-run-annotation">
+            <!--<div id="welcome-to-run-annotation">
                 <div id="welcome-to-run-annotation-content">
                     <button class="close" onclick="stopInboarding()">&times;</button>
                     <img src="../assets/welcome-to-run-annotation.gif" alt="Welcome to Run Annotation" id="image-welcome-to-run-annotation" class="image">
                     <button class="button button-blue" id="next-button" onclick="inboarding()">Next</button>
+                </div>
+            </div>-->
+
+            <div id="welcome-to-run-annotation" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="icon close" onclick="stopInboarding()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <p style="color: #006CEB;"><b>Welcome to Automatic Annotation!</b></p>
+                        <p>Our tool uses innovative artificial intelligence technology to help you annotate your images.</p>
+                        <p>When you activate automatic annotation, the AI will analyze the provided image and flag areas that may require attention. You can save time by quickly identifying potential problem areas.</p>
+                        <p>To activate automatic annotation, simply select <b>"Run Annotation"</b> from the drop-down list.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <p>1 z 7</p>
+                        <div style="column-gap: 5px; display: flex;">
+                            <button id="next-button" class="button button-blue" onclick="inboarding()">Ďalej</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
