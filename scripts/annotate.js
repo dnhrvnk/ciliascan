@@ -213,7 +213,7 @@ let create_annot_row = (annot_class, id, confidence, auto=false) => {
   }
   row.appendChild(cell_text);
   cell_conf.appendChild(conf);
-  row.appendChild(cell_conf);
+  //row.appendChild(cell_conf);
 
   
   cell_delete.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
