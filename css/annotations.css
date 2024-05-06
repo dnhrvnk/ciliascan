@@ -7,8 +7,8 @@
   font-size: 12px;
   border-radius: 20px;
   cursor: pointer;
-  width: 1px;
-  height: 1px;
+  width: 4px;
+  height: 4px;
   border: 1px solid #ADADAD;
 }
 
@@ -54,20 +54,19 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 7px;
   height: 2px;
   border: 1px solid transparent;
   background-color: white;
   margin: 0px;
   left: 0;
-  width: 14px;
+  width: -webkit-fill-available;;
 }
 
 .annotation.both::after {
   content: "";
   position: absolute;
   top: 50%;
-  width: 32px;
+  width: 180%;
   height: 2px;
   border: 1px solid transparent;
   /* border-top-color: #2222ff; */
@@ -88,7 +87,7 @@
   background-color: white;
   margin: 0px;
   left: 0;
-  width: 14px;
+  width: -webkit-fill-available;
   transform:  translateY(-50%) rotate(-45deg);
 }
 
@@ -102,7 +101,7 @@
   background-color: white;
   margin: 0px;
   left: 0;
-  width: 14px;
+  width: -webkit-fill-available;
   transform:  translateY(-50%) rotate(45deg);
 }
 
@@ -111,7 +110,10 @@
 }
 
 .annotation.selected {
-box-shadow: 0 0 10px #006CEB
+box-shadow: 0 0 4px 3px #006CEB;
+width: 10px;
+height: 10px;
+animation: identifier 1s infinite alternate linear;
 }
 
 .annotation.disarranged {

@@ -207,13 +207,14 @@ let create_annot_row = (annot_class, id, confidence, auto=false) => {
   if(auto){
     conf.innerHTML = `${confidence}%`;
     conf.className = 'chip';
+    conf.style.display = 'none';
     const s_c = annot_class.split(' ').reverse()[1];
     const s_c_n = Object.keys(annot_map).find(key => annot_map[key] === s_c);
     cell_text.innerHTML = s_c_n;
   }
   row.appendChild(cell_text);
   cell_conf.appendChild(conf);
-  //row.appendChild(cell_conf);
+  row.appendChild(cell_conf);
 
   
   cell_delete.innerHTML = '<i class="fa-regular fa-trash-can"></i>';

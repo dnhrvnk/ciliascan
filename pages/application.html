@@ -37,7 +37,7 @@
         <div class="nav-middle-side">
             <div class="dropdown">
                 <button class="button button-icons-disabled dropdown-toggle" id="dropdownMenuButton" onclick="startInboarding()" disabled>
-                  <i class="fa-regular fa-pen-to-square"></i>
+                  <span style="font-size: 15px;">AI</span>
                   <span id="notification-dot"></span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="run-annotation">
@@ -179,14 +179,14 @@
             <div id="image-annotations">
                 <img src="" alt="" id="mainImage">
             </div>
-            
+
             <div class="tooltip-container">
-                <div id="warning-modal" class="modal" onclick="updateWarningMessage()">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <div id="warning-expl">
-                                <i class="fa-solid fa-exclamation icon"></i>
-                            </div>
+            <div id="warning-modal" class="modal" onclick="updateWarningMessage()">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="warning-expl">
+                            <i class="fa-solid fa-exclamation icon"></i>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -531,7 +531,7 @@
                     <button class="button button-blue" id="next-button" onclick="inboarding()">Next</button>
                 </div>
             </div>-->
-
+            
             <div id="welcome-to-run-annotation" class="modal">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -804,8 +804,8 @@
                                         </select>
                                     </td>
                                 </tr>
-                                <!--<tr>
-                                    <td>Conf. level
+                                <tr >
+                                    <td style="display: none;">Conf. level
                                         <sup>
                                             <div class="tooltip-container">
                                                 <i class="fa-solid fa-circle-info icon info-icon conf-level-info"></i>
@@ -814,8 +814,8 @@
                                         </sup>
                                         :
                                         </td>
-                                        <td class="conf-level"><span class="chip" id="close-conf-level">--%</span> </td>
-                                </tr>-->
+                                        <td class="conf-level"><span class="chip" id="close-conf-level" style="display: none;">--%</span> </td>
+                                </tr>
                             </table>
                         </div>
                     </div>
